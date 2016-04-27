@@ -1,1 +1,1 @@
-This is Jacob Teal's sandbox for learning and testing reveal.js
+Sauce Labs: Selenium101 Training Course
