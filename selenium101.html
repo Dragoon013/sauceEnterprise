@@ -62,6 +62,7 @@
                   </small>
                 </p>
               </section>
+
               <section>
 					<h3>Trainer Intro</h3>
 					<p>
@@ -80,33 +81,8 @@
                   <h2>Introduction to Sauce Labs</h2>
                 </section>
 
-				<!-- Example of nested vertical slides
-				<section>
-					<section>
-				      <h2>What is Sauce Labs?</h2>
-						<p></p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>-->
-
-				<section>
-					<h3>What is Sauce Labs?</h3>
+                <section>
+				<h3>What is Sauce Labs?</h3>
 					<p>
 						Press <strong>ESC</strong> to enter the slide overview.
 					</p>
@@ -129,16 +105,6 @@
 					<h3>CD/CI Cycle - Where Saucelabs fits in</h3>
 					<p>
                       insert diagram
-					</p>
-				</section>
-
-                <section>
-					<h3>Sauce Labs Features</h3>
-					<p>
-                      <li>Security</li>
-                      <li>QA Test Optimization</li>
-                      <li>Automate</li>
-
 					</p>
 				</section>
 
@@ -175,8 +141,14 @@
                       <li>QA Test Optimization</li>
                       <li>Automate</li>
                     </p>
-                  </section>
 
+                    <aside class="notes"> why should you use it? Let's get into the UI.
+                      <li>Dashboard</li>
+                      <li>tunnels</li>
+                      <li>Account Details - security phrase/token</li>
+                    </aside>
+                  </section>
+<!--
                   <section>
 					<h3>Dashboard</h3>
 					<p>
@@ -198,7 +170,7 @@
 					  </p>
 				    </section>
 				</section>
-
+-->
                 <section>
 				  <h3>Documentation</h3>
 				  <p>
@@ -223,80 +195,102 @@
 				</section>
 
                 <section>
-				  <h3>7 Basic Steps of a Selenium Script</h3>
-				  <p>
-                    <ol>
-                      <li>Create a Webdriver Object</li>
-                      <li>Navigate to a Web Page</li>
-                      <li>Locate HTML Elements on a Web Page</li>
-                      <li>Perform an Action on HTML Elements</li>
-                      <li>Anticipate Browser Response</li>
-                      <li>Run the Test and Gather Test Results</li>
-                      <li>Conclude the Test</li>
-                    </ol>
-                  </p>
-                  <p>I'd rather have a diagram here. Pretty pictures for lyfe</p>
-                  <aside class="notes"></aside>
-				</section>
+                  <section>
+				    <h3>7 Basic Steps of a Selenium Script</h3>
+				    <p>
+                      <ol>
+                        <li>Create a Webdriver Object</li>
+                        <li>Navigate to a Web Page</li>
+                        <li>Locate HTML Elements on a Web Page</li>
+                        <li>Perform an Action on HTML Elements</li>
+                        <li>Anticipate Browser Response</li>
+                        <li>Run the Test and Gather Test Results</li>
+                        <li>Conclude the Test</li>
+                      </ol>
+                    </p>
+                    <p>I'd rather have a diagram here. Pretty pictures for lyfe</p>
+                    <aside class="notes"></aside>
+				  </section>
 
-                <section>
-				  <h3>Webdriver</h3>
-				  <p>
-                    <li>Creation</li>
-                    <li>Local vs Remote (Sauce Labs)</li>
-                  </p>
-                  <aside class="notes"></aside>
-				</section>
+                  <section>
+				    <h3>Webdriver</h3>
+				    <p>
+                      <li>Creation</li>
+                      <li>Local vs Remote (Sauce Labs)</li>
+                    </p>
+                    <aside class="notes"></aside>
+				  </section>
 
-                <section>
-				  <h3>Locate HTML Elements on the Page</h3>
-				  <p>
-                    <li>Locator Expressions</li>
-                    <li>Finder Methods</li>
-                    <li>Locator Methods</li>
-                  </p>
-                  <aside class="notes"></aside>
+                  <section>
+                    <h3>Navigate to a Web Page</h3>
+				    <p>
+                    </p>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+				    <h3>Locate HTML Elements on the Page</h3>
+				    <p>
+                      <li>Locator Expressions</li>
+                      <li>Finder Methods</li>
+                      <li>Locator Methods</li>
+                    </p>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+                    <h3>Perform an Action on a HTML Element</h3>
+				    <p>
+                    </p>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+				    <h3>Anticipate Browser Response</h3>
+				    <p>
+                      <li>Implicit Waits</li>
+                      <li>Explicit Waits</li>
+                    </p>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+				    <h3>Run the Test and Record the Test Results</h3>
+				    <p>
+                      <li>Test Frameworks</li>
+                      <li>Assertions</li>
+                      <li>Record Test Results</li>
+                    </p>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+				    <h3>Conclude a Test</h3>
+				    <p>
+                      <li>driver.quit()</li>
+                    </p>
+                    <aside class="notes"></aside>
+                  </section>
                 </section>
 
                 <section>
-                  <h3>Perform an Action on a HTML Element</h3>
-				  <p>
-                  </p>
-                  <aside class="notes"></aside>
+                  <h2>Writing a Selenium Script</h2>
+
                 </section>
 
                 <section>
-				  <h3>Anticipate Browser Response</h3>
-				  <p>
-                    <li>Implicit Waits</li>
-                    <li>Explicit Waits</li>
-                  </p>
-                  <aside class="notes"></aside>
+                  <h3></h3>
+
                 </section>
 
                 <section>
-				  <h3>Run the Test and Record the Test Results</h3>
-				  <p>
-                    <li>Test Frameworks</li>
-                    <li>Assertions</li>
-                    <li>Record Test Results</li>
-                  </p>
-                  <aside class="notes"></aside>
+                  <h2>Running Selenium Scripts</h2>
+
                 </section>
-
-                <section>
-				  <h3>Conclude a Test</h3>
-				  <p>
-                    <li>driver.quit()</li>
-                  </p>
-                  <aside class="notes"></aside>
-                </section>
-
-
 
 				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+				  <script type="text/template">
+					## Markdown support
 
 						Write content using inline or external Markdown.
 						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
