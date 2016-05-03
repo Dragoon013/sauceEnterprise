@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+		<title>Sauce Laboratories - Selenium101 </title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Learn how to write and run a Selenium script locally and with Sauce Labs">
+		<meta name="author" content="Jacob Teal">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -42,12 +42,13 @@
           .reveal .slides { text-align: left; }
           .reveal .slides h1 { text-align: center; }
           .reveal .slides h2 { text-align: center; }
-          .reveal .slides h3 { text-align: center; }
+          .reveal .slides h3 { text-align: center; font-variant: none; text-transform: none;}
         </style>
-			<!-- Any section element inside of this container is displayed as a slide -->
-                    <img class="logo" src=assets/images/saucelabslogo.png style="border:0; width:100px; height:100px; background:none; position:absolute; left:0; top:0;">
-	        <div class="slides">
+		<!-- Any section element inside of this container is displayed as a slide -->
 
+          <img src="assets/images/saucelabslogo.png" style="border:0; width:100px; height:100px; background:none; position:absolute; left:0; top:0;">
+
+	        <div class="slides">
 
               <section>
                 <h1>Selenium 101</h1>
@@ -77,32 +78,46 @@
 					</p>
 				</section>
 
+              <section>
+                <h3>Agenda</h3>
+                <li>Introduction to Sauce Labs</li>
+                <li>Selenium Script Basics</li>
+                <li>Writing a Selenium Script</li>
+                <li>Running a Selenium Script</li>
+                <li>Best Practices</li>
+
+              </section>
+
+              <!-- Intro to SL Module-->
                 <section>
                   <h2>Introduction to Sauce Labs</h2>
                 </section>
 
                 <section>
-				<h3>What is Sauce Labs?</h3>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+                  <li>Learn how Sauce Labs fits into the CI/CD Life Cycle</li>
+                  <li>Learn how to use the Sauce Labs UI</li>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+				  <h3>What is Sauce Labs?</h3>
+                  <p>SAAS (HAAS) Selenium Grid in the Cloud</p>
 				</section>
-				<section>
+
+                <section>
 					<h3>Sauce Labs History</h3>
 					<p>
 					  <li>Founded in 2008</li>
                       <li>cofounded by selenium dev</li>
 					</p>
 					<p>
-                      1 million code commits and cool devs
                       <!--Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.-->
                     </p>
 				</section>
                 <section>
-					<h3>CD/CI Cycle - Where Saucelabs fits in</h3>
+					<h3>CD/CI Cycle - Where Sauce Labs fits in</h3>
 					<p>
                       insert diagram
 					</p>
@@ -133,7 +148,6 @@
                   <aside class="notes">so where do i run my selenium scripts? How do I actually run a script?</aside>
 				</section>
 
-                <section>
                   <section>
                     <h3>Using Sauce Labs</h3>
 					<p>
@@ -142,13 +156,13 @@
                       <li>Automate</li>
                     </p>
 
-                    <aside class="notes"> why should you use it? Let's get into the UI.
+                    <aside class="notes"> why should you use it? Let's run a manual test. Let's get into the UI.
                       <li>Dashboard</li>
-                      <li>tunnels</li>
+                      <li>Tunnels</li>
                       <li>Account Details - security phrase/token</li>
                     </aside>
                   </section>
-<!--
+<!-- UI Elements
                   <section>
 					<h3>Dashboard</h3>
 					<p>
@@ -179,9 +193,18 @@
                     <li><a href="http://seleniumhq.org" target="_blank">seleniumhq.org</a></li>
 				  </p>
 				</section>
-
+<!--Selenium Scripts Basics Module-->
                 <section>
                   <h2>Selenium Test Script Basics</h2>
+                  <aside class="notes">We are going to take an example script and run it in the sections. We're going to walk through all of the basic steps, and point them out in the script</aside>
+                </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+                  <li>Understand the basic components of a Selenium test script</li>
+                  <li></li>
+                  <aside class="notes"></aside>
                 </section>
 
                 <section>
@@ -273,299 +296,282 @@
                   </section>
                 </section>
 
+<!-- Writing a Selenium Script Module-->
                 <section>
                   <h2>Writing a Selenium Script</h2>
-
+                    <aside class="notes">Talk about how this section is basically one big lab - We will analyze what has been written in the script for us already, write our own additional steps, run the script, and then analyze our results</aside>
                 </section>
 
                 <section>
-                  <h3></h3>
-
+                  <h3>Module Objectives</h3>
+                  <li></li>
+                  <aside class="notes"></aside>
                 </section>
 
+                <section>
+                  <h3>The Set-Up</h3>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <h3>Dude, Where's My WebDriver?</h3>
+                  <aside class="notes">Discussion, where is it on the script, recap - why do we need it at all? ID the difference between local and remote webdrivers</aside>
+                </section>
+
+                <section>
+                  <h3>To the Internet!</h3>
+                  <aside class="notes"> How do we navigate to a page? where does that code need to go?</aside>
+                </section>
+
+                <section>
+                  <h3>In Your Element</h3>
+                  <p>Finder and Locator Methods</p>
+                  <aside class="notes">Let's find some elements to interact with.</aside>
+                </section>
+
+                <section>
+                  <section>
+                    <h3>Performing an Action</h3>
+                    <aside class="notes">Click! Hover! SendKeys!</aside>
+                  </section>
+
+                  <section>
+                    <h3>Click</h3>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+                    <h3>SendKeys</h3>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+                    <h3>Hover</h3>
+                    <aside class="notes"></aside>
+                  </section>
+                </section>
+
+<!-- Running a Selenium Script Module-->
                 <section>
                   <h2>Running Selenium Scripts</h2>
+                  <aside class="notes"> we will finally run the script here, locally and on sauce labs, and compare the methods and dicuss the benefits of running on sauce labs</aside>
+                </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <li></li>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <h3>Testing Scripts Locally</h3>
+                  <p>Install Selenium Server</p>
+                  <p>Run it Local</p>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <section>
+                    <h3>Testing Scripts on Sauce Labs</h3>
+
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+                    <h3>Let's See Some ID</h3>
+                    <p>hardcoded vs. env variables</p>
+                    <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
+                  </section>
+
+                  <section>
+                    <h3>Desired Capabilties</h3>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+                    <h3>Finish Him!</h3>
+                    <p>Make sure you end the test!</p>
+                    <aside class="notes"></aside>
+                  </section>
 
                 </section>
 
-				<section data-markdown>
-				  <script type="text/template">
-					## Markdown support
+                <section>
+                  <h3>Run, Forrest, Run!</h3>
+                  <aside class="notes">Run the script</aside>
+                </section>
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+                <section>
+                  <h3>Anticipating Responses</h3>
+                  <p>Implicit vs. Explicit waits</p>
+                  <aside class="notes"></aside>
+                </section>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+                <section>
+                  <h3>Record your Results</h3>
+                  <li>Local</li>
+                  <li>Sauce Labs</li>
+                  <aside class="notes"></aside>
+                </section>
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
 
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+<!-- Introduction to Testing Frameworks-->
+                <section>
+                  <h2>Introduction to Testing Frameworks</h2>
+                  <aside class="notes">We'll discuss the different testing frame works here. </aside>
+                </section>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment fade-up">fade-up (also down, left and right!)</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p>Highlight <span class="fragment highlight-red">red</span> <span class="fragment highlight-blue">blue</span> <span class="fragment highlight-green">green</span></p>
-					</section>
-				</section>
+                <section>
+                  <h3>Module Objectives</h3>
+                  <li></li>
+                  <aside class="notes"></aside>
+                </section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
+                <section>
+                  <h3>What is a Testing Framework?</h3>
+                  <p></p>
+                  <aside class="notes"></aside>
+                </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+                <section>
+                  <h3>Popular Frameworks</h3>
+                  <p>
+                    <li>Java:</li>
+                    <li>Python:</li>
+                    <li>Ruby:</li>
+                  </p>
+                  <aside class="notes"></aside>
+                </section>
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
+                <section>
+                  <h3>Test Driven Development vs. Behavior Driven Development</h3>
+                  <p></p>
+                  <aside class="notes"></aside>
+                </section>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
+                <section>
+                  <h3>Build Systems</h3>
+                  <p>
+                    <li>Maven</li>
+                  </p>
+                  <aside class="notes">We are/have been using ______ today</aside>
+                </section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
+                <section>
+                  <h3>Toolchain Architecture</h3>
+                </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+                 <section>
+                  <h3>Assertions</h3>
+                  <p>
 
-    var nodes = document.querySelectorAll( selector );
+                  </p>
+                  <aside class="notes"></aside>
+                 </section>
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+                 <!--Best Practices Module-->
+                 <section>
+                   <h2>Testing with Sauce Labs: Best Practices</h2>
+                   <aside class="notes">General best practices, testing methodology</aside>
+                 </section>
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+                <section>
+                  <h3>Module Objectives</h3>
+                  <li></li>
+                  <aside class="notes"></aside>
+                </section>
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+                 <section>
+                   <h3>Dependencies</h3>
+                   <p>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+                   </p>
+                   <aside class="notes"></aside>
+                 </section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							</tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							</tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
+                 <section>
+                   <h3>Implicit Waits vs. Explicit Waits</h3>
+                   <p>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+                   </p>
+                   <aside class="notes"></aside>
+                 </section>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+                 <section>
+                   <section>
+                     <h3>Testing Strategy</h3>
+                     <p>
 
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+                     </p>
+                     <aside class="notes"></aside>
+                   </section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+                   <section>
+                     <h3>Different Kinds of Tests</h3>
+                     <p>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
+                     </p>
+                     <aside class="notes"></aside>
+                   </section>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
+                   <section>
+                     <h3>Retries</h3>
+                     <p>
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+                     </p>
+                     <aside class="notes"></aside>
+                   </section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+                   <section>
+                     <h3>Atomic Testing</h3>
+                     <p>
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
+                     </p>
+                     <aside class="notes"></aside>
+                   </section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+                   <section>
+                     <h3>Object Oriented Testing</h3>
+                     <p>
 
-			</div>
+                     </p>
+                     <aside class="notes"></aside>
+                   </section>
+
+                   <section>
+                     <h3>Label Your Tests</h3>
+                     <p>
+                       <li>ID your tests</li>
+                     </p>
+                     <aside class="notes"></aside>
+                   </section>
+
+                 </section>
+
+                 <section>
+                   <h2>Additional Resources</h2>
+                 </section>
+
+                 <section>
+                  <h3>Further Information</h3>
+                  <li></li>
+                  <aside class="notes"></aside>
+                 </section>
+
+                 <section>
+                   <h3>Q&A</h3>
+                   <li></li>
+                   <aside class="notes"></aside>
+                 </section>
+
+            </div>
+
 
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-        <script src="js/jquery-1.12.3.min.js"></script>
+
 
 		<script>
 
@@ -575,7 +581,7 @@ Reveal.addEventListener( 'customevent', function() {
 				progress: true,
 				history: true,
 				center: true,
-
+                slideNumber: true,
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
