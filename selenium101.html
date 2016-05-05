@@ -157,7 +157,8 @@
                       <li>Automate</li>
                     </p>
 
-                    <aside class="notes"> why should you use it? Let's run a manual test - this a way to show them a way to test that they are familiar with, and they can have an intro to the basic UI.
+                    <aside class="notes">DEMO: SL UI.
+                      <p>why should you use it? Let's run a manual test - this a way to show them a way to test that they are familiar with, and they can have an intro to the basic UI.</p>
                       <li>Dashboard</li>
                       <li>Tunnels</li>
                       <li>Account Details - security phrase/token</li>
@@ -165,9 +166,9 @@
                   </section>
 
                   <section>
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; left:0; top:0;">
-                    Lab:
-
+                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                    <h3>Lab: My First Test (On Sauce Labs)</h3>
+                    <p>This is the lab with the manual test</p>
                   </section>
 
 <!-- UI Elements
@@ -241,16 +242,23 @@
                       </ol>
                     </p>
                     <p>I'd rather have a diagram here. Pretty pictures for lyfe</p>
-                    <aside class="notes"></aside>
+                    <aside class="notes">Walk through example script - point out each step that correllates to an element</aside>
 				  </section>
 
                   <section>
 				    <h3>Webdriver</h3>
 				    <p>
-                      <li>Creation</li>
-                      <li>Local vs Remote (Sauce Labs)</li>
+                      <li>Local</li>
+                      <pre><code class="java" data-trim contenteditable>
+                          WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+                      </code></pre>
+
+                      <li>Remote (Sauce Labs)</li>
+                      <pre><code class="java" data-trim contenteditable>
+                          WebDriver driver = new FireFoxDriver(new URL(URL), caps);
+                      </code></pre>
                     </p>
-                    <aside class="notes"></aside>
+                    <aside class="notes">For this first script, we are going to run it on Sauce Labs, so keep it as is in the script. But it's important to note here that we would need to create a driver for each type of browser we want to connect to and test on. With Sauce Labs, we can indicate browsers and versions through desired capabilities</aside>
 				  </section>
 
                   <section>
@@ -302,6 +310,12 @@
                     </p>
                     <aside class="notes"></aside>
                   </section>
+                </section>
+
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Running the Sample Script</h3>
+                  <p>This is the lab with the sample script run - make them change the website at the very least - a two parter.</p>
                 </section>
 
 <!-- Writing a Selenium Script Module-->
@@ -361,6 +375,12 @@
                   </section>
                 </section>
 
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Performance Art</h3>
+                  <p>This is the lab where we write some actions into our script to play with other elements on the page</p>
+                </section>
+
 <!-- Running a Selenium Script Module-->
                 <section>
                   <h2>Running Selenium Scripts</h2>
@@ -378,6 +398,12 @@
                   <p>Install Selenium Server</p>
                   <p>Run it Local</p>
                   <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Run Script Locally</h3>
+                  <p>This is the lab with the local test</p>
                 </section>
 
                 <section>
@@ -419,6 +445,12 @@
                 </section>
 
                 <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Running a Script on Sauce Labs</h3>
+                  <p>This is the lab where we run a customized script. I want the students to follow along on the changes made to the script actually.</p>
+                </section>
+
+                <section>
                   <h3>Anticipating Responses</h3>
                   <p>Implicit vs. Explicit waits</p>
                   <aside class="notes"></aside>
@@ -431,6 +463,11 @@
                   <aside class="notes"></aside>
                 </section>
 
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Record Keeping</h3>
+                  <p>This is the lab where we shove our results into Sauce Labs (pass/fail rather than complete)</p>
+                </section>
 
 <!-- Introduction to Testing Frameworks-->
                 <section>
@@ -486,6 +523,12 @@
                   <aside class="notes"></aside>
                  </section>
 
+                  <section>
+                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                    <h3>Lab: Asserting Your Greatness</h3>
+                    <p>This is the lab where we apply a simple assert</p>
+                  </section>
+
                  <!--Best Practices Module-->
                  <section>
                    <h2>Testing with Sauce Labs: Best Practices</h2>
@@ -528,7 +571,7 @@
                      <p>
 
                      </p>
-                     <aside class="notes"></aside>
+                     <aside class="notes">DEMO: different kinds of tests</aside>
                    </section>
 
                    <section>
@@ -536,7 +579,7 @@
                      <p>
 
                      </p>
-                     <aside class="notes"></aside>
+                     <aside class="notes">DEMO: Script that fails at first, but has a retry applied and then works</aside>
                    </section>
 
                    <section>
@@ -552,7 +595,7 @@
                      <p>
 
                      </p>
-                     <aside class="notes"></aside>
+                     <aside class="notes">DEMO: a script with an example of this</aside>
                    </section>
 
                    <section>
@@ -563,6 +606,12 @@
                      <aside class="notes"></aside>
                    </section>
 
+                 </section>
+
+                 <section>
+                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                   <h3>Lab: Labelling our Tests</h3>
+                   <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
                  </section>
 
                  <section>
