@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+		<link rel="stylesheet" href="css/theme/sauce.css" id="theme">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -66,20 +66,27 @@
 
               <section>
 					<h3>Trainer Intro</h3>
-					<p>
-                      jacob has been around the block
-                      <li><dt>Atlassian</dt></li>
-                      <dd>Confluence</dd>
-                      <dd>JIRA</dd>
-                      <dd>Bitbucket</dd>
-                      <strong><li>NGINX</li></strong>
-                      <strong><li>New Relic</li></strong>
+                    <div style="float:left;width:50%;" class="centered">
+                      <p>
+                      <strong>Jacob Teal</strong>
+                      <p>Technology Consultant</p>
+                      <p>B.A. Computational Mathematics</p>
+                      <p>Previous (and current) Work:</p>
+                      <li>Atlassian</li>
+                      <li>NGINX</li>
+                      <li>New Relic</li>
 
-					</p>
+					  </p>
+                    </div>
+
+                    <div style="float:right;width:50%;padding-right:0px;">
+                      <img src="assets/images/trainer.png" style="border:0;background:none; left:0; top:0;">
+                    </div>
 				</section>
 
               <section>
                 <h3>Agenda</h3>
+                <li>DIAGRAM</li>
                 <li>Introduction to Sauce Labs</li>
                 <li>Selenium Script Basics</li>
                 <li>Writing a Selenium Script</li>
@@ -91,39 +98,51 @@
               <!-- Intro to SL Module-->
                 <section>
                   <h2>Introduction to Sauce Labs</h2>
+                   <aside class="notes">Add some different way to know it's a new module - could do a background</aside>
                 </section>
 
                 <section>
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
                   <li>Learn how Sauce Labs fits into the CI/CD Life Cycle</li>
-                  <li>Learn how to use the Sauce Labs UI</li>
+                  <li>Use the Sauce Labs UI</li>
                   <aside class="notes"></aside>
                 </section>
 
                 <section>
 				  <h3>What is Sauce Labs?</h3>
-                  <p>SAAS (HAAS) Selenium Grid in the Cloud</p>
-				</section>
+                  <p>Testing infrastructure in the cloud for web and mobile web applications.</p>
+                  <li>Selenium - Browser</li>
+                  <li>Appium - Mobile</li>
+
+                  <aside class="notes">
+                    <p>HAAS - Hardware as a service</p>
+                    <p>IAAS - Infrastructure as a service</p>
+                    <p>it runs your tests on any browser and OS combination you like - have over 500 combinations thereof. (different versions)</p>
+                  </aside>
+                </section>
 
                 <section>
 					<h3>Sauce Labs History</h3>
 					<p>
 					  <li>Founded in 2008</li>
-                      <li>cofounded by selenium dev</li>
+                      <li>Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium)</li>
+                      <li></li>
 					</p>
 					<p>
                       <!--Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.-->
                     </p>
-				</section>
+                    <aside class="notes">
+                      <p>
+                        Sauce Labs was founded in 2008 by Jason Huggins, co-creator of Selenium (the open source standard for automated testing frameworks) and Steve Hazel, current CTO. They set out to create a cloud-based platform for automated testing to free development teams from the hassle and cost of testing so they can focus on innovating their core capabilities. Sauce Labs has been doing this one thing – automated functional testing – ever since. We currently have more than one million tests run on our platform PER DAY, with 3,500 active customers and we are experiencing tremendous growth, posting 85% growth in the last year.
+                      </p>
+                  </aside>
+                </section>
+
                 <section>
 					<h3>CD/CI Cycle - Where Sauce Labs fits in</h3>
-
-                    <img src="assets/images/sauceCI.png" style="border:0; text-align:center; background:none;">  insert diagram
-                    <p>
-
-					</p>
-				</section>
+                    <img src="assets/images/sauceCI2.png" style="border:0; text-align:center; background:none;">
+                </section>
 
                 <section>
 				  <h3>Sauce Labs and Selenium</h3>
@@ -491,18 +510,77 @@
 
                 <section>
                   <h3>Popular Frameworks</h3>
-                  <p>
-                    <li>Java:</li>
-                    <li>Python:</li>
-                    <li>Ruby:</li>
-                  </p>
-                  <aside class="notes"></aside>
+
+                  <div style="float:left;width:50%;" class="centered">
+                    <p><strong>Java:</strong></p>
+                  <li>TestNG</li>
+                  <li>JUnit</li>
+
+                    <p><strong>Ruby:</strong></p>
+                  <li>RSpec</li>
+                  <li>TestUnit</li>
+                  </div>
+
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <p><strong>Python:</strong></p>
+                    <li>Pytest</li>
+                    <li>Nose</li>
+                    <li>Robot</li>
+                    <li>UnitTest</li>
+
+                  </div>
+                  <aside class="notes">
+
+                    <p>JavaScript:</p>
+                    <li>Mocha</li>
+                    <li>Karma</li>
+                    <li>Nightwatch</li>
+                    <li>Protractor</li>
+                    <li>Jasmine</li>
+
+                    <p>PHP:</p>
+                    <li>PHPUnit</li>
+                    <li>Sausage</li>
+                    <li>Codeception</li>
+
+                    <p>C#:</p>
+                    <li>NUnit</li>
+                    <li>MSTest</li>
+
+                    <p>Perl:</p>
+                    <li>TestMore</li>
+                  </aside>
                 </section>
 
                 <section>
                   <h3>Test Driven Development vs. Behavior Driven Development</h3>
-                  <p></p>
+                  <p>Java:</p>
+                  <li></li>
                   <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <h3>BDD Frameworks</h3>
+                  <p>Java:</p>
+                  <li>CucumberJVM</li>
+                  <p>Python:</p>
+                  <li>Behave</li>
+                  <li>Lettuce</li>
+                  <p>Ruby:</p>
+                  <li>Cucumber</li>
+
+                  <aside class="notes">
+
+                    <p>JavaScript:</p>
+                    <li>CucumberJS</li>
+
+                    <p>PHP:</p>
+                    <li>Behat</li>
+
+                    <p>C#:</p>
+                    <li>SpecFlow</li>
+
+                  </aside>
                 </section>
 
                 <section>
