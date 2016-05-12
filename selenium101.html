@@ -66,6 +66,7 @@
 
               <section>
 					<h3>Trainer Intro</h3>
+<!-- left column-->
                     <div style="float:left;width:50%;" class="centered">
                       <p>
                       <strong>Jacob Teal</strong>
@@ -78,7 +79,7 @@
 
 					  </p>
                     </div>
-
+<!-- right column-->
                     <div style="float:right;width:50%;padding-right:0px;">
                       <img src="assets/images/trainer.png" style="border:0;background:none; left:0; top:0;">
                     </div>
@@ -127,32 +128,46 @@
 					<p>
 					  <li>Founded in 2008</li>
                       <li>Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium)</li>
-                      <li></li>
-					</p>
+                      <p></p>
+                      <li>Developed with the purpose of providing:
+                        <ul>
+                          <li>Parallel Testing</li>
+                          <li>Test Variability</li>
+                        </ul>
+                      </li>
+                    </p>
 					<p>
                       <!--Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.-->
                     </p>
                     <aside class="notes">
                       <p>
-                        Sauce Labs was founded in 2008 by Jason Huggins, co-creator of Selenium (the open source standard for automated testing frameworks) and Steve Hazel, current CTO. They set out to create a cloud-based platform for automated testing to free development teams from the hassle and cost of testing so they can focus on innovating their core capabilities. Sauce Labs has been doing this one thing – automated functional testing – ever since. We currently have more than one million tests run on our platform PER DAY, with 3,500 active customers and we are experiencing tremendous growth, posting 85% growth in the last year.
+                        Sauce Labs was founded in 2008 by Jason Huggins, co-creator of Selenium (the open source standard for automated testing frameworks) and Steve Hazel, current CTO. They set out to create a cloud-based platform for automated testing to free development teams from the hassle and cost of testing so they can focus on innovating their core capabilities.
                       </p>
+                      <p>Jason was using Selenium to do browser testing, and the process of testing the apps in different browsers was taking too long. The problem was that all the testing was being done on one machine, so he split the tests onto 4 different machines, effectively running the tests in parallel, which cut the time drastically. </p>
                   </aside>
                 </section>
 
                 <section>
 					<h3>CD/CI Cycle - Where Sauce Labs fits in</h3>
                     <img src="assets/images/sauceCI2.png" style="border:0; text-align:center; background:none;">
+
+                    <aside class="notes">
+
+                    </aside>
+
                 </section>
 
                 <section>
-				  <h3>Sauce Labs and Selenium</h3>
+				  <h3>What is Selenium?</h3>
 				  <p>
-                    Selenium Features
-                    <li>Simulate site interaction with scripts</li>
+                    Browser Testing Framework
+                    <li>Simulate site interaction</li>
                     <li>Automate Application Testing</li>
 
 				  </p>
-                  <aside class="notes">So how does Sauce Labs faciltate your testing? Introducing Selenium</aside>
+                  <aside class="notes">So <b>how</b> does Sauce Labs faciltate your testing? Selenium is the core testing framework that Sauce Labs runs for you on a variety of Browser and OS combinations.
+                    <p>Selenium is the testing framework that provides the actual language and ability to test interations on a browser. It was started by Jason Huggins in 2004, and since then a community has grown to contribute and build to it</p>
+                  </aside>
 				</section>
 
                 <section>
@@ -160,14 +175,18 @@
 				  <p>
                     Local
                     <li>Can only test on the OS, Browser you have locally</li>
-                    <li>Takes a lot of work to set up multiple configurations</li>
+                    <li>Takes a lot of work to set up a Selenium Grid</li>
                     <li>Lot of work = Time = Money $pent</li>
                     <p></p>
                     Sauce Labs
                   <li>Features out the yin yang, plus you save money and time and work</li>
                   <li>Latency, but parallelization</li>
                   </p>
-                  <aside class="notes">so where do i run my selenium scripts? How do I actually run a script?</aside>
+                  <aside class="notes">So where do I actually run my selenium scripts? Well you can always run it locally - when you run a script it can pull up a browser thats on your machines, access your application, and run the test. But then you're restricted to the OS that is actually on your machine, as well as the browser versions and types that are available for that OS as well. It would be difficult to run IE on Ubuntu!
+                    <p>In order to test across browsers or OS's Selenium actually offers software - a Selenium Server - that can help you create a Selenium farm - that is, a server farm that has VMs running with all of these different possible OS and browser combinations.</p>
+                    <p>But that's pretty painful and time consuming to set up and manage all on your own, not to even mention the cost of hardware.</p>
+                    <p>Sauce Labs handles all of that stuff for you. They essentially run a grid themselves and rent it out to their customers to run their Selenium and Appium tests on. </p>
+                  </aside>
 				</section>
 
                   <section>

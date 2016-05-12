@@ -24,9 +24,9 @@ public class SampleSauceTest {
      * Goes to Sauce Lab's guinea-pig page and prints title
      */
 
-    driver.get("localhost:8082");
+    driver.get("http://saucelabs.github.io/training-test-page/");
 
-    driver.findElement(By.id("game_area"));
+    //driver.findElement(By.id("game_area"));
     //    driver.fireEvent("//input[@id='game_area']", "keydown");
 
     System.out.println("title of page is: " + driver.getTitle());
