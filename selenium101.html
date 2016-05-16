@@ -276,6 +276,7 @@
                   <p>This module enables you to:</p>
                   <li>Understand how Selenium works</li>
                   <li>Understand the basic components of a Selenium test script</li>
+                  <li>Run a Selenium test script locally</li>
                   <aside class="notes"></aside>
                 </section>
 
@@ -356,7 +357,7 @@ WebDriver driver = new ChromeDriver();
                       <div style="float:left; width:110%;">
                       <pre><code class="java" data-trim contenteditable>
                           USERNAME = "dragoon013";
-KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
+KEY = "secret";
 URL = "http://" + USERNAME + ":" + KEY + "@ondemand.saucelabs.com:80/wd/hub";
 WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                       </code></pre>
@@ -508,7 +509,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                       <p>
                         Test framworks can help us report our results back to Sauce Labs (and maybe on your own selenium grid or locally?). But out of the box with Sauce Labs, we get some core reporting/recording of test results through their screenshots, screencast of the test, and logs.
                       </p>
-<p>need to include something here on actually running the Java test
+<p>need to include something here on actually running the Java test</p>
                     </aside>
                   </section>
 
@@ -527,7 +528,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   <section>
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Running the Sample Script</h3>
-                    <p>run sample script as is</p>
+                    <p>run sample script as is - need to change sample script to just run locally</p>
                   </section>
 
                   <section>
@@ -545,20 +546,50 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
 
                 <section>
                   <h3>Module Objectives</h3>
-                  <li></li>
-                  <aside class="notes"></aside>
+                  <p>This module enables you to:</p>
+                  <li>Use different page actions in a Selenium test script</li>
+                  <li>Write page actions into a Selenium test script</li>
+                  <li>Run a Selenium test script remotely</li>
+
+
+                  <aside class="notes">
+                    <p>Now we are going to take a look at doing a bit more with our script - for one, we're going to set it up to run using Sauce Labs. For two, we're going to configure our script to run on a couple different platforms using Sauce Labs. Finally, we're going to take look at we can run a test that interacts with a page, rather than just check the title and return it's value.
+                    </p>
+                  </aside>
                 </section>
 
                 <section>
-                  <h3>The Set-Up</h3>
-                  <p>summary of what we just went through - sample script, and we are going to add onto it. this section may be covered by the module objective slides above.</p>
-                  <p>platform configurator - desired capabilities</p>
-                  <aside class="notes">comment out the desired caps</aside>
+                  <section>
+                    <h3>Setting up the Remote WebDriver</h3>
+
+                    <pre><code class="java" data-trim contenteditable>
+                        USERNAME = "dragoon013";
+KEY = "secret";
+URL = "http://" + USERNAME + ":" + KEY + "@ondemand.saucelabs.com:80/wd/hub";
+WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+                    </code></pre>
+                    <aside class="notes">
+                      <p>So let's go ahead and set up a RemoteWebDriver now. This is different, as the remotewebdriver calls out to a selenium grid somewhere - whether that is sauce labs or your own selenium grid, and runs the test on the remote browser/machine</p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                    <h3>Lab: Performance Art</h3>
+                    <p>Let's set up our script to work remotely now - add in the credentials and create a webdriver that uses the credentials and authenticates with Sauce Labs</p>
+                  </section>
+
                 </section>
 
                 <section>
-                  <h3>Dude, Where's My WebDriver?</h3>
-                  <aside class="notes">Discussion, where is it on the script, recap - why do we need it at all? ID the difference between local and remote webdrivers</aside>
+                  <h3>Platform Configurator</h3>
+                  <pre><code class="java" data-trim contenteditable>
+                      DesiredCapabilities caps = DesiredCapabilities.chrome();
+caps.setCapability("platform", "Windows XP");
+caps.setCapability("version", "43.0");
+                  </code></pre>
+
+                  <aside class="notes"> With Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. </aside>
                 </section>
 
                 <section>
