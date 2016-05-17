@@ -468,23 +468,32 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
 
                   <section>
 				    <h3>Run the Test and Record the Test Results</h3>
-				    <p>
-                      <li>Test Frameworks</li>
-                      <li>Record Test Results</li>
-                      <ul>
-                        <li>Logs</li>
-                        <li>Screencasts</li>
-                        <li>Screenshots</li>
-                      </ul>
-                    </p>
-                    <aside class="notes">
-                      <p> When running tests on both Sauce Labs and Locally, test results need a little extra configuration. By default, you will be able to see when a test is complete, or has "failed". But without specific test results sent back to Sauce Labs or custom made locally, then there I have no way of knowing whether a complete means a test was successful, or whether a failure means the test failed or the test wasn't written correctly.
-                      </p>
-                      <p>
-                        Test framworks can help us report our results back to Sauce Labs (and maybe on your own selenium grid or locally?). But out of the box with Sauce Labs, we get some core reporting/recording of test results through their screenshots, screencast of the test, and logs.
-                      </p>
-<p>need to include something here on actually running the Java test</p>
-                    </aside>
+
+                     <div style="float:left;width:50%;" class="centered">
+                       <ul>
+                         <li>Locally, you can print or save your test results as part of your script</li>
+                         <li>Test Frameworks</li>
+                         <li>Use the Sauce Labs API to send reults to your Dashboard</li>
+                         <ul>
+                     </div>
+                     <div style="float:right;width:50%;padding-right:0px;">
+                       <ul style="list-style-position: outside; margin-left= 1em">
+                         <li>Record Test Results</li>
+                         <ul>
+                           <li>Logs</li>
+                           <li>Screencasts</li>
+                           <li>Screenshots</li>
+                         </ul>
+                       </ul>
+                     </div>
+                     <aside class="notes">
+                       <p> When running tests on both Sauce Labs and Locally, test results need a little extra configuration. By default, you will be able to see when a test is complete, or has "failed". But without specific test results sent back to Sauce Labs or custom made locally, then there I have no way of knowing whether a complete means a test was successful, or whether a failure means the test failed or the test wasn't written correctly.
+                       </p>
+                       <p>
+                         Test framworks can help us report our results back to Sauce Labs (and maybe on your own selenium grid or locally?). But out of the box with Sauce Labs, we get some core reporting/recording of test results through their screenshots, screencast of the test, and logs.
+                       </p>
+                       <p>need to include something here on actually running the Java test</p>
+                     </aside>
                   </section>
 
                   <section>
