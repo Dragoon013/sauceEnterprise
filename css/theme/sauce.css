@@ -209,7 +209,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #fc0000;
+  color: #E2231A;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -252,19 +252,19 @@ body {
  *********************************************/
 .reveal .controls .navigate-left,
 .reveal .controls .navigate-left.enabled {
-  border-right-color: #fc0000; }
+  border-right-color: #E2231A; }
 
 .reveal .controls .navigate-right,
 .reveal .controls .navigate-right.enabled {
-  border-left-color: #fc0000; }
+  border-left-color: #E2231A; }
 
 .reveal .controls .navigate-up,
 .reveal .controls .navigate-up.enabled {
-  border-bottom-color: #fc0000; }
+  border-bottom-color: #E2231A; }
 
 .reveal .controls .navigate-down,
 .reveal .controls .navigate-down.enabled {
-  border-top-color: #fc0000; }
+  border-top-color: #E2231A; }
 
 .reveal .controls .navigate-left.enabled:hover {
   border-right-color: #c80000; }

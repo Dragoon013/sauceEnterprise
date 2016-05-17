@@ -207,9 +207,8 @@
                   <h3>Using Sauce Labs</h3>
 				  <p>
                     <li>Security</li>
-                    <li>QA Test Optimization</li>
+                    <li>Parallelization</li>
                     <li>Automate</li>
-
                   </p>
 
                   <aside class="notes">DEMO: SL UI.
@@ -316,6 +315,7 @@
                       <li>Run script (send commands via API)</li>
                       <li>WebDriver Client sends commands to browser on remote Selenium Grid (Sauce Labs)</li>
                       <li>WebDriver Client sends results back</li>
+                      <li>Test Assets Created</li>
                     </ol>
                   </p>
                   </div>
@@ -680,6 +680,28 @@ submitButton.submit();
                 </section>
 
                 <section>
+                  <h3>Sauce Labs Identification</h3>
+                  <p>The script uses the Sauce Labs API to autheticate user and record results against that user's profile</p>
+
+                  <div style="float:left;width:50%;" class="centered">
+                    <li>Environment Variables</li>
+                    <pre><code class="zsh" data-trim contenteditable>
+                        export SAUCE_USERNAME=dragoon013
+export SAUCE_ACCESS_KEY=b89b7205-3aca-4af2-a618-9bab4c7bdebd
+                    </code></pre>
+                  </div>
+
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <li>Explicit Variables</li>
+                    <pre><code class="java" data-trim contenteditable>
+                        public static final String USERNAME = "dragoon013";
+public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
+                    </code></pre>
+                  </div>
+                  <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
+                </section>
+
+                <section>
                   <section>
                     <h3>Setting the Remote WebDriver</h3>
                     <li>Sauce Labs API Authentication</li>
@@ -705,28 +727,6 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                   </section>
                 </section>
 
-                <section>
-                  <h3>Sauce Labs Identification</h3>
-                  <p>The script uses the Sauce Labs API to autheticate user and record results against that user's profile</p>
-
-                  <div style="float:left;width:50%;" class="centered">
-                    <li>Environment Variables</li>
-                    <pre><code class="zsh" data-trim contenteditable>
-                        export SAUCE_USERNAME=dragoon013
-export SAUCE_ACCESS_KEY=b89b7205-3aca-4af2-a618-9bab4c7bdebd
-                    </code></pre>
-                  </div>
-
-                  <div style="float:right;width:50%;padding-right:0px;">
-                    <li>Explicit Variables</li>
-                    <pre><code class="java" data-trim contenteditable>
-                        public static final String USERNAME = "dragoon013";
-public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
-                    </code></pre>
-                  </div>
-                  <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
-                </section>
-
               <section>
                 <section>
                   <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
@@ -750,35 +750,26 @@ caps.setCapability("version", "43.0");
                 </section>
               </section>
 
+
+
               <section>
-                <h3>Finish Him!</h3>
-                <p>Make sure you end the test!</p>
+                <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                <h3>Lab: Running a Script on Sauce Labs</h3>
+                <p>This is the lab where we run the Sauce Labs ready script.</p>
+              </section>
+
+              <section>
+                <h3>Record your Results</h3>
+                <li>Local</li>
+                <li>Sauce Labs</li>
                 <aside class="notes"></aside>
               </section>
 
-                  <section>
-                    <h3>Run, Forrest, Run!</h3>
-                    <aside class="notes">Run the script</aside>
-                  </section>
-
-                <section>
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                  <h3>Lab: Running a Script on Sauce Labs</h3>
-                  <p>This is the lab where we run a customized script. I want the students to follow along on the changes made to the script actually.</p>
-                </section>
-
-                <section>
-                  <h3>Record your Results</h3>
-                  <li>Local</li>
-                  <li>Sauce Labs</li>
-                  <aside class="notes"></aside>
-                </section>
-
-                <section>
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                  <h3>Lab: Record Keeping</h3>
-                  <p>This is the lab where we shove our results into Sauce Labs (pass/fail rather than complete)</p>
-                </section>
+              <section>
+                <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                <h3>Lab: Record Keeping</h3>
+                <p>This is the lab where we shove our results into Sauce Labs (pass/fail rather than complete)</p>
+              </section>
 
 <!-- Introduction to Testing Frameworks-->
                 <section>
