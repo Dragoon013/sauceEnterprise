@@ -362,7 +362,16 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                       </code></pre>
                       </div>
                     </p>
-                    <aside class="notes">For this first script, we are going to run it on Sauce Labs, so keep it as is in the script. But it's important to note here that we would need to create a driver for each type of browser we want to connect to and test on. With Sauce Labs, we can indicate browsers and versions through desired capabilities</aside>
+                    <aside class="notes">
+                      <p>All drivers except for Firefox need an additional library or package called with the driver declaration in order to test on that browser</p>
+                      <pre><code class="java" data-trim contenteditable>
+                          System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+WebDriver driver = new ChromeDriver();
+                      </code></pre>
+
+                      <p>It's important to note here that we would need to create a driver for each type of browser we want to connect to and test on. With Sauce Labs, we can indicate browsers and versions through desired capabilities
+                      </p>
+                    </aside>
 				  </section>
 
                   <section>
