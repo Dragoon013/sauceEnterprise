@@ -708,7 +708,22 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                 <section>
                   <h3>Sauce Labs Identification</h3>
                   <p>The script uses the Sauce Labs API to autheticate user and record results against that user's profile</p>
-                  <li>Environment Variables vs. Explicit Variables</li>
+
+                  <div style="float:left;width:50%;" class="centered">
+                    <li>Environment Variables</li>
+                    <pre><code class="zsh" data-trim contenteditable>
+                        export SAUCE_USERNAME=dragoon013
+export SAUCE_ACCESS_KEY=b89b7205-3aca-4af2-a618-9bab4c7bdebd
+                    </code></pre>
+                  </div>
+
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <li>Explicit Variables</li>
+                    <pre><code class="java" data-trim contenteditable>
+                        public static final String USERNAME = "dragoon013";
+public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
+                    </code></pre>
+                  </div>
                   <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
                 </section>
 
