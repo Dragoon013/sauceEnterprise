@@ -203,28 +203,28 @@
                   </aside>
 				</section>
 
-                  <section>
-                    <h3>Using Sauce Labs</h3>
-					<p>
-                      <li>Security</li>
-                      <li>QA Test Optimization</li>
-                      <li>Automate</li>
+                <section>
+                  <h3>Using Sauce Labs</h3>
+				  <p>
+                    <li>Security</li>
+                    <li>QA Test Optimization</li>
+                    <li>Automate</li>
 
-                    </p>
+                  </p>
 
-                    <aside class="notes">DEMO: SL UI.
-                      <p>why should you use it? Let's run a manual test - this a way to show them a way to test that they are familiar with, and they can have an intro to the basic UI.</p>
-                      <li>Dashboard</li>
-                      <li>Tunnels</li>
-                      <li>Account Details - security phrase/token</li>
-                    </aside>
-                  </section>
+                  <aside class="notes">DEMO: SL UI.
+                    <p>why should you use it? Let's run a manual test - this a way to show them a way to test that they are familiar with, and they can have an intro to the basic UI.</p>
+                    <li>Dashboard</li>
+                    <li>Tunnels</li>
+                    <li>Account Details - security phrase/token</li>
+                  </aside>
+                </section>
 
-                  <section>
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                    <h3>Lab: My First Test (On Sauce Labs)</h3>
-                    <p>This is the lab with the manual test</p>
-                  </section>
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: My First Test (On Sauce Labs)</h3>
+                  <p>This is the lab with the manual test</p>
+                </section>
 
 <!-- UI Elements
                   <section>
@@ -388,52 +388,18 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                       </pre>
                       <p>Identify by:</p>
                       <div style="float:left;width:50%;" class="centered">
-                      <li>ID</li>
-                      <li>Class Name</li>
-                      <li>Tag Name</li>
-                      <li>Name</li>
-</div>
+                        <li>ID</li>
+                        <li>Class Name</li>
+                        <li>Tag Name</li>
+                        <li>Name</li>
+                      </div>
                       <div style="float:right;width:50%;padding-right:0px;">
-                      <li>Link Text</li>
-                      <li>Partial Linktext</li>
-                      <li>CSS</li>
-                      <li>XPath</li>
-                      <li>JavaScript</li>
-</div>
-                      <!-- This is information more for the actual script writing slide
-                    <p>Locator Types:</p>
-
-                    <li>ID</li>
-                      <pre>
-                        <code class="java" data-trim contenteditable>
-                         driver.findElement(By.id("i_am_an_id")
-                        </code>
-                      </pre>
-                    <li>Tag Name</li>
-                      <pre>
-                        <code class="java" data-trim contenteditable>
-                          driver.findElements(By.tagName("a"))
-                        </code>
-                      </pre>
-                    <li>Text</li>
-                      <pre>
-                        <code class="java" data-trim contenteditable>
-                          driver.findElements(By.linkText("i am a link"))
-                        </code>
-                      </pre>
-                    <li>CSS Selector</li>
-                      <pre>
-                        <code class="java" data-trim contenteditable>
-                          driver.findElement(By.cssSelector("input#submit"))
-                        </code>
-                      </pre>
-                    <li>XPath</li>
-                      <pre>
-                        <code class="java" data-trim contenteditable>
-                          driver.findElement(By.xpath("/html/head/title"))
-                        </code>
-                      </pre>
--->
+                        <li>Link Text</li>
+                        <li>Partial Linktext</li>
+                        <li>CSS</li>
+                        <li>XPath</li>
+                        <li>JavaScript</li>
+                      </div>
                     </p>
                     <aside class="notes">
                       <p>There are a lot of tools out there to help you locate elements. These include but are not limited to, ________</p>
@@ -516,10 +482,10 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   <section>
 				    <h3>Conclude a Test</h3>
 				    <pre>
-                        <code data-trim contenteditable style="">
-                          driver.quit()
-                        </code>
-                      </pre>
+                      <code data-trim contenteditable style="">
+                        driver.quit()
+                      </code>
+                    </pre>
                     <aside class="notes"></aside>
                   </section>
                 </section>
@@ -536,7 +502,6 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                     <h3>Lab: Running the Sample Script Part 2</h3>
                     <p>let's change the site!</p>
                   </section>
-
                 </section>
 <!-- Writing a Selenium Script Module-->
                 <section>
@@ -549,18 +514,187 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   <p>This module enables you to:</p>
                   <li>Use different page actions in a Selenium test script</li>
                   <li>Write page actions into a Selenium test script</li>
-                  <li>Run a Selenium test script remotely</li>
-
-
                   <aside class="notes">
-                    <p>Now we are going to take a look at doing a bit more with our script - for one, we're going to set it up to run using Sauce Labs. For two, we're going to configure our script to run on a couple different platforms using Sauce Labs. Finally, we're going to take look at we can run a test that interacts with a page, rather than just check the title and return it's value.
+                    <p>Now we are going to take a look at doing a bit more with our script - We're going to take look at we can run a test that interacts with a page, rather than just check the title and return it's value.
                     </p>
                   </aside>
                 </section>
 
+
+
+                <section>
+                  <h3>Choosing a WebDriver</h3>
+                  <li>Local</li>
+                  <pre><code class="java" data-trim contenteditable>
+                      WebDriver driver = new FirefoxDriver();
+WebDriver driver = new InternetExplorerDriver();
+WebDriver driver = new ChromeDriver();
+                  </pre></code>
+                  <aside class="notes">So now we need to select a webdriver that we actually want to use. Let's try using the Chrome Driver now (default should have used FireFox)</aside>
+                </section>
+
                 <section>
                   <section>
-                    <h3>Setting up the Remote WebDriver</h3>
+                    <h3>To the Internet!</h3>
+
+                    <pre><code class="java" data-trim contenteditable>
+                        driver.get("http://saucelabs.github.io/training-test-page/");
+                    </pre></code>
+
+                    <aside class="notes">
+                      <p>
+                        In order to navigate to a page, we need to use the get method on the driver object. The get method then takes in the URL as an argument.
+                      </p>
+                      <p>
+                        We know how to change the site that we choose to access from the previous module. We're going to change it back to that test website that we were wokring on before.
+                      </p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                    <h3>Lab: Reset Navigation</h3>
+                    <p>Change driver navigation to the training test site</p>
+                  </section>
+                </section>
+
+                <section>
+                  <h3>Identifying Elements</h3>
+                  <p>Locator Expressions are made in Key:Value pairs</p>
+          <!--<p>Locator Types:</p>
+
+                    <li>ID</li>
+                      <pre>
+                        <code class="java" data-trim contenteditable>
+                         driver.findElement(By.id("i_am_an_id")
+                        </code>
+                      </pre>
+                    <li>Tag Name</li>
+                      <pre>
+                        <code class="java" data-trim contenteditable>
+                          driver.findElements(By.tagName("a"))
+                        </code>
+                      </pre>
+                    <li>Text</li>
+                      <pre>
+                        <code class="java" data-trim contenteditable>
+                          driver.findElements(By.linkText("i am a link"))
+                        </code>
+                      </pre>
+                    <li>CSS Selector</li>
+                      <pre>
+                        <code class="java" data-trim contenteditable>
+                          driver.findElement(By.cssSelector("input#submit"))
+                        </code>
+                      </pre>
+                    <li>XPath</li>
+                      <pre>
+                        <code class="java" data-trim contenteditable>
+                          driver.findElement(By.xpath("/html/head/title"))
+                        </code>
+                      </pre> -->
+                 <pre><code class="java" data-trim contenteditable>
+                      WebElement linkElement = driver.findElement(By.id("i am a link"));
+                  </code></pre>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <section>
+                    <h3>Performing an Action</h3>
+                    <li>Once you have located an element, you can perform an action on it.</li><p></p>
+                    <li>Perform actions by invoking interaction methods on the WebElement object we identified earlier.</li>
+                    <aside class="notes">It's common to see actions occur on webelements as they are identified - but we can also store our identified element objects as variables and perform multiple actions on them through the test.</aside>
+                  </section>
+
+                  <section>
+                    <h3>Click</h3>
+                    <p>Find and Act</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        driver.findElement(By.id("i am a link")).click();
+                    </code></pre>
+                    <p>Find, Store, and Act</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        WebElement linkElement = driver.findElement(By.id("i am a link"));
+linkElement.click();
+                    </code></pre>
+
+                    <aside class="notes">There are a lot of different actions out there, but click is one of the most commonly used ones.</aside>
+                  </section>
+
+                  <section>
+                    <h3>SendKeys</h3>
+                    <pre><code class="java" data-trim contenteditable>
+                        WebElement commentBox = driver.findElement(By.id("comments"));
+commentBox.sendKeys("I think this is a pretty cool training site!");
+                    </code></pre>
+                    <aside class="notes">We can use sendKeys to input text into forms to test that they are editable and data input is recorded on submit</aside>
+                  </section>
+
+                  <section>
+                    <h3>Submit</h3>
+                    <pre><code class="java" data-trim contenteditable>
+                        WebElement submitButton = driver.findElement(By.id("submit"));
+submitButton.submit();
+                    </code></pre>
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+                    <h3>Other Actions</h3>
+                    <li>Clear</li>
+                    <li>Hover</li>
+                    <li>SwitchTo</li>
+                    <li>and more!</li>
+                    <aside class="notes">
+                      <p>Switch to can be used to switch to a new windows or screens, and this include popups as wells.</p>
+                      <p>Basically, anything you can think of doing ona  web browser normally, you can tell Selenium to simulate in a test</p>
+                    </aside>
+                  </section>
+                </section>
+
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Performance Art</h3>
+                  <p>This is the lab where we write some actions into our script to play with other elements on the page</p>
+                </section>
+
+<!-- Running a Selenium Script Module-->
+                <section>
+                  <h2>Running Selenium Scripts</h2>
+                  <aside class="notes"> we will finally run the script here, locally and on sauce labs, and compare the methods and dicuss the benefits of running on sauce labs</aside>
+                </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+                  <li>Run a Selenium test script on Sauce Labs</li>
+                  <aside class="notes"></aside>
+                </section>
+<!-- We are going to run it local off a simpler script in the beginning, then build on top of that w/ the actions all completed at this point.-->
+                <section>
+                  <h3>Testing Scripts Locally</h3>
+                  <p>Install Selenium Server</p>
+                  <p>Run it Local</p>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Run Script Locally</h3>
+                  <p>This is the lab with the local test</p>
+                </section>
+
+
+                <section>
+                  <h3>Testing Scripts on Sauce Labs</h3>
+
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <section>
+                    <h3>Setting the Remote WebDriver</h3>
                     <li>Sauce Labs API Authentication</li>
                     <ul>
                       <li>Username</li>
@@ -582,155 +716,48 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                     <h3>Lab: Remote WebDriver</h3>
                     <p>Let's set up our script to work remotely now - add in the credentials and create a webdriver that uses the credentials and authenticates with Sauce Labs</p>
                   </section>
-
                 </section>
 
-                <section>
-                  <section>
-                    <h3>Platform Configurator</h3>
 
-                    <li>Browser</li>
-                    <li>OS</li>
-                    <li>Version</li>
-                    <pre><code class="java" data-trim contenteditable>
-                        DesiredCapabilities caps = DesiredCapabilities.chrome();
+                <section>
+                  <h3>Let's See Some ID</h3>
+                  <p>hardcoded vs. env variables</p>
+                  <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
+                </section>
+
+              <section>
+                <section>
+                  <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
+
+                  <li>Browser</li>
+                  <li>OS</li>
+                  <li>Version</li>
+                  <pre><code class="java" data-trim contenteditable>
+                      DesiredCapabilities caps = DesiredCapabilities.chrome();
 caps.setCapability("platform", "Windows XP");
 caps.setCapability("version", "43.0");
-                    </code></pre>
-
-                    <aside class="notes"> With Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, we typically use a framework to enable that for us.</aside>
-                  </section>
-
-                  <section>
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                    <h3>Lab: Platform Configurator</h3>
-                    <p>Let's set up our platform configurator to run our test on a Mac OS on a Chrome browser, version 43.0</p>
-                  </section>
-                </section>
-                <section>
-                  <section>
-                    <h3>To the Internet!</h3>
-
-                    <pre><code class="java" data-trim contenteditable>
-                        driver.get("http://saucelabs.github.io/training-test-page/");
-                    </pre></code>
-
-                    <aside class="notes">
-                      <p>In order to navigate to a page, we need to use the get method on the driver object. The get method then takes in the URL as an argument.</p>
-                      <p>
-                        We know how to change the site that we choose to access from the previous module. We're going to change it back to that test website that we were wokring on before.
-                      </p>
-                    </aside>
-                  </section>
-
-                  <section>
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                    <h3>Lab: Reset Navigation</h3>
-                    <p>Change driver navigation to the training test site</p>
-                  </section>
-                </section>
-
-                <section>
-                  <h3>Identifying Elements</h3>
-                  <p>Locator Expressions are made in Key:Value pairs</p>
-                  <p>Example:</p>
-                  <pre><code class="java" data-trim contenteditable>
-                      WebElement usernameElement = driver.findElement(By.name("username"));
                   </code></pre>
-                  <aside class="notes"></aside>
-                </section>
 
-                <section>
-                  <section>
-                    <h3>Performing an Action</h3>
-                    <p></p>
-                    <aside class="notes">So in our last </aside>
-                  </section>
-
-                  <section>
-                    <h3>Click</h3>
-                    <aside class="notes"></aside>
-                  </section>
-
-                  <section>
-                    <h3>SendKeys</h3>
-                    <aside class="notes"></aside>
-                  </section>
-
-                  <section>
-                    <h3>Hover</h3>
-                    <aside class="notes"></aside>
-                  </section>
+                  <aside class="notes"> With Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, we typically use a framework to enable that for us.</aside>
                 </section>
 
                 <section>
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                  <h3>Lab: Performance Art</h3>
-                  <p>This is the lab where we write some actions into our script to play with other elements on the page</p>
+                  <h3>Lab: Platform Configurator</h3>
+                  <p>Let's set up our platform configurator to run our test on a Mac OS on a Chrome browser, version 43.0</p>
                 </section>
+              </section>
 
-<!-- Running a Selenium Script Module-->
-                <section>
-                  <h2>Running Selenium Scripts</h2>
-                  <aside class="notes"> we will finally run the script here, locally and on sauce labs, and compare the methods and dicuss the benefits of running on sauce labs</aside>
-                </section>
-
-                <section>
-                  <h3>Module Objectives</h3>
-                  <li></li>
-                  <aside class="notes"></aside>
-                </section>
-
-                <section>
-                  <h3>Testing Scripts Locally</h3>
-                  <p>Install Selenium Server</p>
-                  <p>Run it Local</p>
-                  <aside class="notes"></aside>
-                </section>
-
-                <section>
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                  <h3>Lab: Run Script Locally</h3>
-                  <p>This is the lab with the local test</p>
-                </section>
-
-                <section>
-                  <section>
-                    <h3>Testing Scripts on Sauce Labs</h3>
-
-                    <aside class="notes"></aside>
-                  </section>
+              <section>
+                <h3>Finish Him!</h3>
+                <p>Make sure you end the test!</p>
+                <aside class="notes"></aside>
+              </section>
 
                   <section>
-                    <h3>Chinese Fire Drill</h3>
-                    <p>Change the webdriver to Remote Driver!</p>
-                    <aside class="notes">Change the driver to remote</aside>
+                    <h3>Run, Forrest, Run!</h3>
+                    <aside class="notes">Run the script</aside>
                   </section>
-
-                  <section>
-                    <h3>Let's See Some ID</h3>
-                    <p>hardcoded vs. env variables</p>
-                    <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
-                  </section>
-
-                  <section>
-                    <h3>Desired Capabilties</h3>
-                    <p>Platform Configurator</p>
-                    <aside class="notes"></aside>
-                  </section>
-
-                  <section>
-                    <h3>Finish Him!</h3>
-                    <p>Make sure you end the test!</p>
-                    <aside class="notes"></aside>
-                  </section>
-
-                </section>
-
-                <section>
-                  <h3>Run, Forrest, Run!</h3>
-                  <aside class="notes">Run the script</aside>
-                </section>
 
                 <section>
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
