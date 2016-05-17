@@ -561,7 +561,11 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                 <section>
                   <section>
                     <h3>Setting up the Remote WebDriver</h3>
-
+                    <li>Sauce Labs API Authentication</li>
+                    <ul>
+                      <li>Username</li>
+                      <li>Access Code</li>
+                    </ul>
                     <pre><code class="java" data-trim contenteditable>
                         USERNAME = "dragoon013";
 KEY = "secret";
@@ -575,38 +579,72 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
 
                   <section>
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                    <h3>Lab: Performance Art</h3>
+                    <h3>Lab: Remote WebDriver</h3>
                     <p>Let's set up our script to work remotely now - add in the credentials and create a webdriver that uses the credentials and authenticates with Sauce Labs</p>
                   </section>
 
                 </section>
 
                 <section>
-                  <h3>Platform Configurator</h3>
-                  <pre><code class="java" data-trim contenteditable>
-                      DesiredCapabilities caps = DesiredCapabilities.chrome();
+                  <section>
+                    <h3>Platform Configurator</h3>
+
+                    <li>Browser</li>
+                    <li>OS</li>
+                    <li>Version</li>
+                    <pre><code class="java" data-trim contenteditable>
+                        DesiredCapabilities caps = DesiredCapabilities.chrome();
 caps.setCapability("platform", "Windows XP");
 caps.setCapability("version", "43.0");
+                    </code></pre>
+
+                    <aside class="notes"> With Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, we typically use a framework to enable that for us.</aside>
+                  </section>
+
+                  <section>
+                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                    <h3>Lab: Platform Configurator</h3>
+                    <p>Let's set up our platform configurator to run our test on a Mac OS on a Chrome browser, version 43.0</p>
+                  </section>
+                </section>
+                <section>
+                  <section>
+                    <h3>To the Internet!</h3>
+
+                    <pre><code class="java" data-trim contenteditable>
+                        driver.get("http://saucelabs.github.io/training-test-page/");
+                    </pre></code>
+
+                    <aside class="notes">
+                      <p>In order to navigate to a page, we need to use the get method on the driver object. The get method then takes in the URL as an argument.</p>
+                      <p>
+                        We know how to change the site that we choose to access from the previous module. We're going to change it back to that test website that we were wokring on before.
+                      </p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                    <h3>Lab: Reset Navigation</h3>
+                    <p>Change driver navigation to the training test site</p>
+                  </section>
+                </section>
+
+                <section>
+                  <h3>Identifying Elements</h3>
+                  <p>Locator Expressions are made in Key:Value pairs</p>
+                  <p>Example:</p>
+                  <pre><code class="java" data-trim contenteditable>
+                      WebElement usernameElement = driver.findElement(By.name("username"));
                   </code></pre>
-
-                  <aside class="notes"> With Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. </aside>
-                </section>
-
-                <section>
-                  <h3>To the Internet!</h3>
-                  <aside class="notes"> How do we navigate to a page? where does that code need to go?</aside>
-                </section>
-
-                <section>
-                  <h3>In Your Element</h3>
-                  <p>Finder and Locator Methods</p>
-                  <aside class="notes">Let's find some elements to interact with.</aside>
+                  <aside class="notes"></aside>
                 </section>
 
                 <section>
                   <section>
                     <h3>Performing an Action</h3>
-                    <aside class="notes">Click! Hover! SendKeys!</aside>
+                    <p></p>
+                    <aside class="notes">So in our last </aside>
                   </section>
 
                   <section>
