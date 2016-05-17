@@ -281,7 +281,7 @@
                 </section>
 
                 <section>
-				  <h3>Cogs in the Machine</h3>
+				  <h3>Cogs in the Selenium Machine</h3>
                   <div style="text-align:center;">
                     <img src="assets/images/gears.png" style="border:0; background:none; width:50%">
                   </div>
@@ -314,8 +314,8 @@
                     <ol>
                       <li>Write script</li>
                       <li>Run script (send commands via API)</li>
-                      <li>WebDriver Client sends commands to browser on Sauce Labs</li>
-                      <li>WebDriver Client sends results back and results are recorded on Sauce Labs</li>
+                      <li>WebDriver Client sends commands to browser on remote Selenium Grid (Sauce Labs)</li>
+                      <li>WebDriver Client sends results back</li>
                     </ol>
                   </p>
                   </div>
@@ -339,7 +339,6 @@
                         <li>Conclude the Test</li>
                       </ol>
                     </p>
-                    <p>I'd rather have a diagram here. Pretty pictures for lyfe</p>
                     <aside class="notes">Walk through example script - point out each step that correllates to an element</aside>
 				  </section>
 
@@ -495,6 +494,8 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Running the Sample Script</h3>
                     <p>run sample script as is - need to change sample script to just run locally</p>
+                    <p>changes to sample script that need to be made:</p>
+                    <li>start the navigation </li>
                   </section>
 
                   <section>
@@ -503,9 +504,9 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                     <p>let's change the site!</p>
                   </section>
                 </section>
-<!-- Writing a Selenium Script Module-->
+<!-- Local Selenium Scripts Module-->
                 <section>
-                  <h2>Writing a Selenium Script</h2>
+                  <h2>Writing Selenium Scripts</h2>
                     <aside class="notes">Talk about how this section is basically one big lab - We will analyze what has been written in the script for us already, write our own additional steps, run the script, and then analyze our results</aside>
                 </section>
 
@@ -520,8 +521,6 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   </aside>
                 </section>
 
-
-
                 <section>
                   <h3>Choosing a WebDriver</h3>
                   <li>Local</li>
@@ -533,9 +532,8 @@ WebDriver driver = new ChromeDriver();
                   <aside class="notes">So now we need to select a webdriver that we actually want to use. Let's try using the Chrome Driver now (default should have used FireFox)</aside>
                 </section>
 
-                <section>
                   <section>
-                    <h3>To the Internet!</h3>
+                    <h3>Navigation Change</h3>
 
                     <pre><code class="java" data-trim contenteditable>
                         driver.get("http://saucelabs.github.io/training-test-page/");
@@ -550,13 +548,6 @@ WebDriver driver = new ChromeDriver();
                       </p>
                     </aside>
                   </section>
-
-                  <section>
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                    <h3>Lab: Reset Navigation</h3>
-                    <p>Change driver navigation to the training test site</p>
-                  </section>
-                </section>
 
                 <section>
                   <h3>Identifying Elements</h3>
@@ -659,9 +650,15 @@ submitButton.submit();
                   <p>This is the lab where we write some actions into our script to play with other elements on the page</p>
                 </section>
 
-<!-- Running a Selenium Script Module-->
                 <section>
-                  <h2>Running Selenium Scripts</h2>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: Run Script Locally</h3>
+                  <p>This is the lab with the local test</p>
+                </section>
+
+<!-- Running a Selenium Script with Sauce Labs Module-->
+                <section>
+                  <h2>Selenium Scripts with Sauce Labs</h2>
                   <aside class="notes"> we will finally run the script here, locally and on sauce labs, and compare the methods and dicuss the benefits of running on sauce labs</aside>
                 </section>
 
@@ -671,24 +668,14 @@ submitButton.submit();
                   <li>Run a Selenium test script on Sauce Labs</li>
                   <aside class="notes"></aside>
                 </section>
-<!-- We are going to run it local off a simpler script in the beginning, then build on top of that w/ the actions all completed at this point.-->
-                <section>
-                  <h3>Testing Scripts Locally</h3>
-                  <p>Install Selenium Server</p>
-                  <p>Run it Local</p>
-                  <aside class="notes"></aside>
-                </section>
-
-                <section>
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                  <h3>Lab: Run Script Locally</h3>
-                  <p>This is the lab with the local test</p>
-                </section>
-
 
                 <section>
                   <h3>Testing Scripts on Sauce Labs</h3>
-
+                  <p>Requirements:</p>
+                  <li>Remote WebDriver</li>
+                  <li>Sauce Labs Authentication (API)</li>
+                  <li>Desired Capabilities</li>
+                  <li>Reporting Results?</li>
                   <aside class="notes"></aside>
                 </section>
 
@@ -718,10 +705,10 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                   </section>
                 </section>
 
-
                 <section>
-                  <h3>Let's See Some ID</h3>
-                  <p>hardcoded vs. env variables</p>
+                  <h3>Sauce Labs Identification</h3>
+                  <p>The script uses the Sauce Labs API to autheticate user and record results against that user's profile</p>
+                  <li>Environment Variables vs. Explicit Variables</li>
                   <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
                 </section>
 
@@ -766,12 +753,6 @@ caps.setCapability("version", "43.0");
                 </section>
 
                 <section>
-                  <h3>Anticipating Responses</h3>
-                  <p>Implicit vs. Explicit waits</p>
-                  <aside class="notes"></aside>
-                </section>
-
-                <section>
                   <h3>Record your Results</h3>
                   <li>Local</li>
                   <li>Sauce Labs</li>
@@ -792,7 +773,9 @@ caps.setCapability("version", "43.0");
 
                 <section>
                   <h3>Module Objectives</h3>
-                  <li></li>
+                  <p>This module enables you to:</p>
+                  <li>Understand the use of Testing Frameworks</li>
+                  <li>Use an Assert in a script</li>
                   <aside class="notes"></aside>
                 </section>
 
@@ -855,14 +838,19 @@ caps.setCapability("version", "43.0");
 
                 <section>
                   <h3>BDD Frameworks</h3>
-                  <p>Java:</p>
-                  <li>CucumberJVM</li>
-                  <p>Python:</p>
-                  <li>Behave</li>
-                  <li>Lettuce</li>
-                  <p>Ruby:</p>
-                  <li>Cucumber</li>
+                  <div style="float:left;width:50%;" class="centered">
+                    <p>Python:</p>
+                    <li>Behave</li>
+                    <li>Lettuce</li>
+                  </div>
 
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <p>Java:</p>
+                    <li>CucumberJVM</li>
+
+                    <p>Ruby:</p>
+                    <li>Cucumber</li>
+                  </div>
                   <aside class="notes">
 
                     <p>JavaScript:</p>
@@ -928,7 +916,7 @@ caps.setCapability("version", "43.0");
                    <p>
 
                    </p>
-                   <aside class="notes"></aside>
+                   <aside class="notes">see if practical examples on this can get showved to selenium201</aside>
                  </section>
 
                  <section>
