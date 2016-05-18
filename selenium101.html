@@ -752,10 +752,19 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
               <section>
                 <section>
                   <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
+<div style="float:left;width:50%;" class="centered">
 
+                  <p>Required:</p>
                   <li>Browser</li>
-                  <li>OS</li>
+                  <li>Platform</li>
                   <li>Version</li>
+                  </div>
+                  <div style="float:right;width:50%;padding-right:0px;">
+                  <p>Optional:</p>
+                  <li>Selenium Driver Version</li>
+                  <li>Chrome Driver Version</li>
+                  <li>IE Driver Version</li>
+                  </div>
                   <pre><code class="java" data-trim contenteditable>
                       DesiredCapabilities caps = DesiredCapabilities.chrome();
 caps.setCapability("platform", "Windows XP");
@@ -788,7 +797,8 @@ caps.setCapability("version", "43.0");
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
                   <li>Understand the use of Testing Frameworks</li>
-                  <li>Use an Assert in a script</li>
+                  <li>Understand the difference between and assert and a verification</li>
+                  <li>Use a framework to record test results in Sauce Labs</li>
                   <aside class="notes"></aside>
                 </section>
 
@@ -803,12 +813,12 @@ caps.setCapability("version", "43.0");
 
                   <div style="float:left;width:50%;" class="centered">
                     <p><strong>Java:</strong></p>
-                  <li>TestNG</li>
-                  <li>JUnit</li>
+                    <li>TestNG</li>
+                    <li>JUnit</li>
 
                     <p><strong>Ruby:</strong></p>
-                  <li>RSpec</li>
-                  <li>TestUnit</li>
+                    <li>RSpec</li>
+                    <li>TestUnit</li>
                   </div>
 
                   <div style="float:right;width:50%;padding-right:0px;">
