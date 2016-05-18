@@ -788,6 +788,27 @@ caps.setCapability("version", "43.0");
                 <p>This is the lab where we run the Sauce Labs ready script.</p>
               </section>
 
+              <!-- New Script to introduce-->
+              <section>
+                <section>
+                  <h3>Explicit and Implicit waits</h3>
+
+
+
+                  <aside class="notes">
+                    <h3>But Wait, There's More!</h3>
+
+
+                  </aside>
+                </section>
+
+                <section>
+                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                  <h3>Lab: The Waiting Game</h3>
+                  <p>This is the lab where we run the Sauce Labs ready script.</p>
+                </section>
+              </section>
+
 <!-- Introduction to Testing Frameworks-->
                 <section>
                   <h2>Introduction to Testing Frameworks</h2>
@@ -943,12 +964,17 @@ throw new PendingException();
                 <section>
                   <section>
                     <h3>Assertions and Verifications</h3>
-                    <p>
+                    <p>Asserts:</p>
+<ul>
+                    <li>A testing frameork directive that assumes a value to be true, and stops the test and/or throws an error if false.</li>
+</ul>
+                    <p>Verifications:</p>
+<ul>
+                    <li>Selenium commands that makes sure an element is available on a page.</li>
 
-                    </p>
-                    <aside class="notes"></aside>
+                    </ul><aside class="notes"> The difference here lies in that with verifications, the test will still keep going, even if they are false. Most selenium scripts use a combination of these to assert that a large object exists (like the page has at least laoded) and then verifies individual key elements that are going to be tested. The logic behind this is if the site can't even load, there's no point in running the rest of the script, as that is a major dependency.</aside>
                   </section>
-
+              <!-- New Script to introduce-->
                   <section>
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Asserting Your Greatness</h3>
@@ -957,8 +983,16 @@ throw new PendingException();
                 </section>
 
                 <section>
+                <section>
                   <h3>Record your Results with Sauce Labs</h3>
-                  <li>Sauce Labs</li>
+                  <ul>
+                  <li>You can use the update_job method in the Sauce Labs REST API after the test has run.</li>
+                  <p></p>
+                  <li>Use the Java Helper library; it will automatically send pass/fail results to Sauce Labs</li>
+                  <p></p>
+                  <li>Configure your testing framework to send results to Sauce Labs</li>
+
+                  </ul>
                   <aside class="notes">
                     <p>So locally it's not an issue to record results, you can just print results to a file or on the console. But if we want to send details to Sauce Labs on whether a test has passed or failed, rather than just complete or not, we will have to use the Sauce Labs API or a test framework.
                     </p>
@@ -970,7 +1004,7 @@ throw new PendingException();
                   <h3>Lab: Record Keeping</h3>
                   <p>This is the lab where we shove our results into Sauce Labs (pass/fail rather than complete)</p>
                 </section>
-
+</section>
                  <!--Best Practices Module-->
                  <section>
                    <h2>Testing with Sauce Labs: Best Practices</h2>
