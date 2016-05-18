@@ -752,18 +752,19 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
               <section>
                 <section>
                   <h3>Desired Capabilities</h3> <!-- PLatform Configurator-->
-<div style="float:left;width:50%;" class="centered">
-
-                  <p>Required:</p>
-                  <li>Browser</li>
-                  <li>Platform</li>
-                  <li>Version</li>
+                  <div style="float:left;width:50%;" class="centered">
+                    <p>Required:</p>
+                    <li>Browser</li>
+                    <li>Platform</li>
+                    <li>Version</li>
+                    <p></p>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
-                  <p>Optional:</p>
-                  <li>Selenium Driver Version</li>
-                  <li>Chrome Driver Version</li>
-                  <li>IE Driver Version</li>
+                    <p>Optional:</p>
+                    <li>Selenium Driver Version</li>
+                    <li>Chrome Driver Version</li>
+                    <li>IE Driver Version</li>
+                    <p></p>
                   </div>
                   <pre><code class="java" data-trim contenteditable>
                       DesiredCapabilities caps = DesiredCapabilities.chrome();
@@ -805,7 +806,13 @@ caps.setCapability("version", "43.0");
                 <section>
                   <h3>What is a Testing Framework?</h3>
                   <p></p>
-                  <aside class="notes"></aside>
+                  <p>A test automation framework is a scaffold comprised of libraries, dependecies, drivers, and helper scripts that facilitate the execution of Selenium test scripts.</p>
+                  <aside class="notes">
+                    <p>Ok so what does that mean? It's essentially just a bunch of additional libraries we can use in conjunction with our script for several cases:</p>
+                    <li>Record your data - Frameworks often have, or can have a way for you to output the results of your test scripts for you, rather than writing them by hand</li>
+                    <li>Talk to external applications - you can include external libraries in your framework to talk to and send results to places like Sauce Labs</li>
+
+                  </aside>
                 </section>
 
                 <section>
@@ -854,8 +861,41 @@ caps.setCapability("version", "43.0");
 
                 <section>
                   <h3>Test Driven Development vs. Behavior Driven Development</h3>
-                  <p>Java:</p>
-                  <li></li>
+                  <p>TDD is where a developer writes test, and then writes code, and tests that code continuously, until the test passes.</p>
+                  <p>BDD is also a way to plan and develop code in a similar manner, but it allows teams to write scenarios and features without necessarily having technical knowledge.</p>
+                  <aside class="notes">TDD is also somewhat synonymous with "test first" development. BDD means writing tests that read like a book, almost in full sentences, so people can understand precisely what a test is trying to accomplish.</aside>
+                </section>
+
+                <section>
+                  <h3>TDD Example</h3>
+                  <pre><code class="java" data-trim contenteditable>
+
+                  </code></pre>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <h3>BDD Example</h3>
+
+                  <pre><code class="java" data-trim contenteditable>
+                      @Given("^I have (\\d+) sauces for my pasta")
+                      public void the_number_of_sauces(Int arg1) throws Throwable {
+                      // Write code here that turns the phrase above into concrete actions
+                      throw new PendingException();
+                      }
+
+                      @When("^I have (\\d+) kinds of pasta")
+                      public void the_number_of_pastas(Int arg1) throws Throwable {
+                      // Write code here that turns the phrase above into concrete actions
+                      throw new PendingException();
+                      }
+
+                      @Then("^My chef will be (.*)$")
+                      public void the_feeling_is(String arg1) throws Throwable {
+                      // Write code here that turns the phrase above into concrete actions
+                      throw new PendingException();
+                      }
+                  </code></pre>
                   <aside class="notes"></aside>
                 </section>
 
