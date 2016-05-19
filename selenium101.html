@@ -1039,23 +1039,54 @@ throw new PendingException();
                   <aside class="notes"></aside>
                 </section>
 
-                 <section>
-                   <h3>Dependencies</h3>
-                   <p>Hard coding dependencies to access external account or data</p>
-                   <ul><li></li></ul>
-                   <p>Setup</p>
-                   <ul><li></li></ul>
-                   <p>Teardown</p>
-                   <ul><li></li></ul>
-                   <aside class="notes"></aside>
-                 </section>
+                <section>
+                  <section>
+                    <h3>Dependencies</h3>
+                    <p>Hard coding dependencies to access external account or data</p>
+                    <ul><li>Development and testing environments can change between the writing of your test scripts and when they run</li></ul>
+                    <ul><li>Security</li></ul>
+                    <aside class="notes">
+                      <p>We've talked about avoiding this a bit already, but there are some other dependencies for tests that need to be considered as well.</p>
+                      <p>Security we've talked about as well, we don't want to have a history of our credentials in a git history for example.</p>
+                    </aside>
+                  </section>
 
-                 <section>
+                  <section>
+                    <h3>Setup</h3>
+                    <p><i>Prerequisite</i> tasks that need to be taken care of before your test runs, such as logging in, or dismissing a introductory pop-up.</p>
+                    <p>Example:</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        public void setupLogin() {
+
+    driver.findElement(By.id("loginID")).sendKeys("username");
+    driver.findElement(By.id("password")).sendKeys("password");
+    driver.findElement(By.id("Button")).click();
+}
+                    </code></pre>
+
+                    <aside class="notes"></aside>
+                  </section>
+
+                  <section>
+                    <h3>Teardown</h3>
+                    <p><i>Post requisite</i> tasks that need to occur, like closing the browser, logging out, or terminating the remote session.</p>
+                    <p>Example:</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        public void tearDown() throws Exception {
+
+    webDriver.get().quit();
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                  </section>
+                </section>
+
+                <section>
                    <h3>Implicit Waits vs. Explicit Waits</h3>
                    <p>
 
                    </p>
-                   <aside class="notes"></aside>
+                   <aside class="notes">We've talked about this already, but we want to drive home the best practices here, which is to use explicit waits instead on implicit waits.</aside>
                  </section>
 
                  <section>
