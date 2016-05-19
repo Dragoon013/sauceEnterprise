@@ -559,45 +559,55 @@ WebDriver driver = new ChromeDriver();
                     </aside>
                   </section>
 
+                  <section>
                 <section>
                   <h3>Identifying Elements</h3>
                   <p>Locator Expressions are made in Key:Value pairs</p>
-          <!--<p>Locator Types:</p>
+                  <pre><code class="java" data-trim contenteditable>
+                      WebElement linkElement = driver.findElement(By.id("i am a link"));
+                  </code></pre>
+                  <aside class="notes"></aside>
+                </section>
 
-                    <li>ID</li>
+                <section style="padding-left:10px;">
+                  <h3>Locator Types</h3>
+                    <p>ID</p>
                       <pre>
                         <code class="java" data-trim contenteditable>
                          driver.findElement(By.id("i_am_an_id")
                         </code>
                       </pre>
-                    <li>Tag Name</li>
+
+                    <p>Tag Name</p>
                       <pre>
                         <code class="java" data-trim contenteditable>
                           driver.findElements(By.tagName("a"))
                         </code>
                       </pre>
-                    <li>Text</li>
+                    <p>Text</p>
                       <pre>
                         <code class="java" data-trim contenteditable>
                           driver.findElements(By.linkText("i am a link"))
                         </code>
                       </pre>
-                    <li>CSS Selector</li>
-                      <pre>
-                        <code class="java" data-trim contenteditable>
-                          driver.findElement(By.cssSelector("input#submit"))
-                        </code>
-                      </pre>
-                    <li>XPath</li>
-                      <pre>
-                        <code class="java" data-trim contenteditable>
-                          driver.findElement(By.xpath("/html/head/title"))
-                        </code>
-                      </pre> -->
-                 <pre><code class="java" data-trim contenteditable>
-                      WebElement linkElement = driver.findElement(By.id("i am a link"));
-                  </code></pre>
-                  <aside class="notes"></aside>
+
+                </section>
+
+                <section>
+                  <h3>Locator Types continued</h3>
+                  <p>CSS Selector</p>
+                  <pre>
+                    <code class="java" data-trim contenteditable>
+                      driver.findElement(By.cssSelector("input#submit"))
+                    </code>
+                  </pre>
+                  <p>XPath</p>
+                  <pre>
+                    <code class="java" data-trim contenteditable>
+                      driver.findElement(By.xpath("/html/head/title"))
+                    </code>
+                    <aside class="notes"></aside>
+                </section>
                 </section>
 
                 <section>
@@ -1017,7 +1027,8 @@ throw new PendingException();
 
                 <section>
                   <h3>Module Objectives</h3>
-                  <li></li>
+                  <p>This module enables you to:</p>
+                  <li>Understand the best practices in Selenium test script writing with Sauce Labs</li>
                   <aside class="notes"></aside>
                 </section>
 
