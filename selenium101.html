@@ -811,8 +811,9 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   </pre>
 
                   <aside class="notes">
-                    <h3>But Wait, There's More!</h3>
 
+                    We've talked about this already, but we want to drive home the best practices here, which is to use explicit waits instead on implicit waits.
+                    There are many situations in which your test script may run ahead of the website or application you're testing, resulting in timeouts and a failing test. For example, you may have a dynamic content element that, after a user clicks on it, a loading appears for five seconds. If your script isn't written in such a way as to account for that five second load time, it may fail because the next interactive element isn't available yet. The general recommended solution for this is to use explicit waits.
                   </aside>
                 </section>
 
@@ -1053,7 +1054,8 @@ throw new PendingException();
 
                   <section>
                     <h3>Setup</h3>
-                    <p><i>Prerequisite</i> tasks that need to be taken care of before your test runs, such as logging in, or dismissing a introductory pop-up.</p>
+                    <p>Setup initiates <i>prerequisite</i> tasks that need to be taken care of before your test runs, such as logging in, or dismissing a introductory pop-up.</p>
+
                     <p>Example:</p>
                     <pre><code class="java" data-trim contenteditable>
                         public void setupLogin() {
@@ -1064,12 +1066,14 @@ throw new PendingException();
 }
                     </code></pre>
 
-                    <aside class="notes"></aside>
+                    <aside class="notes">
+                      <p>This can also include the desired capabilities and setting the WebDriver.</p>
+                    </aside>
                   </section>
 
                   <section>
                     <h3>Teardown</h3>
-                    <p><i>Post requisite</i> tasks that need to occur, like closing the browser, logging out, or terminating the remote session.</p>
+                    <p>The teardown function includes <i>Post requisite</i> tasks that need to occur, like closing the browser, logging out, or terminating the remote session.</p>
                     <p>Example:</p>
                     <pre><code class="java" data-trim contenteditable>
                         public void tearDown() throws Exception {
@@ -1080,14 +1084,6 @@ throw new PendingException();
                     <aside class="notes"></aside>
                   </section>
                 </section>
-
-                <section>
-                   <h3>Implicit Waits vs. Explicit Waits</h3>
-                   <p>
-
-                   </p>
-                   <aside class="notes">We've talked about this already, but we want to drive home the best practices here, which is to use explicit waits instead on implicit waits.</aside>
-                 </section>
 
                  <section>
                    <section>
