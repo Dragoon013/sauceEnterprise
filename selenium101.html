@@ -445,28 +445,11 @@ WebDriver driver = new ChromeDriver();
 
                   <section>
 				    <h3>Anticipate Browser Response</h3>
-				    <p>
-                      <li>Implicit Waits</li>
-                      <pre>
-                        <code data-trim contenteditable style="">
-                          driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                        </code>
-                        </pre>
 
-                      <li>Explicit Waits</li>
-                      <pre>
-                        <code data-trim contenteditable style="">
-                          import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-WebDriverWait wait = new WebDriverWait(driver, 10);
-WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLocated(By.id("loginResponse")) );
-                        </code>
-                        </pre>
-                    </p>
                     <aside class="notes">
                       <p>When you're performing an action, it takes time for the action to reach the server and then time for the server to respond. If you are trying to test something that depends on the previous action or response, then you need to build that wait time into your test. Otherwise, the test might fail because the elements that are expected for the next step haven't loaded into the browser you.
                       </p>
-                      <p>While we may not have waits in our current script, we will take a look at them in the next module.</p>
+                      <p>While we may not have waits in our current script, we will take a look at them in a later module.</p>
                     </aside>
                   </section>
 
@@ -503,7 +486,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   <section>
 				    <h3>Conclude a Test</h3>
 				    <pre>
-                      <code data-trim contenteditable style="">
+                      <code data-trim contenteditable class="java">
                         driver.quit()
                       </code>
                     </pre>
@@ -766,7 +749,7 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                     <li>IE Driver Version</li>
                     <p></p>
                   </div>
-                  <pre><code class="java" data-trim contenteditable>
+                  <pre style="box-shadow:none;"><code class="java" data-trim contenteditable>
                       DesiredCapabilities caps = DesiredCapabilities.chrome();
 caps.setCapability("platform", "Windows XP");
 caps.setCapability("version", "43.0");
@@ -788,12 +771,27 @@ caps.setCapability("version", "43.0");
                 <p>This is the lab where we run the Sauce Labs ready script.</p>
               </section>
 
-              <!-- New Script to introduce-->
+              <!-- New Sample Script to introduce-->
               <section>
                 <section>
                   <h3>Explicit and Implicit waits</h3>
 
+                  <p>Implicit Waits</p>
+                  <pre>
+                    <code data-trim contenteditable class="java">
+                      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                    </code>
+                  </pre>
 
+                  <p>Explicit Waits</p>
+                  <pre>
+                    <code class="java" data-trim contenteditable>
+                      import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+WebDriverWait wait = new WebDriverWait(driver, 10);
+WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLocated(By.id("loginResponse")) );
+                    </code>
+                  </pre>
 
                   <aside class="notes">
                     <h3>But Wait, There's More!</h3>
