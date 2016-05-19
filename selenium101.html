@@ -446,9 +446,14 @@ WebDriver driver = new ChromeDriver();
                   <section>
 				    <h3>Anticipate Browser Response</h3>
 
+                    <p>Implicit Waits</p>
+                    <ul>
+                      <li>A blanket wait time that applies to each findElement search (findElement(By.id())).</li>
+                      </ul>
+                      <p>Explicit Waits</p>
+                    <ul><li>An explicit wait time that is applied to findElements individually.</li></ul>
                     <aside class="notes">
-                      <p>When you're performing an action, it takes time for the action to reach the server and then time for the server to respond. If you are trying to test something that depends on the previous action or response, then you need to build that wait time into your test. Otherwise, the test might fail because the elements that are expected for the next step haven't loaded into the browser you.
-                      </p>
+                      <p>Tests might fail because the elements that are expected for the next step haven't loaded into the browser yet. It's good to have an explicit wait time in this case, as after a click, it can be variable how long an element could be loaded onto the page.</p>
                       <p>While we may not have waits in our current script, we will take a look at them in a later module.</p>
                     </aside>
                   </section>
@@ -796,14 +801,15 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   <aside class="notes">
                     <h3>But Wait, There's More!</h3>
 
-
                   </aside>
                 </section>
 
                 <section>
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: The Waiting Game</h3>
-                  <p>This is the lab where we run the Sauce Labs ready script.</p>
+                  <p>Originally I had though that this lab would require a different script.But it seems like we could edit our script, or copy and edit, to go to dave's site:
+<a href="http://the-internet.herokuapp.com/dynamic_loading" target="_blank">Dynamic Loading</a> then interact with it.
+                  </p>
                 </section>
               </section>
 
@@ -1085,6 +1091,12 @@ throw new PendingException();
                      <p>
                        <li>ID your tests</li>
                      </p>
+                     <pre><code class="java" data-trim contenteditable>
+                         caps.setCapability("tags","tag_awesome");
+caps.setCapability("build","cool_builds1");
+caps.setCapability("name","Java Remote Sample Test");
+                     </code></pre>
+
                      <aside class="notes"></aside>
                    </section>
 
@@ -1092,8 +1104,9 @@ throw new PendingException();
 
                  <section>
                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                   <h3>Lab: Labelling our Tests</h3>
+                   <h3>Lab: Labelling and Naming our Tests</h3>
                    <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
+                   <aside class="notes">There's also a way to set your own build number as well</aside>
                  </section>
 
                  <section>
@@ -1102,13 +1115,14 @@ throw new PendingException();
 
                  <section>
                   <h3>Further Information</h3>
-                  <li></li>
+                  <li>Insert docs link, sauce blog link, daves blog link, </li>
                   <aside class="notes"></aside>
                  </section>
 
                  <section>
                    <h3>Q&A</h3>
-                   <li></li>
+                   <li>Insert link to survey</li>
+                   <li>Insert email link to training team or docs team or support team, or all</li>
                    <aside class="notes"></aside>
                  </section>
 
