@@ -1106,15 +1106,17 @@ throw new PendingException();
                        <p>Some eaxmples of performance testing helpers (similar to sauce labs):</p>
                      </aside>
                    </section>
-
+<!--
                    <section>
-                     <h3>Retries</h3>
+                     <h3>Retry Strategy</h3>
                      <p>
 
                      </p>
-                     <aside class="notes">DEMO: Script that fails at first, but has a retry applied and then works</aside>
+                     <aside class="notes">
+                       <p>There will always be flaky tests, and tests that once breezed through with no problem can fail for what seems like no reason. The trick is figuring out whether a test that fails does so because it found a real problem in your app functionality, or because there was an issue with the test itself. </p>
+</aside>
                    </section>
-
+-->
                    <section>
                      <h3>Atomic Testing</h3>
                      <p>
