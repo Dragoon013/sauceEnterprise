@@ -1085,15 +1085,6 @@ throw new PendingException();
                   </section>
                 </section>
 
-                 <section>
-                   <section>
-                     <h3>Testing Strategy</h3>
-                     <p>
-                       insert pic
-                     </p>
-                     <aside class="notes"></aside>
-                   </section>
-
                    <section>
                      <h3>Different Kinds of Tests</h3>
                      <p>Functional Testing</p>
@@ -1118,19 +1109,72 @@ throw new PendingException();
                    </section>
 -->
                    <section>
-                     <h3>Atomic Testing</h3>
-                     <p>
+                     <h3>Small, Atomic, and Autonomous Testing</h3>
+                     <p>Small</p>
+                     <ul><li>Tests should be short and succinct.</li></ul>
+                     <p>Atomic</p>
+                     <ul><li>Tests should focus on testing a single feature.</li></ul>
+                     <p>Autonomous</p>
+                     <ul><li>Tests should be able to run completely independently of other tests.</li></ul>
+                     <aside class="notes">
 
-                     </p>
+                       <p>Short - If you have a test suite of 100 tests running concurrently on 100 VMs, then the time it will take to run the entire suite will be determined by the longest/slowest test case. Keeping your tests small ensures that your suite will run efficiently and provide you with results faster. </p>
+                       <p>Atomic - The test makes clear exactly what it is that you're testing. If the test fails, then you should also have a very clear idea of what needs to be fixed. </p>
+                       <p>Autonomous - Tests should not be dependent on the results of one test to run successfully. In addition, an autonomous test should use its own data to test against, and not create potential conflicts with other tests over the same data.  </p>
+                     </aside>
+                   </section>
+
+                   <section>
+                   <section>
+                     <h3>Object Oriented Testing</h3>
+                     <p>Page Objects</p>
+                     <ul>
+                       <li>Code reuse across tests -reuse common element interactions</li>
+                     <li>Abstraction - with product change, only change one piece of code</li>
+                     </ul>
+                     <aside class="notes">
+                       <p>
+                         Sometimes we interact with particular elements in our applicaiton repeatedly. The nature of applications is that they change over time as well. Instead of writing the same code for the same interacctions, we ad a level of abstraction with page objects.
+                       </p>
+                     </aside>
+                   </section>
+
+                   <section>
+                     <h3>Page Object Example - Incorrect</h3>
+
+                     <pre><code class="java" data-trim contenteditable>
+                         public class Login {
+
+    public void testLogin() {
+        selenium.type("inputBox", "testUser");
+        selenium.type("password", "my supersecret password");
+        selenium.click("sign-in");
+        selenium.waitForPageToLoad("PageWaitPeriod");
+        Assert.assertTrue(selenium.isElementPresent("compose button"),
+        "Login was unsuccessful");
+    }
+}
+                     </code></pre>
+
                      <aside class="notes"></aside>
                    </section>
 
                    <section>
-                     <h3>Object Oriented Testing</h3>
-                     <p>
+                     <h3>Page Object Example - Correct</h3>
 
-                     </p>
-                     <aside class="notes">DEMO: a script with an example of this</aside>
+                     <pre><code class="java" data-trim contenteditable>
+                         public class TestLogin {
+
+    public void testLogin() {
+        SignInPage signInPage = new SignInPage(selenium);
+        HomePage homePage = signInPage.loginValidUser("userName", "password");
+        Assert.assertTrue(selenium.isElementPresent("compose button"),
+        "Login was unsuccessful");
+    }
+}
+                     </code></pre>
+                     <aside class="notes"></aside>
+                   </section>
                    </section>
 
                    <section>
@@ -1142,27 +1186,29 @@ throw new PendingException();
                    </section>
 
                    <section>
-                     <h3>Label Your Tests</h3>
-                     <p>
-                       <li>ID your tests</li>
-                     </p>
-                     <pre><code class="java" data-trim contenteditable>
-                         caps.setCapability("tags","tag_awesome");
+                     <section>
+                       <h3>Label Your Tests</h3>
+                       <p>
+                         <li>ID your tests</li>
+                       </p>
+                       <pre><code class="java" data-trim contenteditable>
+                           caps.setCapability("tags","tag_awesome");
 caps.setCapability("build","cool_builds1");
 caps.setCapability("name","Java Remote Sample Test");
-                     </code></pre>
+                       </code></pre>
 
-                     <aside class="notes"></aside>
+                       <aside class="notes"></aside>
+                     </section>
+
+
+
+                     <section>
+                       <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+                       <h3>Lab: Labelling and Naming our Tests</h3>
+                       <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
+                       <aside class="notes">There's also a way to set your own build number as well</aside>
+                     </section>
                    </section>
-
-                 </section>
-
-                 <section>
-                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-                   <h3>Lab: Labelling and Naming our Tests</h3>
-                   <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
-                   <aside class="notes">There's also a way to set your own build number as well</aside>
-                 </section>
 
                  <section>
                    <h2>Additional Resources</h2>
@@ -1170,7 +1216,11 @@ caps.setCapability("name","Java Remote Sample Test");
 
                  <section>
                   <h3>Further Information</h3>
-                  <li>Insert docs link, sauce blog link, daves blog link, </li>
+                  <li><a href="http://www.seleniumhq.org/docs" target="_blank">SeleniumHQ: Documentation</a></li>
+                  <li><a href="http://elementalselenium.com/" target="_blank">Dave Haeffner's Selenium Newsletter</a></li>
+                  <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
+                  <li><a href="https://github.com/saucelabs-sample-scripts" target="_blank">Sauce Labs Sample Test Scripts</a></li>
+                  <li><a href="https://github.com/saucelabs-sample-test-frameworks" target="_blank">Sauce Labs Sample Test Frameworks</a></li>
                   <aside class="notes"></aside>
                  </section>
 
