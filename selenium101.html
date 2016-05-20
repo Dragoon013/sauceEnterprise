@@ -1179,17 +1179,24 @@ throw new PendingException();
 
                    <section>
                      <h3>Parallelization</h3>
-                     <p>
-
-                     </p>
-                   <aside class="notes"></aside>
+                     <p>Avoid dependencies between tests</p>
+                     <ul><li>If you chain tests together, when one at the top fails, then they will all fail.</li></ul>
+                     <p>Use Frameworks</p>
+                     <ul><li>Frameworks include helpful libraries and functionality that can help you make the most of parallelization.</li></ul>
+                     <aside class="notes">
+                       <p>Running tests in parallel is the secret Sauce for accelerating your development process and creating a continuous integration/continuous delivery pipeline.</p>
+                       <p>One of the main features that Sauce Labs offers is parallelization, the ability to run serveral scripts at once on a variety of platforms. Since tests and commands are sent remotely, these tests take longer to run individually, but with parallelization, we can run them all at once. That is, we can start them all at the same time, which cuts down on the total time tests would normally take, saving time and money for your teams and business.</p>
+                       <p>It's good to avoid dependencies between tests. This goes along with the atomic testing strategy, where we want to create autonomous tests, so that they don't depend on each other, and when one fails, then we know exactly what failed.</p>
+                     </aside>
                    </section>
 
                    <section>
                      <section>
                        <h3>Label Your Tests</h3>
                        <p>
-                         <li>ID your tests</li>
+                         <li>ID tests</li>
+                         <li>Name tests</li>
+                         <li>Apply build names to tests</li>
                        </p>
                        <pre><code class="java" data-trim contenteditable>
                            caps.setCapability("tags","tag_awesome");
@@ -1199,8 +1206,6 @@ caps.setCapability("name","Java Remote Sample Test");
 
                        <aside class="notes"></aside>
                      </section>
-
-
 
                      <section>
                        <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
@@ -1227,7 +1232,7 @@ caps.setCapability("name","Java Remote Sample Test");
                  <section>
                    <h3>Q&A</h3>
                    <li>Insert link to survey</li>
-                   <li>Insert email link to training team or docs team or support team, or all</li>
+                   <li>Support: <a href="mailto:help@saucelabs.com" target="_top">help@saucelabs.com</a></li>
                    <aside class="notes"></aside>
                  </section>
 
