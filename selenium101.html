@@ -1097,17 +1097,32 @@ throw new PendingException();
                        <p>Some eaxmples of performance testing helpers (similar to sauce labs):</p>
                      </aside>
                    </section>
-<!--
+
+                   <section>
                    <section>
                      <h3>Retry Strategy</h3>
                      <p>
-
+                       We want to make sure that our test fails because something is actually wrong.
                      </p>
+                     <p>Retries allow us to do a context specific retry for a particular set of actions. We wouldn't want to do the whole test again!</p>
                      <aside class="notes">
                        <p>There will always be flaky tests, and tests that once breezed through with no problem can fail for what seems like no reason. The trick is figuring out whether a test that fails does so because it found a real problem in your app functionality, or because there was an issue with the test itself. </p>
 </aside>
                    </section>
--->
+
+                   <section>
+                     <h3>Retry: The Game</h3>
+                     <p>Example:</p>
+                     <p>You have a game that pops up with an alert everytime the play completes or fails a level.</p>
+                     <p>The Test:</p>
+                     <p>something about two different messages - if one fails, do a retry</p>
+                     <aside class="notes">
+                       <p></p>
+                     </aside>
+                   </section>
+
+                   </section>
+
                    <section>
                      <h3>Small, Atomic, and Autonomous Testing</h3>
                      <p>Small</p>
