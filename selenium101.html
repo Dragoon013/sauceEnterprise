@@ -46,7 +46,8 @@
         </style>
 		<!-- Any section element inside of this container is displayed as a slide -->
 
-          <img src="assets/images/saucelabslogo.png" style="border:0; width:100px; height:100px; background:none; position:absolute; left:0; top:0;">
+        <img src="assets/images/saucelabslogo.png" style="border:0; width:100px; height:100px; background:none; position:absolute; left:0; top:0;">
+        <img id="lab" src="assets/images/Laboratory2.png" style="visibility:hidden; border:0; width:200px; height:200px; background:none; position:absolute; right:0; top:0;">
 
 	        <div class="slides">
 
@@ -225,6 +226,7 @@
 
                 <section>
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
+
                   <h3>Lab: My First Test (On Sauce Labs)</h3>
                   <p>This is the lab with the manual test</p>
                 </section>
@@ -1144,7 +1146,7 @@ throw new PendingException();
                      <h3>Object Oriented Testing</h3>
                      <p>Page Objects</p>
                      <ul>
-                       <li>Code reuse across tests -reuse common element interactions</li>
+                       <li>Code reuse across tests - reuse common element interactions</li>
                      <li>Abstraction - with product change, only change one piece of code</li>
                      </ul>
                      <aside class="notes">
@@ -1222,7 +1224,7 @@ caps.setCapability("name","Java Remote Sample Test");
                        <aside class="notes"></aside>
                      </section>
 
-                     <section>
+                     <section data-rad-functionrunner-shown='{ "root" : "reveal", "func" : "reveal" }'>
                        <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                        <h3>Lab: Labelling and Naming our Tests</h3>
                        <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
@@ -1256,8 +1258,21 @@ caps.setCapability("name","Java Remote Sample Test");
 
 		</div>
 
+      <script src="lib/js/functionRunner.min.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+        <script>
+
+          var reveal = {
+              reveal: function(slideObj, event, radEventName){
+          var span = document.getElementById("lab");
+          span.innerHTML = this.style.visibility="visible";
+              slideObj.element.appendChild(span)
+          }
+
+          }
+
+        </script>
 
 
 		<script>
@@ -1273,7 +1288,9 @@ caps.setCapability("name","Java Remote Sample Test");
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'lib/js/jquery-2.2.4.min.js'},
+                    { src: 'lib/js/functionRunner.min.js'},
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
