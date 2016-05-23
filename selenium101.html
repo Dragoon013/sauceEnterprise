@@ -47,7 +47,7 @@
 		<!-- Any section element inside of this container is displayed as a slide -->
 
         <img src="assets/images/saucelabslogo.png" style="border:0; width:100px; height:100px; background:none; position:absolute; left:0; top:0;">
-        <img id="lab" src="assets/images/Laboratory2.png" style="visibility:hidden; border:0; width:200px; height:200px; background:none; position:absolute; right:0; top:0;">
+        <img id="lab_pic" src="assets/images/Laboratory2.png" style="visibility:hidden; border:0; width:200px; height:200px; background:none; position:absolute; right:0; top:0;">
 
 	        <div class="slides">
 
@@ -183,15 +183,16 @@
 				  <h3>Local vs Sauce Labs Selenium Tests</h3>
                   <div style="float:left;width:40%;" class="centered">
                     Local
-                    <p>
+                    <p><ul>
                       <li>Can only test on the OS and browsers you have locally</li>
                       <li>Selenium Grid</li>
-                    </p>
+                    </ul></p>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     Sauce Labs
                     <p>
-                    <li>Record your tests</li>
+<ul>
+                      <li>Record your tests</li>
                     <ul>
                       <li>Screenshots</li>
                       <li>Video Record</li>
@@ -199,6 +200,7 @@
                     </ul>
                     <li>Selenium Grid for rent</li>
                     <li>Parallelization</li>
+                    </ul>
                     </p>
                   </div>
 <aside class="notes">So where do I actually run my selenium scripts? Well you can always run it locally - when you run a script it can pull up a browser thats on your machines, access your application, and run the test. But then you're restricted to the OS that is actually on your machine, as well as the browser versions and types that are available for that OS as well. It would be difficult to run IE on Ubuntu!
@@ -210,11 +212,11 @@
 
                 <section>
                   <h3>Using Sauce Labs</h3>
-				  <p>
+				  <p><ul>
                     <li>Security</li>
                     <li>Parallelization</li>
                     <li>Automate</li>
-                  </p>
+                  </ul></p>
 
                   <aside class="notes">DEMO: SL UI.
                     <p>why should you use it? Let's run a manual test - this a way to show them a way to test that they are familiar with, and they can have an intro to the basic UI.</p>
@@ -224,7 +226,7 @@
                   </aside>
                 </section>
 
-                <section>
+                <section data-state="lab">
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
 
                   <h3>Lab: My First Test (On Sauce Labs)</h3>
@@ -256,12 +258,12 @@
 -->
                 <section>
 				  <h3>Documentation</h3>
-				  <p>
+				  <p><ul>
                     Let's take a tour of the Docs!
                     <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
                     <li><a href="https://wiki.saucelabs.com/display/DOCS/Running+Automated+Website+Tests" target="_blank">Automated Website Testing with Sauce Labs</a></li>
                     <li><a href="http://docs.seleniumhq.org/docs/" target="_blank">Selenium Documentation</a></li>
-				  </p>
+				  </ul></p>
                   <aside class="notes">
                     Click on each of the links, and run through each of the sites Docs
                     <p>Show main page, blog posts for changes, tour</p>
@@ -503,7 +505,7 @@ WebDriver driver = new ChromeDriver();
                 </section>
 
                 <section>
-                  <section>
+                  <section data-state="lab">
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Running the Sample Script</h3>
                     <p>run sample script as is - need to change sample script to just run locally</p>
@@ -511,7 +513,7 @@ WebDriver driver = new ChromeDriver();
                     <li>start the navigation </li>
                   </section>
 
-                  <section>
+                  <section data-state="lab">
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Running the Sample Script Part 2</h3>
                     <p>let's change the site!</p>
@@ -668,13 +670,13 @@ submitButton.submit();
                   </section>
                 </section>
 
-                <section>
+                <section data-state="lab">
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Writing Actions</h3>
                   <p>This is the lab where we write some actions into our script to play with other elements on the page</p>
                 </section>
 
-                <section>
+                <section data-state="lab">
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Run Script Locally</h3>
                   <p>This is the lab with the local test</p>
@@ -744,7 +746,7 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                     </aside>
                   </section>
 
-                  <section>
+                  <section data-state="lab">
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Remote WebDriver</h3>
                     <p>Let's set up our script to work remotely now - add in the credentials and create a webdriver that uses the credentials and authenticates with Sauce Labs</p>
@@ -777,14 +779,14 @@ caps.setCapability("version", "43.0");
                   <aside class="notes"> With Sauce Labs, we can set up the script to run the test on several different platforms. We aren't limited to what we have locally. If we want to indicate more platforms combinations to test on, we typically use a framework to enable that for us.</aside>
                 </section>
 
-                <section>
+                <section data-state="lab">
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Platform Configurator</h3>
                   <p>Let's set up our platform configurator to run our test on a Mac OS on a Chrome browser, version 43.0</p>
                 </section>
               </section>
 
-              <section>
+              <section data-state="lab">
                 <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                 <h3>Lab: Running a Script on Sauce Labs</h3>
                 <p>This is the lab where we run the Sauce Labs ready script.</p>
@@ -819,7 +821,7 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                   </aside>
                 </section>
 
-                <section>
+                <section data-state="lab">
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: The Waiting Game</h3>
                   <p>Originally I had though that this lab would require a different script.But it seems like we could edit our script, or copy and edit, to go to dave's site:
@@ -996,7 +998,7 @@ throw new PendingException();
                     </ul><aside class="notes"> The difference here lies in that with verifications, the test will still keep going, even if they are false. Most selenium scripts use a combination of these to assert that a large object exists (like the page has at least laoded) and then verifies individual key elements that are going to be tested. The logic behind this is if the site can't even load, there's no point in running the rest of the script, as that is a major dependency.</aside>
                   </section>
               <!-- New Script to introduce-->
-                  <section>
+                  <section data-state="lab">
                     <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Asserting Your Greatness</h3>
                     <p>This is the lab where we apply a simple assert</p>
@@ -1020,7 +1022,7 @@ throw new PendingException();
                   </aside>
                 </section>
 
-                <section>
+                <section data-state="lab">
                   <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Record Keeping</h3>
                   <p>This is the lab where we shove our results into Sauce Labs (pass/fail rather than complete)</p>
@@ -1224,7 +1226,7 @@ caps.setCapability("name","Java Remote Sample Test");
                        <aside class="notes"></aside>
                      </section>
 
-                     <section data-rad-functionrunner-shown='{ "root" : "reveal", "func" : "reveal" }'>
+                     <section data-state="lab">
                        <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                        <h3>Lab: Labelling and Naming our Tests</h3>
                        <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
@@ -1258,24 +1260,10 @@ caps.setCapability("name","Java Remote Sample Test");
 
 		</div>
 
-      <script src="lib/js/functionRunner.min.js"></script>
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-        <script>
+      <script src="lib/js/head.min.js"></script>
+	  <script src="js/reveal.js"></script>
 
-          var reveal = {
-              reveal: function(slideObj, event, radEventName){
-          var span = document.getElementById("lab");
-          span.innerHTML = this.style.visibility="visible";
-              slideObj.element.appendChild(span)
-          }
-
-          }
-
-        </script>
-
-
-		<script>
+	  <script>
 
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -1290,8 +1278,7 @@ caps.setCapability("name","Java Remote Sample Test");
 				dependencies: [
           			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
                     { src: 'lib/js/jquery-2.2.4.min.js'},
-                    { src: 'lib/js/functionRunner.min.js'},
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                     { src: 'plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external]' ); } },
@@ -1299,6 +1286,18 @@ caps.setCapability("name","Java Remote Sample Test");
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
+
+            Reveal.addEventListener( 'slidechanged', function( event ) {
+//            console.log(event.currentSlide.getAttribute("data-state"))
+// if we're on a lab slide, unhide the lab image, otherwise hide it.
+
+            if(event.currentSlide.getAttribute("data-state") === "lab") {
+            document.getElementById("lab_pic").style.visibility="visible";
+            }else{
+            document.getElementById("lab_pic").style.visibility="hidden";
+            }
+
+            } );
 
 		</script>
 
