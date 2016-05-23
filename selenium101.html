@@ -130,24 +130,15 @@
 
                 <section>
 					<h3>Sauce Labs History</h3>
-					<p>
-                      <ul>
-					  <li>Founded in 2008</li>
-                      <li>Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium)</li>
-                      </ul>
-                      <p></p>
 <ul>
-                    <li>Developed with the purpose of providing:
-                        <ul>
-                          <li>Parallel Testing</li>
-                          <li>Test Variability</li>
-                        </ul>
-                      </li>
+					  <li>Founded in 2008, by Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium)</li>
 </ul>
+
+                      <p style="text-align:center;">
+                    "Our purpose is to revolutionize testing so that development teams are free to innovate and deliver amazing applications—faster."
                     </p>
-					<p>
                       <!--Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.-->
-                    </p>
+
                     <aside class="notes">
                       <p>
                         Sauce Labs was founded in 2008 by Jason Huggins, co-creator of Selenium (the open source standard for automated testing frameworks) and Steve Hazel, current CTO. They set out to create a cloud-based platform for automated testing to free development teams from the hassle and cost of testing so they can focus on innovating their core capabilities.
@@ -211,12 +202,20 @@
 
                 <section>
                   <h3>Using Sauce Labs</h3>
-				  <p><ul>
+                  <div style="float:left;width:40%;" class="centered">
+				  <ul>
                     <li>Security</li>
                     <li>Parallelization</li>
                     <li>Automate</li>
-                  </ul></p>
-
+                  </ul>
+                  </div>
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <ul>
+                      <li>Velocity</li>
+                      <li>Seamless Integration</li>
+                      <li>Support</li>
+                    </ul>
+                  </div>
                   <aside class="notes">DEMO: SL UI.
                     <p>why should you use it? Let's run a manual test - this a way to show them a way to test that they are familiar with, and they can have an intro to the basic UI.</p>
                     <li>Dashboard</li>
@@ -397,7 +396,7 @@ WebDriver driver = new ChromeDriver();
 				    <p>
                       <pre>
                         <code class="java" data-trim contenteditable style="text-align:center;">
-                          driver.findElement(By.id(“myId”));
+                          driver.findElement(By.id("myId"));
                         </code>
                       </pre>
                       <p>Identify by:</p>
@@ -436,7 +435,7 @@ WebDriver driver = new ChromeDriver();
 				    <p>
                       <pre>
                         <code class="java" data-trim contenteditable style="text-align:center;">
-                          driver.findElement(By.id(“myId”)).click;
+                          driver.findElement(By.id("myId")).click;
                         </code>
                       </pre>
                     </p>
@@ -468,16 +467,17 @@ WebDriver driver = new ChromeDriver();
                        <ul>
                          <li>Locally, you can print or save your test results as part of your script</li>
                          <li>Test Frameworks</li>
-                         <li>Use the Sauce Labs API to send reults to your Dashboard</li>
+                         <li>Use the Sauce Labs API to send results to your Dashboard</li>
                          <ul>
                      </div>
                      <div style="float:right;width:50%;padding-right:0px;">
                        <ul style="list-style-position: outside; margin-left= 1em">
-                         <li>Record Test Results</li>
+                         <li>Record Test Results with Sauce Labs</li>
                          <ul>
                            <li>Logs</li>
                            <li>Screencasts</li>
                            <li>Screenshots</li>
+
                          </ul>
                        </ul>
                      </div>
@@ -731,7 +731,7 @@ public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
                     </ul>
                     <pre><code class="java" data-trim contenteditable>
                         USERNAME = "dragoon013";
-KEY = "secret";
+KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
 URL = "http://" + USERNAME + ":" + KEY + "@ondemand.saucelabs.com:80/wd/hub";
 WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                     </code></pre>
@@ -1105,9 +1105,11 @@ throw new PendingException();
                    <section>
                      <h3>Retry: The Game</h3>
                      <p>Example:</p>
-                     <p>You have a game that pops up with an alert everytime the play completes or fails a level.</p>
+                     <p>You have a game that pops up with an alert everytime the player completes a level or dies.</p>
                      <p>The Test:</p>
-                     <p>something about two different messages - if one fails, do a retry</p>
+                     <p>Your test comes back with a failure: "You have died... Again."</p>
+                     <p>The Retry:</p>
+                     <p>You can only continue the test if the player completes a level. Another retry results in a sucessful test, this time, where the playerxs did not die.</p>
                      <aside class="notes">
                        <p></p>
                      </aside>
