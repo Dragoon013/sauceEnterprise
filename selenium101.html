@@ -168,12 +168,11 @@
 
                 <section>
 				  <h3>What is Selenium?</h3>
-				  <p>
-                    Browser Testing Framework
-                    <li>Simulate site interaction</li>
+				  <p>Browser Automation Framework used for testing</p>
+                    <ul><li>Simulate site interaction</li>
                     <li>Automate Application Testing</li>
+                    </ul>
 
-				  </p>
                   <aside class="notes">So <b>how</b> does Sauce Labs faciltate your testing? Selenium is the core testing framework that Sauce Labs runs for you on a variety of Browser and OS combinations.
                     <p>Selenium is the testing framework that provides the actual language and ability to test interations on a browser. It was started by Jason Huggins in 2004, and since then a community has grown to contribute and build to it</p>
                   </aside>
@@ -227,8 +226,6 @@
                 </section>
 
                 <section data-state="lab">
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
-
                   <h3>Lab: My First Test (On Sauce Labs)</h3>
                   <p>This is the lab with the manual test</p>
                 </section>
@@ -399,8 +396,8 @@ WebDriver driver = new ChromeDriver();
 				    <h3>Locate HTML Elements on the Page</h3>
 				    <p>
                       <pre>
-                        <code class="java" data-trim contenteditable>
-                          System.out.println("title of page is: " + driver.getTitle());
+                        <code class="java" data-trim contenteditable style="text-align:center;">
+                          driver.findElement(By.id(“myId”));
                         </code>
                       </pre>
                       <p>Identify by:</p>
@@ -438,8 +435,8 @@ WebDriver driver = new ChromeDriver();
                     <h3>Perform an Action on a HTML Element</h3>
 				    <p>
                       <pre>
-                        <code class="java" data-trim contenteditable>
-                          System.out.println("title of page is: " + driver.getTitle());
+                        <code class="java" data-trim contenteditable style="text-align:center;">
+                          driver.findElement(By.id(“myId”)).click;
                         </code>
                       </pre>
                     </p>
@@ -456,7 +453,8 @@ WebDriver driver = new ChromeDriver();
                       <li>A blanket wait time that applies to each findElement search (findElement(By.id())).</li>
                       </ul>
                       <p>Explicit Waits</p>
-                    <ul><li>An explicit wait time that is applied to findElements individually.</li></ul>
+                      <ul><li>A wait time set until a condition of an element (such as "selected" or "visible") becomes true.</li>
+                      </ul>
                     <aside class="notes">
                       <p>Tests might fail because the elements that are expected for the next step haven't loaded into the browser yet. It's good to have an explicit wait time in this case, as after a click, it can be variable how long an element could be loaded onto the page.</p>
                       <p>While we may not have waits in our current script, we will take a look at them in a later module.</p>
@@ -506,7 +504,6 @@ WebDriver driver = new ChromeDriver();
 
                 <section>
                   <section data-state="lab">
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Running the Sample Script</h3>
                     <p>run sample script as is - need to change sample script to just run locally</p>
                     <p>changes to sample script that need to be made:</p>
@@ -514,7 +511,6 @@ WebDriver driver = new ChromeDriver();
                   </section>
 
                   <section data-state="lab">
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Running the Sample Script Part 2</h3>
                     <p>let's change the site!</p>
                   </section>
@@ -671,13 +667,11 @@ submitButton.submit();
                 </section>
 
                 <section data-state="lab">
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Writing Actions</h3>
                   <p>This is the lab where we write some actions into our script to play with other elements on the page</p>
                 </section>
 
                 <section data-state="lab">
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Run Script Locally</h3>
                   <p>This is the lab with the local test</p>
                 </section>
@@ -747,7 +741,6 @@ WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
                   </section>
 
                   <section data-state="lab">
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Remote WebDriver</h3>
                     <p>Let's set up our script to work remotely now - add in the credentials and create a webdriver that uses the credentials and authenticates with Sauce Labs</p>
                   </section>
@@ -780,14 +773,12 @@ caps.setCapability("version", "43.0");
                 </section>
 
                 <section data-state="lab">
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Platform Configurator</h3>
                   <p>Let's set up our platform configurator to run our test on a Mac OS on a Chrome browser, version 43.0</p>
                 </section>
               </section>
 
               <section data-state="lab">
-                <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                 <h3>Lab: Running a Script on Sauce Labs</h3>
                 <p>This is the lab where we run the Sauce Labs ready script.</p>
               </section>
@@ -822,7 +813,6 @@ WebElement messageElement = wait.until( ExpectedConditions.presenceOfElementLoca
                 </section>
 
                 <section data-state="lab">
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: The Waiting Game</h3>
                   <p>Originally I had though that this lab would require a different script.But it seems like we could edit our script, or copy and edit, to go to dave's site:
 <a href="http://the-internet.herokuapp.com/dynamic_loading" target="_blank">Dynamic Loading</a> then interact with it.
@@ -999,7 +989,6 @@ throw new PendingException();
                   </section>
               <!-- New Script to introduce-->
                   <section data-state="lab">
-                    <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                     <h3>Lab: Asserting Your Greatness</h3>
                     <p>This is the lab where we apply a simple assert</p>
                   </section>
@@ -1023,7 +1012,6 @@ throw new PendingException();
                 </section>
 
                 <section data-state="lab">
-                  <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                   <h3>Lab: Record Keeping</h3>
                   <p>This is the lab where we shove our results into Sauce Labs (pass/fail rather than complete)</p>
                 </section>
@@ -1159,6 +1147,29 @@ throw new PendingException();
                    </section>
 
                    <section>
+                     <h3>Abstracting Page Element Locators</h3>
+                     <pre><code class="jcva" data-trim contenteditable>
+
+@FindBy(id="i_am_a_textbox")
+private WebElement textInput;
+
+/*Set Page Object Actions*/
+
+public static GuineaPigPage getPage(WebDriver driver) {
+    return PageFactory.initElements(driver, GuineaPigPage.class);
+}
+
+public void enterCommentText(String text){
+    this.commentsTextAreaInput.click();
+    setTextAreaInputValue(this.commentsTextAreaInput, text);
+}
+                     </code></pre>
+                     <aside>
+
+                     </aside>
+                   </section>
+
+                   <section>
                      <h3>Page Object Example - Incorrect</h3>
 
                      <pre><code class="java" data-trim contenteditable>
@@ -1217,17 +1228,17 @@ throw new PendingException();
                          <li>Name tests</li>
                          <li>Apply build names to tests</li>
                        </p>
+
                        <pre><code class="java" data-trim contenteditable>
                            caps.setCapability("tags","tag_awesome");
 caps.setCapability("build","cool_builds1");
 caps.setCapability("name","Java Remote Sample Test");
                        </code></pre>
-
+                       <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
                        <aside class="notes"></aside>
                      </section>
 
                      <section data-state="lab">
-                       <img src="assets/images/lab.png" style="border:0; width:100px; height:100px; background:none; position:absolute; right:0; top:0;">
                        <h3>Lab: Labelling and Naming our Tests</h3>
                        <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
                        <aside class="notes">There's also a way to set your own build number as well</aside>
