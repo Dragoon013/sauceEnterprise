@@ -1,5 +1,7 @@
 # Sauce Labs: Selenium101 Training Course
 
+You should be able to access the presentation at this location (temporarily) http://107.170.223.87:8080/selenium101.html
+
 ### Start Me!
 In order to bring up the presentation - there are couple of things you can do.
 
