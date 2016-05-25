@@ -131,12 +131,15 @@
 
                 <section>
 					<h3>Sauce Labs History</h3>
-<ul>
-					  <li>Founded in 2008, by Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium)</li>
-</ul>
 
-                      <p style="text-align:center;">
-                    "Our purpose is to revolutionize testing so that development teams are free to innovate and deliver amazing applications—faster."
+					  <p>Founded in 2008, by Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium).</p>
+
+                      <p>
+                        <pre><span class="inner-pre" style="font-size: 30px">
+  "Our purpose is to revolutionize testing
+         so that development teams
+     are free to innovate and deliver
+        amazing applications—faster."</span></pre>
                     </p>
                       <!--Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.-->
 
@@ -171,30 +174,31 @@
 				</section>
 
                 <section>
-				  <h3>Local vs Sauce Labs Selenium Tests</h3>
+				  <h3>Local vs Remote Selenium Tests</h3>
                   <div style="float:left;width:40%;" class="centered">
                     Local
                     <p><ul>
                       <li>Can only test on the OS and browsers you have locally</li>
-                      <li>Selenium Grid</li>
+
                     </ul></p>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
-                    Sauce Labs
+                    Remote
                     <p>
-<ul>
+                      <ul>
                       <li>Record your tests</li>
                     <ul>
                       <li>Screenshots</li>
                       <li>Video Record</li>
                       <li>Logs</li>
                     </ul>
-                    <li>Selenium Grid for rent</li>
+                    <li>Selenium Grid</li>
                     <li>Parallelization</li>
                     </ul>
                     </p>
                   </div>
-<aside class="notes">So where do I actually run my selenium scripts? Well you can always run it locally - when you run a script it can pull up a browser thats on your machines, access your application, and run the test. But then you're restricted to the OS that is actually on your machine, as well as the browser versions and types that are available for that OS as well. It would be difficult to run IE on Ubuntu!
+                  <aside class="notes">
+                    So where do I actually run my selenium scripts? Well you can always run it locally - when you run a script it can pull up a browser thats on your machines, access your application, and run the test. But then you're restricted to the OS that is actually on your machine, as well as the browser versions and types that are available for that OS as well. It would be difficult to run IE on Ubuntu!
                     <p>In order to test across browsers or OS's Selenium actually offers software - a Selenium Server - that can help you create a Selenium farm - that is, a server farm that has VMs running with all of these different possible OS and browser combinations.</p>
                     <p>But that's pretty painful and time consuming to set up and manage all on your own, not to even mention the cost of hardware.</p>
                     <p>Sauce Labs handles all of that stuff for you. They essentially run a grid themselves and rent it out to their customers to run their Selenium and Appium tests on. </p>
@@ -205,54 +209,34 @@
                   <h3>Using Sauce Labs</h3>
                   <div style="float:left;width:40%;" class="centered">
 				  <ul>
-                    <li>Security</li>
+                    <li>Selenium Grid</li>
                     <li>Parallelization</li>
                     <li>Automate</li>
                   </ul>
                   </div>
                   <div style="float:right;width:50%;padding-right:0px;">
                     <ul>
-                      <li>Velocity</li>
+                      <li>Security</li>
                       <li>Seamless Integration</li>
                       <li>Support</li>
                     </ul>
                   </div>
-                  <aside class="notes">DEMO: SL UI.
-                    <p>why should you use it? Let's run a manual test - this a way to show them a way to test that they are familiar with, and they can have an intro to the basic UI.</p>
-                    <li>Dashboard</li>
-                    <li>Tunnels</li>
-                    <li>Account Details - security phrase/token</li>
+                  <aside class="notes">
+                    <li>Selenium Grid for rent.</li>
                   </aside>
                 </section>
 
                 <section data-state="lab">
                   <h3>Lab: My First Test (On Sauce Labs)</h3>
                   <p>This is the lab with the manual test</p>
-                </section>
-
-<!-- UI Elements
-                  <section>
-					<h3>Dashboard</h3>
-					<p>
-                      pic of dashboard
-					</p>
-				  </section>
-
-                  <section>
-					<h3>Tunnels</h3>
-					<p>
-                      Sauce Connect!
-					</p>
-				    </section>
-
-                    <section>
-					  <h3>Account Details</h3>
-					  <p>
-                        Sauce Connect!
-					  </p>
-				    </section>
+                  <aside class="notes">
+                    <p>UI Topics</p>
+                    <li>Dashboard</li>
+                    <li>Tunnels</li>
+                    <li>Account Details</li>
+                  </aside>
 				</section>
--->
+
                 <section>
 				  <h3>Documentation</h3>
 				  <p><ul>
