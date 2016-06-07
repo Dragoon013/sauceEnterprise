@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Sauce Laboratories - Sauce Labs 101 </title>
+
+		<meta name="description" content="Learn how to write and run a Selenium script locally and with Sauce Labs">
+		<meta name="author" content="Jacob Teal">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sauce.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+	  <div class="reveal">
+
+        <style>
+          .reveal .slides { text-align: left; }
+          .reveal .slides h1 { text-align: center; }
+          .reveal .slides h2 { text-align: center; }
+          .reveal .slides h3 { text-align: center; font-variant: none; text-transform: none;}
+        </style>
+		<!-- Any section element inside of this container is displayed as a slide -->
+
+        <img src="assets/images/saucelabslogo.png" style="border:0; width:100px; height:100px; background:none; position:absolute; left:0; top:0;">
+        <img id="lab_pic" src="assets/images/Laboratory2.png" style="visibility:hidden; border:0; width:200px; height:200px; background:none; position:absolute; right:0; top:0;">
+
+	        <div class="slides">
+
+              <section data-background="rgb(226, 35, 26)">
+                <h1>Sauce Labs 101</h1>
+
+                <p style="text-align:center">
+	              <small>Created by James Tacker</small>
+                </p>
+
+                <p style="text-align:center">
+                  <small>
+                    <small>Using Reveal.js</small>
+                  </small>
+                </p>
+              </section>
+
+              <section>
+					<h3>Trainer Intro</h3>
+<!-- left column-->
+                    <div style="float:left;width:50%;" class="centered">
+                      <p>
+                      <strong>James Tacker</strong>
+                      <p>Technical Trainer</p>
+                      <p>M.A. Multimedia</p>
+                      <p>Previous (and current) Work:</p>
+                      <li>Atlassian</li>
+                      <li>Salesforce</li>
+                      <li>NGINX</li>
+                      <li>New Relic</li>
+
+					  </p>
+                    </div>
+<!-- right column-->
+                    <div style="float:right;width:50%;padding-right:0px;">
+                      <img src="assets/images/trainer.png" style="border:0;background:none; left:0; top:0;">
+                    </div>
+				</section>
+
+              <section>
+                <h3>Agenda</h3>
+
+                <div style="text-align:left;">
+                    <img src="assets/images/agenda.png" style="border:none; background:none; width:80%">
+                  </div>
+                
+              </section>
+
+              <!-- Intro to SL Module-->
+                <section data-background="rgb(226, 35, 26)">
+                  <h2>Introduction to Sauce Labs</h2>
+                   <aside class="notes">Add some different way to know it's a new module - could do a background</aside>
+                </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+<ul>                  <li>Learn how Sauce Labs fits into the CI/CD Life Cycle</li>
+                  <li>Use the Sauce Labs UI</li>
+    </ul              <aside class="notes"></aside>
+                </section>
+
+                <section>
+				  <h3>What is Sauce Labs?</h3>
+                  <p>Testing infrastructure in the cloud for web and mobile web applications.</p>
+                  <li>Selenium - Desktop and Mobile Browser Testing</li>
+                  <li>Appium - Native Mobile Application Testing</li>
+
+                  <aside class="notes">
+                    <p>HAAS - Hardware as a service</p>
+                    <p>IAAS - Infrastructure as a service</p>
+                    <p>it runs your tests on any browser and OS combination you like - have over 500 combinations thereof. (different versions)</p>
+                    <p>So Selenium can run tests on mobile browsers (selendroid), but native mobile application testing is done through appium. Appium allows you to test native apps with all of the standard controls available through a mobile device.</p>
+                  </aside>
+                </section>
+
+                <section>
+					<h3>Sauce Labs History</h3>
+
+					  <p>Founded in 2008, by Steven Hazel, John Dunham, and Jason Huggins (Co-creator of Selenium).</p>
+
+                      <p>
+                        <pre><span class="inner-pre" style="font-size: 30px">
+  "Our purpose is to revolutionize testing
+         so that development teams
+     are free to innovate and deliver
+        amazing applications—faster."</span></pre>
+                    </p>
+                      <!--Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.-->
+
+                    <aside class="notes">
+                      <p>
+                        Sauce Labs was founded in 2008 by Jason Huggins, co-creator of Selenium (the open source standard for automated testing frameworks) and Steve Hazel, current CTO. They set out to create a cloud-based platform for automated testing to free development teams from the hassle and cost of testing so they can focus on innovating their core capabilities.
+                      </p>
+                      <p>Jason was using Selenium to do browser testing, and the process of testing the apps in different browsers was taking too long. The problem was that all the testing was being done on one machine, so he split the tests onto 4 different machines, effectively running the tests in parallel, which cut the time drastically. </p>
+                  </aside>
+                </section>
+
+                <section>
+					<h3>CD/CI Cycle - Where Sauce Labs fits in</h3>
+                    <img src="assets/images/sauceCI2.png" style="border:0; text-align:center; background:none;">
+
+                    <aside class="notes">
+
+                    </aside>
+
+                </section>
+
+                <section>
+				  <h3>Appium, Selenium, and Sauce Labs</h3>
+				  <p>Sauce's browser (Selenium) and mobile (Appium) automation frameworks send commands to specific application elements.</p>
+                    <ul>
+                    <li>Selenium (mouse click, text field entry)</li><li>Appium (mobile tap and swipe)</li>
+                    </ul>
+
+                  <aside class="notes">So <b>how</b> does Sauce Labs faciltate your testing? Selenium is the core testing framework that Sauce Labs runs for you on a variety of Browser and OS combinations.
+                    <p>Selenium is the testing framework that provides the actual language and ability to test interations on a browser. It was started by Jason Huggins in 2004, and since then a community has grown to contribute and build to it</p>
+                    <p>Appium is an API for automating eveloped by Dan Cueller as a way to take advantage of the UIAutomation elements in iOS and Android native and hybrid applications, with Appium we can mimic human interactions but also limitations</p>
+                    <p>Appium and Selenium share the same syntax</p>
+                  </aside>
+				</section>
+
+                <section>
+                  <h3>Using Sauce Labs</h3>
+                  <div style="float:left;width:40%;" class="centered">
+				  <ul>
+                    <li>Selenium</li>
+                    <li>Appium</li>
+                    <li>Parallelization</li>
+                    <li>Automation</li>
+                  </ul>
+                  </div>
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <ul>
+                      <li>Security</li>
+                      <li>Reporting</li>
+                      <li>Seamless Integration</li>
+                      <li>Support</li>
+                    </ul>
+                  </div>
+                  <aside class="notes">
+                    <li>Selenium Grid or Appium Server for rent.</li>
+                    <li>Set up emulation environments</li>
+                  </aside>
+                </section>
+
+                <section data-state="lab">
+                  <h3>Lab: Set up a Sauce Labs Account</h3>
+                  <p>Tour the Sauce Labs interface and set up a Sauce Labs account</p>
+                  <aside class="notes">
+                    <p>UI Topics</p>
+                    <li>Dashboard</li>
+                    <li>Tunnels</li>
+                    <li>Account Details</li>
+                  </aside>
+				</section>
+
+                <section>
+				  <h3>Documentation</h3>
+				  <p><ul>
+                    Let's take a tour of the Docs!
+                    <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
+                    <li><a href="https://wiki.saucelabs.com/display/DOCS/Running+Automated+Website+Tests" target="_blank">Automated Website Testing with Sauce Labs</a></li>
+                    <li><a href="http://docs.seleniumhq.org/docs/" target="_blank">Selenium Documentation</a></li>
+                    <li><a href="http://appium.io/" target="_blank">Appium Documentation</a></li>
+				  </ul></p>
+                  <aside class="notes">
+                    Click on each of the links, and run through each of the sites Docs
+                    <p>Show main page, blog posts for changes, tour</p>
+                    <p>Explain these are the basic steps to run an automated test</p>
+                    <p>Point out the coverage for all languages up top, then point out some key sections</p>
+                  </aside>
+
+				</section>
+<!--Selenium and Appium Tests Module-->
+                <section data-background="rgb(226, 35, 26)">
+                  <h2>Sauce Labs Tests</h2>
+                  <aside class="notes">We are going to run a basic python test in Sauce Labs</aside>
+                </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+                  <ul><li>Conduct a Sauce labs test (locally or remotely)</li>
+                  <li>Identify the general components of  Selenium and Appium test scripts</li>
+                  <li>Setup Sauce Connect</li>
+                  </ul>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+				  <h3>Configuring the Test Environment</h3>
+                  <div style="float:left;width:40%;" class="centered">
+                    <p>Selenium</p>
+                    <img src="assets/images/Gears.png" style="border:0; background:none; width:90%">
+                  </div>
+                  <div style="float:right;width:40%;" class="centered">
+                    <p>Appium</p>
+                    <img src="assets/images/Gears2.png" style="border:0; background:none; width:100%">
+                  </div>
+                  <aside class="notes">  
+                  </aside>
+				</section>
+
+        <section>
+          <h3>Local vs Remote Tests</h3>
+                  <div style="float:left;width:40%;" class="centered">
+                    Local
+                    <p><ul>
+                      <li>Can only test on local OS and browser</li>
+
+                    </ul></p>
+                  </div>
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    Remote
+                    <p>
+                      <ul>
+                      <li>Record & monitor your tests</li>
+                    <li>Selenium Grid & Appium Instance</li>
+                    <li>Parallelization</li>
+                    </ul>
+                    </p>
+                  </div>
+                  <div style="position:center;float:center;">
+                    <img src="assets/images/localvremote2.png" style="float:center;border:none; background:none; width:100%">
+                  </div>
+                  <aside class="notes">
+                    So where do I actually run my scripts? Well you can always run it locally - when you run a script it can pull up a browser thats on your machines, access your application, and run the test. But then you're restricted to the OS that is actually on your machine, as well as the browser versions and types that are available for that OS as well. It would be difficult to run IE on Ubuntu!
+                    <p>In order to test across browsers or OS's Selenium actually offers software - a Selenium Server - that can help you create a Selenium farm - that is, a server farm that has VMs running with all of these different possible OS and browser combinations.</p>
+                    <p>But that's pretty painful and time consuming to set up and manage all on your own, not to even mention the cost of hardware.</p>
+                    <p>Sauce Labs handles all of that stuff for you. They essentially run a grid themselves and rent it out to their customers to run their Selenium and Appium tests on. </p>
+                  </aside>
+        </section>
+        <section>
+          <section>
+                  <h3>Testing Frameworks</h3>
+                  <p></p>
+                  <p>A test automation framework is a scaffold comprised of libraries, dependecies, drivers, and helper scripts that facilitate the execution of test scripts.</p>
+                  <aside class="notes">
+                    <p>Ok so what does that mean? It's essentially just a bunch of additional libraries we can use in conjunction with our script for several cases:</p>
+                    <li>Record your data - Frameworks often have, or can have a way for you to output the results of your test scripts for you, rather than writing them by hand</li>
+                    <li>Talk to external applications - you can include external libraries in your framework to talk to and send results to places like Sauce Labs</li>
+
+                  </aside>
+                </section>
+                <section>
+                  <h3>Run Tests in Parallel</h3>
+                </section>
+              </section>
+                <section>
+				  <section>
+                  <h3>Testing Scripts on Sauce Labs</h3>
+                  <p>Requirements:</p>
+                  <li>Remote WebDriver</li>
+                  <li>Sauce Labs Authentication (API)</li>
+                  <li>Desired Capabilities</li>
+                  <li>Reporting Results?</li>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <h3>Sauce Labs Identification</h3>
+                  <p>The script uses the Sauce Labs API to autheticate user and record results against that user's profile</p>
+
+                  <div style="float:left;width:50%;" class="centered">
+                    <li>Environment Variables</li>
+                    <pre><code class="zsh" data-trim contenteditable>
+                        export SAUCE_USERNAME=dragoon013
+export SAUCE_ACCESS_KEY=b89b7205-3aca-4af2-a618-9bab4c7bdebd
+                    </code></pre>
+                  </div>
+
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <li>Explicit Variables</li>
+                    <pre><code class="java" data-trim contenteditable>
+                        public static final String USERNAME = "dragoon013";
+public static final String ACCESS_KEY = "b89b7205-3aca-4af2-a618-9bab4c7bdebd";
+                    </code></pre>
+                  </div>
+                  <aside class="notes">makes tests more re-usable among other team members, doesn't run the risk of potential exposure of credentials</aside>
+                </section>
+              </section>
+              <section>
+                <h3>Sauce Labs REST APIs</h3>
+                <p>REST API can automate GET, PUT, and POST Requests</p>
+                  <ul>
+                    <h4>Quick Start</h4>
+                      <li>Choose API Client</li>
+                      <li>Authenticate</li>
+                      <li>Create a Unit Test</li>
+                  </ul>
+                </section>
+                <section>
+                   <section>
+                  <h3>Sauce Connect</h3>
+                  <p>Tunneling app that establishes a secure connection between local machine and Sauce Lab VM.</p>
+                  <div style="position:center;float:left;width:50%;"class="centered">
+                  <ul>
+                    <li>Alternative to whitelisting IPs</li>
+                    <li>Stablizes network connection</li>
+                    <li><a href="https://wiki.saucelabs.com/display/DOCS/Sauce+Connect"target="_blank">Sauce Connect Documentation</a></li>
+                  </ul>
+                </div>
+                <div style="position:center;float:right;width:50%;"class="centered">
+                  <img src="assets/images/connection_final.png" style="float:right;border:none; background:none; width:60%">
+                </div>
+                </section>
+                  <section>
+                  <h3>Sauce Connect Best Practices</h3>
+                  <p>Use Sauce Connect in situations where your website/application isn't publicly accessible.</p>
+                  <ul>
+                    <li>Download client</li>
+                    <li>Install Sauce Connect Add-On (Firefox only)</li>
+                    <li>Launch a Tunnel</li>
+                </ul>
+              </section>
+              <section>
+                  <h3>Installing Sauce Connector</h3>
+                  <ul>
+                    <li>Download add-on from<a href="https://addons.mozilla.org/en-us/firefox/addon/sauce-connect/?src=ss;" target="_blank"> Firefox marketplace.</a></li>
+                    <li>Follow installation wizard instructions</li>
+                    <li>or Download client in Sauce Labs interface.</li>
+                    <div align="middle"><img src= "assets/images/SauceConnect.png" style="border:none; background:none; float:left; width:80%">
+                    </div>
+                  </ul>
+                </section>
+                  <section>
+                  <h3>Configure the Add-on</h3>
+                  <ul>
+                    <li>In Firefox, <strong>Tools> Add-Ons > Extensions</strong></li>
+                    <li>Choose "Preferences"</li>
+                    <li>Enter Sauce login credentials when prompted</li>
+                    <li>Set the id of in "Tunnel" tab</li>
+                    </ul>
+                    <div align="middle"><img src= "assets/images/Firefox.png" style="border:none; background:none; width:60%">
+                    </div>
+                </section>
+                <section>
+                  <h3>Launch a Sauce Connect Tunnel</h3>
+                    <p>Choose <strong>Tools > Web Developer > Launch SC</strong></p>
+                    <div align="middle"><img src="assets/images/Firefox2.png" style="border:none; background:none; float:center; width:50%">
+                    </div>
+              </section>
+              <section>
+                  <h3>View Tunnel in Sauce Labs</h3>
+                  <ul>
+                    <li>Choose the "Tunnels" tab to view "Active Tunnels"</li><li>Display is list format with <i>Session ID</i> and <i>Host</i></li>
+                  </ul>
+                  <div align="middle"><img src="assets/images/Firefox3.png" style="border:none; background:none; width:90%">
+                  </div>
+                </section>
+              </section>
+                <section data-state="lab">
+                  <h3>Lab: Run a Sauce Labs Test</h3>
+                  <p>Run a python Test</p>
+                  <aside class="notes">
+                    <p>Lab Topics</p>
+                    <li>Install Python</li>
+                    <li>Run Python Script</li>
+                    <li>Check results in Sauce Labs</li>
+                  </aside>
+        </section>
+             
+<!-- Reporting Tests Results Module-->
+                <section data-background="rgb(226, 35, 26)">
+                  <h2>Test Reporting</h2>
+                   
+                </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+                  <ul><li>Update Sauce Job status reports</li>
+                  <li>View/manage archived test and build data</li>
+                  <li>Build links to test results</li>
+                  </ul>
+                  <aside class="notes">
+                    </p>
+                  </aside>
+                </section>
+                
+              <section>
+                <h3>Managing Test Results</h3>
+                  <p>There are three ways to set "Passed/Failed" test conditions in Sauce Labs</p>
+                  <ol>
+                    <li>Use the REST API update_job method<pre><code class="zsh" data-trim contenteditable>
+                        curl -X PUT \
+-s -d '{"passed": true}' \
+-u YOUR_USERNAME:YOUR_ACCESS_KEY \
+https://saucelabs.com/rest/v1/YOUR_USERNAME/jobs/YOUR_JOB_ID 
+                    </code></pre></li>
+                    <li>Configure reporting conditions in the<a href="https://addons.mozilla.org/en-us/firefox/addon/sauce-connect/?src=ss;" target="_blank"> test scripts.</a></li>
+                    <li>Configure the Testing Framework to report the test data</li>
+                  </ol>
+              </section>
+              <section>
+                <h3>Reading Results</h3>
+                <p> After a test completes, you can view the Test results at <i>saucelabs.com/beta/dashboard/tests</i>
+                <ul>
+                  <li>Choose either Automated/Manual Tests</li>
+                  <li>Select the Test you want to view</li>
+                  <div align="middle"><img src="assets/images/ReadingTests.png" style="border:none; background:none; float:center; width:70%">
+                  </div>
+                  </ul>
+                </section>
+                <section>
+                <h3>Sharing Results</h3>
+                <p>The <strong>Test Details</strong> page in the Sauce Labs Dashboard has options to share a "Test Link" with other team members</p>
+                <div align="middle"><img src="assets/images/TestDetails.png" style="border:none; background:none; float:center; width:70%">
+                </div>
+              </section>
+              <section>
+              <section>
+                <h3>Manually Creating Test Links</h3>
+                <p>There are three types of links you can create:
+                  <ol>
+                    <li>Links to Jobs that Require a Login</li>
+                    <li>Links to Jobs that Don't require a Login</li>
+                    <li>Temporary Links to Jobs</li>
+                  </ol>
+                </section>
+                <section>
+                  <h3>Links That Require Login</h3>
+                
+                  <p>To access a specific job locally:</p>
+                  <ul>
+                    <li>Write ID to log file</li>
+                    <li>Create a URL with following format</li>
+                    <pre><code class="zsh" data-trim contenteditable>http://saucelabs.com/jobs/YOUR_JOB_ID</code></pre>
+                    <li>Then replace YOUR_JOB_ID with the session ID</li>
+
+                    <aside class="notes">When a client requests a new browser session, a session ID is returned to the client. Sauce uses that ID for accessing test results.</aside>
+
+            </section>
+            <section>
+              <h3>Links That Don't Require Login</h3>
+              <p>Use authentication tokens, to prevent login requirements. Auth tokens are generated on a job basis.
+                <p> For more details on this approach, and also temporary links, refer to <a href="https://wiki.saucelabs.com/display/DOCS/Building+Links+to+Test+Results" target="_blank"> the Documentation.</a></p>
+              </section>
+          </section>
+
+
+                <section data-state="lab">
+                  <h3>Lab: Configure Test Conditions</h3>
+                  <p>For this lab we will run another Python test, except we will cause it to fail and compare the results</p>
+                </section>
+                <section data-state="lab">
+                  <h3>Lab: Share Results</h3>
+                  <p>For this lab we will use the session ID to manually create a Test link that requires a login</p>
+                </section>
+
+<!-- Troubleshooting Tips Sauce Labs Module-->
+                <section data-background="rgb(226, 35, 26)">
+                  <h2>Troubleshooting</h2>
+                  <aside class="notes"> we will finally run the script here, locally and on sauce labs, and compare the methods and dicuss the benefits of running on sauce labs</aside>
+                </section>
+
+               
+
+<!-- Sauce Labs Best Practices Module-->
+                <section data-background="rgb(226, 35, 26)">
+                  <h2>Best Practices</h2>
+                  <aside class="notes">We'll discuss the different testing frame works here. </aside>
+                </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+                  <ul>
+                    <li>Understand the use of Testing Frameworks</li>
+                    <li>Understand the difference between and assert and a verification</li>
+                    <li>Use a framework to record test results in Sauce Labs</li>
+                  </ul>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <h3>Popular Frameworks</h3>
+
+                  <div style="float:left;width:50%;" class="centered">
+                    <p><strong>Java:</strong></p>
+                    <li>TestNG</li>
+                    <li>JUnit</li>
+
+                    <p><strong>Ruby:</strong></p>
+                    <li>RSpec</li>
+                    <li>TestUnit</li>
+                  </div>
+
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <p><strong>Python:</strong></p>
+                    <li>Pytest</li>
+                    <li>Nose</li>
+                    <li>Robot</li>
+                    <li>UnitTest</li>
+
+                  </div>
+                  <aside class="notes">
+
+                    <p>JavaScript:</p>
+                    <li>Mocha</li>
+                    <li>Karma</li>
+                    <li>Nightwatch</li>
+                    <li>Protractor</li>
+                    <li>Jasmine</li>
+
+                    <p>PHP:</p>
+                    <li>PHPUnit</li>
+                    <li>Sausage</li>
+                    <li>Codeception</li>
+
+                    <p>C#:</p>
+                    <li>NUnit</li>
+                    <li>MSTest</li>
+
+                    <p>Perl:</p>
+                    <li>TestMore</li>
+                  </aside>
+                </section>
+
+                <section>
+                <section>
+                  <h3>Test Driven Development vs. Behavior Driven Development</h3>
+                  <p>TDD is where a developer writes test, and then writes code, and tests that code continuously, until the test passes.</p>
+                  <p>BDD is also a way to plan and develop code in a similar manner, but it allows teams to write scenarios and features without necessarily having technical knowledge.</p>
+                  <aside class="notes">TDD is also somewhat synonymous with "test first" development. BDD means writing tests that read like a book, almost in full sentences, so people can understand precisely what a test is trying to accomplish.</aside>
+                </section>
+
+                <section>
+                  <h3>TDD Planning Example</h3>
+                  <p>Sauce_counter() needs to count the number of sauces inputted</p>
+                  <p>Pasta_counter() needs to count the number of pastas inputted</p>
+                  <p>sNpComparer() needs to compare the counts and make sure that they are equal</p>
+                </section>
+
+
+                <section>
+                  <h3>BDD Planning Example</h3>
+
+                  <p>Feature: Pasta and Sauce Matchmaker</p>
+                  <p>Scenario: some sauces</p>
+                  <p>Given I have 5 different kinds of Sauce</p>
+                  <p>When I have 5 different kinds of Pasta</p>
+                  <p>Then my chef will be happy</p>
+                </section>
+
+                <section>
+                  <h3>BDD Framework Example</h3>
+
+                  <pre><code class="java" data-trim contenteditable>
+                      @Given("^I have (\\d+) sauces for my pasta")
+public void the_number_of_sauces(Int arg1) throws Throwable {
+// Write code here that turns the phrase above into concrete actions
+throw new PendingException();
+}
+
+@When("^I have (\\d+) kinds of pasta")
+public void the_number_of_pastas(Int arg1) throws Throwable {
+// Write code here that turns the phrase above into concrete actions
+throw new PendingException();
+}
+
+@Then("^My chef will be (.*)$")
+public void the_feeling_is(String arg1) throws Throwable {
+// Write code here that turns the phrase above into concrete actions
+throw new PendingException();
+}
+                  </code></pre>
+                  <aside class="notes"></aside>
+                </section>
+                </section>
+
+                <section>
+                  <h3>BDD Frameworks</h3>
+                  <div style="float:left;width:50%;" class="centered">
+                    <p>Python:</p>
+                    <li>Behave</li>
+                    <li>Lettuce</li>
+                  </div>
+
+                  <div style="float:right;width:50%;padding-right:0px;">
+                    <p>Java:</p>
+                    <li>CucumberJVM</li>
+
+                    <p>Ruby:</p>
+                    <li>Cucumber</li>
+                  </div>
+                  <aside class="notes">
+
+                    <p>JavaScript:</p>
+                    <li>CucumberJS</li>
+
+                    <p>PHP:</p>
+                    <li>Behat</li>
+
+                    <p>C#:</p>
+                    <li>SpecFlow</li>
+
+                  </aside>
+                </section>
+
+                <section>
+                  <section>
+                    <h3>Assertions and Verifications</h3>
+                    <p>Asserts:</p>
+<ul>
+                    <li>A testing frameork directive that assumes a value to be true, and stops the test and/or throws an error if false.</li>
+</ul>
+                    <p>Verifications:</p>
+<ul>
+                    <li>Selenium commands that makes sure an element is available on a page.</li>
+
+                    </ul><aside class="notes"> The difference here lies in that with verifications, the test will still keep going, even if they are false. Most selenium scripts use a combination of these to assert that a large object exists (like the page has at least laoded) and then verifies individual key elements that are going to be tested. The logic behind this is if the site can't even load, there's no point in running the rest of the script, as that is a major dependency.</aside>
+                  </section>
+              <!-- New Script to introduce-->
+                  <section data-state="lab">
+                    <h3>Lab: Asserting Your Greatness</h3>
+                    <p>This is the lab where we apply a simple assert</p>
+                  </section>
+                </section>
+
+                <section>
+                <section>
+                  <h3>Record your Results with Sauce Labs</h3>
+                  <ul>
+                  <li>You can use the update_job method in the Sauce Labs REST API after the test has run.</li>
+                  <p></p>
+                  <li>Use the Java Helper library; it will automatically send pass/fail results to Sauce Labs</li>
+                  <p></p>
+                  <li>Configure your testing framework to send results to Sauce Labs</li>
+
+                  </ul>
+                  <aside class="notes">
+                    <p>So locally it's not an issue to record results, you can just print results to a file or on the console. But if we want to send details to Sauce Labs on whether a test has passed or failed, rather than just complete or not, we will have to use the Sauce Labs API or a test framework.
+                    </p>
+                  </aside>
+                </section>
+
+                <section data-state="lab">
+                  <h3>Lab: Record Keeping</h3>
+                  <p>This is the lab where we shove our results into Sauce Labs (pass/fail rather than complete)</p>
+                </section>
+</section>
+                 <!--Best Practices Module-->
+                 <section data-background="rgb(226, 35, 26)">
+                   <h2>Testing with Sauce Labs: Best Practices</h2>
+                   <aside class="notes">General best practices, testing methodology</aside>
+                 </section>
+
+                <section>
+                  <h3>Module Objectives</h3>
+                  <p>This module enables you to:</p>
+                  <ul>
+                    <li>Understand testing strategies that can help you set up your automated testing</li>
+                    <li>Label, name and tag your tests to faciliate searching for past tests on Sauce Labs</li>
+                  </ul>
+                  <aside class="notes"></aside>
+                </section>
+
+                <section>
+                  <section>
+                    <h3>Dependencies</h3>
+                    <p>Hard coding dependencies to access external account or data</p>
+                    <ul><li>Development and testing environments can change between the writing of your test scripts and when they run</li></ul>
+                    <ul><li>Security</li></ul>
+                    <aside class="notes">
+                      <p>We've talked about avoiding this a bit already, but there are some other dependencies for tests that need to be considered as well.</p>
+                      <p>Security we've talked about as well, we don't want to have a history of our credentials in a git history for example.</p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <h3>Setup</h3>
+                    <p>Setup initiates <i>prerequisite</i> tasks that need to be taken care of before your test runs, such as logging in, or dismissing a introductory pop-up.</p>
+
+                    <p>Example:</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        public void setupLogin() {
+
+    driver.findElement(By.id("loginID")).sendKeys("username");
+    driver.findElement(By.id("password")).sendKeys("password");
+    driver.findElement(By.id("Button")).click();
+}
+                    </code></pre>
+
+                    <aside class="notes">
+                      <p>This can also include the desired capabilities and setting the WebDriver.</p>
+                    </aside>
+                  </section>
+
+                  <section>
+                    <h3>Teardown</h3>
+                    <p>The teardown function includes <i>Post requisite</i> tasks that need to occur, like closing the browser, logging out, or terminating the remote session.</p>
+                    <p>Example:</p>
+                    <pre><code class="java" data-trim contenteditable>
+                        public void tearDown() throws Exception {
+
+    webDriver.get().quit();
+}
+                    </code></pre>
+                    <aside class="notes"></aside>
+                  </section>
+                </section>
+
+                   <section>
+                     <h3>Different Kinds of Tests</h3>
+                     <p>Functional Testing</p>
+                     <ul><li>Test a functionality or feature of your application's that results in a pass or a failure.</li></ul>
+                     <p>Performance Testing</p>
+                     <ul><li>Performance tests gauge and output performance metrics for your application.</li></ul>
+                     <aside class="notes">
+                       <p>Functional testing is what Sauce Labs offers to help faciliate and simplify for it's users.</p>
+                       <p>Performance testing serves to answer questions suchas, can your application server handle a particular load, and does it behave as expected when you push it to its limit? These types of tests are better undertaken with a testing infrastructure that has been specifically developed for performance testing, so all baseline performance metrics are well established and understood before you start the test.</p>
+                       <p>Some eaxmples of performance testing helpers (similar to sauce labs):</p>
+                     </aside>
+                   </section>
+
+                   <section>
+                   <section>
+                     <h3>Retry Strategy</h3>
+                     <p>
+                       We want to make sure that our test fails because something is actually wrong.
+                     </p>
+                     <p>Retries allow us to do a context specific retry for a particular set of actions. We wouldn't want to do the whole test again!</p>
+                     <aside class="notes">
+                       <p>There will always be flaky tests, and tests that once breezed through with no problem can fail for what seems like no reason. The trick is figuring out whether a test that fails does so because it found a real problem in your app functionality, or because there was an issue with the test itself. </p>
+</aside>
+                   </section>
+
+                   <section>
+                     <h3>Retry: The Game</h3>
+                     <p>Example:</p>
+                     <p>You have a game that pops up with an alert everytime the player completes a level or dies.</p>
+                     <p>The Test:</p>
+                     <p>Your test comes back with a failure: "You have died... Again."</p>
+                     <p>The Retry:</p>
+                     <p>You can only continue the test if the player completes a level. Another retry results in a sucessful test, this time, where the playerxs did not die.</p>
+                     <aside class="notes">
+                       <p></p>
+                     </aside>
+                   </section>
+
+                   </section>
+
+                   <section>
+                     <h3>Small, Atomic, and Autonomous Testing</h3>
+                     <p>Small</p>
+                     <ul><li>Tests should be short and succinct.</li></ul>
+                     <p>Atomic</p>
+                     <ul><li>Tests should focus on testing a single feature.</li></ul>
+                     <p>Autonomous</p>
+                     <ul><li>Tests should be able to run completely independently of other tests.</li></ul>
+                     <aside class="notes">
+
+                       <p>Short - If you have a test suite of 100 tests running concurrently on 100 VMs, then the time it will take to run the entire suite will be determined by the longest/slowest test case. Keeping your tests small ensures that your suite will run efficiently and provide you with results faster. </p>
+                       <p>Atomic - The test makes clear exactly what it is that you're testing. If the test fails, then you should also have a very clear idea of what needs to be fixed. </p>
+                       <p>Autonomous - Tests should not be dependent on the results of one test to run successfully. In addition, an autonomous test should use its own data to test against, and not create potential conflicts with other tests over the same data.  </p>
+                     </aside>
+                   </section>
+
+                   <section>
+                   <section>
+                     <h3>Object Oriented Testing</h3>
+                     <p>Page Objects</p>
+                     <ul>
+                       <li>Code reuse across tests - reuse common element interactions</li>
+                     <li>Abstraction - with product change, only change one piece of code</li>
+                     </ul>
+                     <aside class="notes">
+                       <p>
+                         Sometimes we interact with particular elements in our applicaiton repeatedly. The nature of applications is that they change over time as well. Instead of writing the same code for the same interacctions, we ad a level of abstraction with page objects.
+                       </p>
+                     </aside>
+                   </section>
+
+                   <section>
+                     <h3>Abstracting Page Element Locators</h3>
+                     <pre><code class="jcva" data-trim contenteditable>
+
+@FindBy(id="i_am_a_textbox")
+private WebElement textInput;
+
+/*Set Page Object Actions*/
+
+public static GuineaPigPage getPage(WebDriver driver) {
+    return PageFactory.initElements(driver, GuineaPigPage.class);
+}
+
+public void enterCommentText(String text){
+    this.commentsTextAreaInput.click();
+    setTextAreaInputValue(this.commentsTextAreaInput, text);
+}
+                     </code></pre>
+                     <aside>
+
+                     </aside>
+                   </section>
+
+                   <section>
+                     <h3>Page Object Example - Incorrect</h3>
+
+                     <pre><code class="java" data-trim contenteditable>
+                         public class Login {
+
+    public void testLogin() {
+        selenium.type("inputBox", "testUser");
+        selenium.type("password", "my supersecret password");
+        selenium.click("sign-in");
+        selenium.waitForPageToLoad("PageWaitPeriod");
+        Assert.assertTrue(selenium.isElementPresent("compose button"),
+        "Login was unsuccessful");
+    }
+}
+                     </code></pre>
+
+                     <aside class="notes"></aside>
+                   </section>
+
+                   <section>
+                     <h3>Page Object Example - Correct</h3>
+
+                     <pre><code class="java" data-trim contenteditable>
+                         public class TestLogin {
+
+    public void testLogin() {
+        SignInPage signInPage = new SignInPage(selenium);
+        HomePage homePage = signInPage.loginValidUser("userName", "password");
+        Assert.assertTrue(selenium.isElementPresent("compose button"),
+        "Login was unsuccessful");
+    }
+}
+                     </code></pre>
+                     <aside class="notes"></aside>
+                   </section>
+                   </section>
+
+                   <section>
+                     <h3>Parallelization</h3>
+                     <p>Avoid dependencies between tests</p>
+                     <ul><li>If you chain tests together, when one at the top fails, then they will all fail.</li></ul>
+                     <p>Use Frameworks</p>
+                     <ul><li>Frameworks include helpful libraries and functionality that can help you make the most of parallelization.</li></ul>
+                     <aside class="notes">
+                       <p>Running tests in parallel is the secret Sauce for accelerating your development process and creating a continuous integration/continuous delivery pipeline.</p>
+                       <p>One of the main features that Sauce Labs offers is parallelization, the ability to run serveral scripts at once on a variety of platforms. Since tests and commands are sent remotely, these tests take longer to run individually, but with parallelization, we can run them all at once. That is, we can start them all at the same time, which cuts down on the total time tests would normally take, saving time and money for your teams and business.</p>
+                       <p>It's good to avoid dependencies between tests. This goes along with the atomic testing strategy, where we want to create autonomous tests, so that they don't depend on each other, and when one fails, then we know exactly what failed.</p>
+                     </aside>
+                   </section>
+
+                   <section>
+                     <section>
+                       <h3>Label Your Tests</h3>
+                       <p>
+                         <li>ID tests</li>
+                         <li>Name tests</li>
+                         <li>Apply build names to tests</li>
+                       </p>
+
+                       <pre><code class="java" data-trim contenteditable>
+                           caps.setCapability("tags","tag_awesome");
+caps.setCapability("build","cool_builds1");
+caps.setCapability("name","Java Remote Sample Test");
+                       </code></pre>
+                       <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
+                       <aside class="notes"></aside>
+                     </section>
+
+                     <section data-state="lab">
+                       <h3>Lab: Labelling and Naming our Tests</h3>
+                       <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
+                       <aside class="notes">There's also a way to set your own build number as well</aside>
+                     </section>
+                   </section>
+
+                 <section data-background="rgb(226, 35, 26)">
+                   <h2>Additional Resources</h2>
+                 </section>
+
+                 <section>
+                  <h3>Further Information</h3>
+                  <li><a href="http://www.seleniumhq.org/docs" target="_blank">SeleniumHQ: Documentation</a></li>
+                  <li><a href="http://elementalselenium.com/" target="_blank">Dave Haeffner's Selenium Newsletter</a></li>
+                  <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
+                  <li><a href="https://github.com/saucelabs-sample-scripts" target="_blank">Sauce Labs Sample Test Scripts</a></li>
+                  <li><a href="https://github.com/saucelabs-sample-test-frameworks" target="_blank">Sauce Labs Sample Test Frameworks</a></li>
+                  <aside class="notes"></aside>
+                 </section>
+
+                 <section>
+                   <h3>Q&A</h3>
+                   <li>Insert link to survey</li>
+                   <li>Support: <a href="mailto:help@saucelabs.com" target="_top">help@saucelabs.com</a></li>
+                   <aside class="notes"></aside>
+                 </section>
+
+            </div>
+
+
+		</div>
+
+      <script src="lib/js/head.min.js"></script>
+	  <script src="js/reveal.js"></script>
+
+	  <script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                slideNumber: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+          			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'lib/js/jquery-2.2.4.min.js'},
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external]' ); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+            Reveal.addEventListener( 'slidechanged', function( event ) {
+//            console.log(event.currentSlide.getAttribute("data-state"))
+// if we're on a lab slide, unhide the lab image, otherwise hide it.
+
+            if(event.currentSlide.getAttribute("data-state") === "lab") {
+            document.getElementById("lab_pic").style.visibility="visible";
+            }else{
+            document.getElementById("lab_pic").style.visibility="hidden";
+            }
+
+            } );
+
+		</script>
+
+	</body>
+</html>
