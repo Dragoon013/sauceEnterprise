@@ -113,6 +113,23 @@
                   </ul>
     </ul              <aside class="notes"></aside>
                 </section>
+                <section>
+                  <h3>Prequisites</h3>
+                  <div style="float:left;width:50%;" class="centered">
+                  <ul><p>Courses:</p>
+                    <li>Selenium 101</li>
+                    <li>Getting Started with Sauce Labs</li>
+                  </ul>
+                </div>
+                <div style="float:right;width:50%;padding-right:0px;">
+                  <ul><p>Topics:</p>
+                    <li>Sauce Labs Account</li>
+                    <li>Creating a Manual Test</li>
+                    <li>Sharing Test Results</li>
+                    <li>Archiving Tests</li>
+                  </ul>
+                </div>
+              </section>
 
                 <section>
                   <section>
@@ -233,7 +250,7 @@
 --pac # url </code></pre></div>
 <p>Linux/Mac OS X example:</p>
 <div style="float:left;width:100%;" class="centered"><pre><code class="zsh" data-trim contenteditable>
-./sc -u USERNAME -k ACCESS_KEY --proxy host:port --tunnel-proxy
+./sc -u USERNAME -k ACCESS_KEY --proxy host:port --proxy-tunnel
 </code></pre></div>
                   <aside class="notes">The most important thing to understand about setting up Sauce Connect is that while it doesn't need to be set up on the same machine as the site or application you're testing, it must be on the same network.Fundamentally, Sauce Connect makes two separate outbound connections for two separate purposes. The first, which -p, --proxy <host:port> uses, is a lightweight connection to our REST API that simply tells our servers basic information about the status of Sauce Connect's status (for example, starting up, ready, stopping).
                     The second connection is to the actual tunnel virtual machine (VM) created for your Sauce Connect instance. Enabling the -T, --proxy-tunnel flag will cause some proxy specified with -p, --proxy to be used for this connection as well. You should try to avoid using a proxy for this connection, since it is already TLS secured, and a large volume of data tends to go over this connection. Adding another step in the middle, in the form of a proxy, can hinder test performance.
@@ -396,8 +413,13 @@ httpsProtocol # protocol used</aside>
             <section>
               <h3>Jenkins Plug-In</h3>
               <p>Sauce Connect can leverage Jenkins CI/CD pipeline using Sauce OnDemand CI Plugin</p>
-              <p>Requires installation and configuration of Jenkins</p>
-              <p>Sauce first, Jenkins second</p>
+              <ul>
+              <li>Requires installation and configuration of Jenkins</li>
+              <li>"Sauce first, Jenkins second"</li>
+            </ul>
+              <div align="middle">
+                  <img src= "assets/images/Jenkins.png" style="border:none; background:none; width:35%">
+                    </div>
               <aside class="notes"> We will go into a deeper dive later on about the Jenkins plugin when we explore the continuous integration section of this course. However it's worth mentioning that before one begins testing in Jenkins, it's a good idea to ensure the tests are running on Sauce Labs first.</aside>
             </section>
             <section>
@@ -462,12 +484,23 @@ httpsProtocol # protocol used</aside>
               </section>
               <section>
                 <h3>Sauce Connect Best Practices</h3>
-                <h4>Security/Networking</h4>
-                <p>Designated Server for sc host</p>
-                <p>Firewall rules so SC ONLY accesses is to specific host</p>
-                <p>Configure Intrusion Detection on SC Proxy logs</p>
-                <h4>Load and Concurrency</h4>
-                  <p>30 concurrent connections per tunnel</p>
+                <p>Security/Networking</p>
+                <ul>
+                <li>Designated Server</li>
+                <li>Firewall Rules</li>
+                <li>Intrusion Detection</li>
+              </ul>
+                <p>Concurrency</p>
+                <ul>
+                  <li>30 Per Tunnel</li>
+                </ul>
+                <aside class="notes"><ul>
+                <li>Designated Server for Sauce Connect host</li>
+                <li>Firewall rules so SC ONLY accesses is to specific host</li>
+                <li>Configure Intrusion Detection on SC Proxy logs</li>
+                <li>30 concurrent connections per tunnel</li>
+              </ul>
+                </aside>
               </section>
             <section>
                 <section data-state="lab">
@@ -497,46 +530,128 @@ httpsProtocol # protocol used</aside>
                 <section>
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
-                  <ul><li>Download Sauce to a VM</li>
-                  <li>Review the command line operations</li>
-                  <li>Identify VM reliability, persistence, and upper limits</li>
+                  <ul>
+                  <li>Set up Pre-run executables</li>
+                  <li>Download apps to a VM</li>
                   </ul>
-                  <aside class="notes">
+                  <aside class="notes"></aside>
                     </p>
                   </aside>
                 </section>
                 <section>
-                  <h3>Downloading Files to Sauce VM</h3>
-                </section>
-                <section>
-                  <h3>Editing the Host File</h3>
-                </section>
-                <section>
                   <section>
                   <h3>Pre-Run Executables</h3>
+                  <p>A script that allows you to download assets, and configure browsers settings on Sauce VM prior to testing</p>
+                  <ul><p>Examples:</p>
+                    <li>Set Window Preferences</li>
+                    <li>Ignore Alert Messages</li>
+                    <li>Install applications</li>
+                  </ul>
+                  <aside class="notes">There tends to be little to no uniformity amongst browsers--even if we're talking about the same version, because end users will often modify things on the client side to fit their needs with ad-ons, preferences, security settings and the like. Furthermore, problems with browser or virtual machine configurations can cause issues with your tests. For these reasons, you may want to make changes to the browser or VM configuration before your test runs. This is where Pre-run executables come in handy. They allow us to configure browser profiles and settings on our test VMs. For example if we wanted to test against a security-conscious user profile that includes using incognito windows, pop up blockers, disabled JavaScript etc. Or maybe you want to change settings that could generate alert messages, raise dialogs, and cause your tests to fail.
+                    So what is a pre-run executable exactly? Well, in it's simplest form, it is a script that you download to the Sauce Labs virtual machine and run prior to a test to change settings for Safari, Internet Explorer, or any other browser, or to configure the virtual machine that your tests will run on.</aside>
                 </section>
                 <section>
-                  <h3>Pre-Run Script Configuration</h3>
+                  <h3>Pre-run Configuration</h3>
+                  <p>The <strong>'prerun'</strong> capability points to the public location of your resources (apps and/or scripts). Below is an example of ignoring a Safari warning pop-up</p></p>
+                  <ul>
+                    <li>Shell script:<div><pre><code class="zsh" data-trim contenteditable>
+                        #!/bin/bash
+defaults write com.apple.Safari WarnAboutFraudulentWebsites false
+}
+                      </code></pre></div></li>
+                      <li>Test Script:<div>
+                  <pre><code class="zsh" data-trim contenteditable>
+                    desired_capabilities['prerun'] = {
+    'executable':'http://myscriptstorage.com/disable_fraud.sh',
+    'background': 'false'
+}
+                      </code></pre></div></li>
+                    </ul>
+                  <aside class="notes"><p>This example overrides the Safari browser preferences to ignore a security message so that a test doesn't fail. Steps to configure your pre-run executable</p>
+                    <ol>
+                      <li>Write your script to reflect the changes you want to make to the browser or virtual machine configuration.</li>
+                    <li>Put your script in a location where Sauce can access it.</li>
+                    <li>For example, your script could be stored in GitHub or in Sauce Storage. You can also use Gist to easily host your executables.</li> 
+                    <li>Use the link pointing to the raw file contents.</li>
+                    <li>In your test script, set the prerun capability to point to the location of your pre-run executable.</li>
+                    <li>This example illustrates setting the prerun desired capability to point to myscriptstorage.com, where the disable_fraud.sh script used as an example is hypothetically located.</li></aside>
                 </section>
                 <section>
                   <h3>Silent Mode</h3>
+                  <p>Install executables without modal dialog messages</p>
+                  <p>Syntax:</p>
+                  <pre><code class="zsh" data-trim contenteditable>
+                    --silent #long
+/S #abbreviated
+                  </code></pre>
+                  <p>Example:</p>
+                  <pre><code class="zsh" data-trim contenteditable>
+                    "prerun": {
+    "executable": "http://url.to/your/executable.exe",
+    "args": [ "/S", "-a", "-q" ],
+    "background": true,
+    "timeout": 120
+}
+                      </code></pre>
+                  <aside class="notes">If you have a large application to install or, an executable with a lot of steps, you can enable  to install the executable wihtout any modal dialogs or installation process showing up in the test messages. Silent mode is an argument of the 'prerun' capability. One of the arguments that can be added to the prerun capability in your test configuration options is --silent, which can be abbreviated to /S.</aside>
+                </section>
                 </section>
                 <section>
-                  <h3>Basic Authentication</h3>
+                  <h3>Downloading Files to Sauce VM</h3>
+                  <p>Pre-run scripts can download files from public location and upload to Sauce VMs prior to testing.</p>
+                    <ul><p>OS Support:</p>
+                    <li>Mac OS X 10.6-10.10</li>
+                    <li>Windows 7,8,8.1,XP</li>
+                    <li>Linux</li>
+                  </ul>
+                  <p>Linux Example: shell downloads to /tmp directory</p>
+                  <pre><code class="zsh" data-trim contenteditable>
+                        
+#!/bin/bash
+wget -O /tmp/file.txt http://mywebsite.com/file.txt
+                      </code></pre>
+                  <aside class="notes">You can create a pre-run executable script that will download a file from a public location to the Sauce Labs virtual machine running your tests. This topic contains examples of scripts for that purpose, based on the operating system you are using for your tests, and how to configure the prerun capability in your tests to reference them. </aside>
                 </section>
                 <section>
-                  <h3>Cookie Injection</h3>
-                </section>
+                  <h3>Editing the Host File</h3>
+                  <p>Create host file for Sauce VM and load using 'prerun' in test script</p>
+                  <h4>Host File: (OS X example)</h4>
+                  <pre><code class="zsh" data-trim contenteditable>
+                        
+#!/bin/bash
+echo "162.222.75.243 www.google.com" >> /etc/hosts
+                      </code></pre>
+                      <h4>Test Script snippet:</h4>
+                      <pre><code class="zsh" data-trim contenteditable>
+                        
+self.desired_capabilities['prerun'] = {'executable':'https://githubUser/
+master/EditDNS.sh', 'background': False }
+                      </code></pre>
+                  <aside class="notes"><p>Another way to configure a Sauce VM with a prerun executable is to edit the VM's host file. We do this so when the Selenium driver tries to access a particular domain, like google.com for example, it will redirect to a new IP address like (saucelabs.com). As with other prerun configurations, the basic steps are:</p>
+                    <ul>
+<li>Write a script with a URL redirect.</li>
+<li>Upload the script to a publicly accessible location, (like GitHub or Sauce Storage)</li>
+<li>Set the prerun capability in your test script to load the script as a host file in the Sauce Labs virtual machine.</li>
+</ul></aside>
                 </section>
                 <section>
-                  <h3>Permissions and File Types</h3>
-                </section>
-                <section>
-                  <h3>VM Limitations</h3>
+                  <h3>Security and File Types</h3>
                   <ul>
-                    <li>3GB of free space</li>
-                    <li>"" amount of load/concurrency</li>
+                    <li>Who has access to VMs?</li>
+                    <li>Who has access to the test?</li>
+                    <li>Data Center Access?</li>
+                    <li>VM Teardown Process?</li>
+                  </ul>
+                  <aside class="notes">
+                    <ul>
+                    <li>Only test user has access to VM</li>
+                    <li>Job Owners can provide test access</li>
+                    <li>Only SauceLab employees with proper clearance can access Data Center and only the director of Operations or Engineering can provide access to the data center</li>
+                    <li>VMs are created in memory, and are decommissioned upon test completion. For example, once Sauce Connect is terminated (typically via ctrl-c), a call will be made from Sauce Connect to the REST API with instructions to terminate the tunnel VM. Sauce Connect will continue to poll the REST API until the tunnel VM has been halted and deleted</li>
+                  </ul>
+                </aside>
                 </section>
+                
                 <section data-state="lab">
           <h3>Lab 2.0: Setup Pre-Run Script</h3>
           <p>Set up some pre-run executables and run your test. Re-install your executable using the "slient" flag. View the logs and compare the output.</p>
@@ -559,7 +674,7 @@ httpsProtocol # protocol used</aside>
                   <ul>
                     <li>Administer basic API Interaction</li>
                     <li>Set Dashboards, capabilities, and rate limits</li>
-                    <li>Update Sauce Job™ status reports</li>
+                    <li>Update Sauce Job status reports</li>
                   <li>View, manage, and share archived test and build data</li>
                   </ul>
                   <aside class="notes">
@@ -568,6 +683,22 @@ httpsProtocol # protocol used</aside>
                 </section>
                 <section>
                   <h3>API Overview</h3>
+                  <ul>
+                    <li>Accessed over HTTPS</li>
+                    <li>Requests encoded via JSON</li>
+                    <li>Standard HTTP Request Methods</li>
+                    <li>Uses Basic HTTP Authentication</li>
+                    <li>Supported API Clients</li>
+                    <ul>
+                      <li>Java</li>
+                      <li>Ruby</li>
+                      <li>PHP</li>
+                      <li>Node.js</li>
+                    </ul>
+                  </ul>
+                  <aside class="notes">
+                    </p>
+                  </aside>
                   </section>
                   <section>
               <h3>Use Cases</h3>
@@ -578,22 +709,101 @@ httpsProtocol # protocol used</aside>
                 <li>Reporting</li>
                 <li>Temporary Storage</li>
                 </ul>
+                <aside class="notes">
+                    </p>
+                  </aside>
             </section>
             <section>
-              <h3>Test Configuration</h3>
+              <h3>Rate Limits</h3>
+              <p>HTTP header used to prevent over-utilization of API calls. Enforced two ways:</p>
+              <ul>
+                <li>Authenticated Users: Account Keys</li>
+                <li>Non-Authenticated Users: IP Address</li>
+              </ul>
+              <p>To manually disable the rate limit:</p>
+              <pre><code class="zsh" data-trim contenteditable>
+                      $curl -X GET "https://saucelabs.com/rest/v1/hello" -H 'X-RateLimit-Enable: false' -i
+                      </code></pre>
+                      <aside class="notes">
+                    </p>
+                  </aside>
+            </section>
+            <section>
+              <h3>Request Fields</h3>
+              <p>Each API may have options to append parameters. For a full list consult the REST API documentation table for each method:</a></p>
+              <ul>
+                <li><a href="https://wiki.saucelabs.com/display/DOCS/Account+Methods"target="_blank">Account Methods</a></li>
+                <li><a href="https://wiki.saucelabs.com/display/DOCS/Information+Methods"target="_blank">Information Methods</a></li>
+                <li><a href="https://wiki.saucelabs.com/display/DOCS/Job+Methods"target="_blank">Job Methods</a></li>
+                <li><a href="https://wiki.saucelabs.com/display/DOCS/Temporary+Storage+Methods"target="_blank">Storage Methods</a></li>
+                <li><a href="https://wiki.saucelabs.com/display/DOCS/Test+Activity+and+Usage+Methods"target="_blank">Activity Methods</a></li>
+                <li><a href="https://wiki.saucelabs.com/display/DOCS/Tunnel+Methods"target="_blank">Tunnel Methods</a></li>
+              </ul>
             </section>
                   <section>
+                    <section>
                     <h3>Account Methods</h3>
+                    <p>Standard rest URL:<a href="https://saucelabs.com/rest/v1/"target="_blank">https://saucelabs.com/rest/v1/</a></p>
+                      <p>GET Methods:</p>
+                        <pre><code class="zsh" data-trim contenteditable>
+                            #get user
+users/:username
+#get user concurrency
+users/:username/concurrency
+#get sub accounts
+users/:username/list-subaccounts
+#get sibling accounts
+users/:username/siblings
+#get sub accounts
+users/:username/subaccounts
+                      </pre></code>
+                    </section>
+                    <section>
+                      <h3>Account Methods</h3>
+                      <p>Standard rest URL:<a href="https://saucelabs.com/rest/v1/"target="_blank">https://saucelabs.com/rest/v1/</a></p>
+                       <p>POST Methods:</p>
+                       <pre><code class="zsh" data-trim contenteditable>
+                      #creating a sub user account
+curl https://saucelabs.com/rest/v1/users/YOUR_USERNAME \
+-u YOUR_USERNAME:YOUR_ACCESS_KEY \
+-X POST \
+-H 'Content-Type: application/json' \
+-d '{"username": "subaccount-username", 
+ "password": "subaccount-password", 
+ "name": "subaccount-name", 
+ "email": "subaccount-email-address"}'
+
+#Change access key
+users/:username/accesskey/change
+                      </pre></code></li>
                   </section>
+                </section>
                 <section>
                   <section>
                   <h3>Sauce Job Methods</h3>
+                  <p>Sauce Job Methods can invoke job processes programmtically or through an HTTP Interface</p>
+                  <h4>Advantages</h4>
+                  <h4>Disadvantages</h4>
               </section>
               <section>
                 <h3>Multiple Job Methods</h3>
+                <p>Standard rest URL:<a href="https://saucelabs.com/rest/v1/"target="_blank">https://saucelabs.com/rest/v1/</a></p>
+                <pre><code class="zsh" data-trim contenteditable>
+                :username/jobs #GET jobs
+:username/jobs?limit=:number_of_jobs #GET number of jobs
+:username/jobs?full=:get_full_info #GET Full jobs
+:username/jobs?to=:time || from=:time #GET jobs within a time frame
+:username/jobs?format=:job_format #GET jobs by specific format
+                </pre></code>
               </section>
               <section>
                 <h3>Single Job Methods</h3>
+                <pre><code class="zsh" data-trim contenteditable>
+                  :username/jobs/:job_id #UPDATE or DELETE job
+:username/jobs/:job_id/stop #Stop job
+:username/jobs/:job_id/assets #GET or DELETE job asset names
+:username/jobs/:job_id/assets/:file_name #GET job asset files
+                </pre></code>
               </section>
              </section>
                 <section>
@@ -623,27 +833,86 @@ https://saucelabs.com/rest/v1/YOUR_USERNAME/jobs/YOUR_JOB_ID
               </section>
               <section>
                   <h3>Dashboards</h3>
+                  <p>Custom dashboards can utilize the REST API so that admins can perform test operations</p>
+                  <p>Example:</p>
                 </section>
               <section>
                 <h3>Real-time Job Activity</h3>
+                <p>Get user information about concurrency, minutes, and jobs used.</p>
+                <pre><code class="zsh" data-trim contenteditable>
+                  curl -i https://saucelabs.com/rest/v1.1/users/:username/concurrency
+{"timestamp": 1452260901.596546, "concurrency": {"self": 
+{"username": "YOUR_USERNAME", "current": {"overall": 0, "mac": 0, "manual": 0},"allowed": 
+{"manual": 100, "mac": 100, "overall": 100, "real_device": 30}},"ancestor": 
+{"username": "ANCESTOR_USERNAME", "current": {"overall": 0, "mac": 0, "manual": 0}, "allowed": {"manual": 100, "mac": 100, "overall": 100, "real_device": 30}}}}
+                </pre></code>
               </section>
               <section>
                 <h3>Monitoring User Accounts</h3>
+                <p>Retun JSON feed of running job counts broken down by account name and job status.</p>
+                <pre><code class="zsh" data-trim contenteditable>
+                curl -i https://saucelabs.com/rest/v1.1/users/:username/activity
+                {
+    "subaccounts": {
+        "YOUR_USERNAME": {
+            "all": 30,
+            "in progress": 20,
+            "queued": 10,
+        },
+        "CHILD_USERNAME": {
+            "all": 15,
+            "in progress": 10,
+            "queued": 5,
+        },
+    },
+    "totals": {
+        "all": 45,    
+        "in progress": 30,
+        "queued": 15,
+    }
+}
+                </pre></code>
               </section>
             </section>
             <section>
               <h3>Sauce Storage</h3>
+              <ul>
+              <li>Eliminates network latency factor</li>
+               <li>Upload mobile apps, Selenium .jars, and prerun executables</li>
+             </ul>
+              <pre><code class="zsh" data-trim contenteditable>
+              /storage/:username/:file_name
+                </pre></code>
+                <p>Use the "overwrite=true" parameter in the OS X example to enable overwriting </p>
+                <pre><code class="zsh" data-trim contenteditable>
+                curl -u YOUR_USERNAME:YOUR_ACCESS_KEY \
+-X POST \
+-H "Content-Type: application/octet-stream" \
+https://saucelabs.com/rest/v1/storage/YOUR_USERNAME/test_file_name?overwrite=true \
+--data-binary @PATH_TO_TEST_FILE 
+  </pre></code>
             </section>
             <section>
-              <section>
-              <h3>Authentication</h3>
-            </section>
-            <section>
-              <h3>Auth Override</h3>
-            </section>
-            </section>
-            <section>
-              <h3>Setting Rate Limits</h3>
+              <h3>Get SC Tunnel Information</h3>
+              <p>Standard rest URL:<a href="https://saucelabs.com/rest/v1/"target="_blank">https://saucelabs.com/rest/v1/</a></p> 
+              <pre><code class="zsh" data-trim contenteditable>
+                :username/tunnels #returns response fields with tunnel info
+#id
+#owner
+#status
+#host
+#creation_time
+                </pre></code>
+              <p>Getting a Tunnel (OS X Example):</p>
+              <pre><code class="zsh" data-trim contenteditable>
+              curl https://saucelabs.com/rest/v1/YOUR_USERNAME/tunnels/
+YOUR_TUNNEL_ID -u YOUR_USERNAME:YOUR_ACCESS_KEY
+              </pre></code>
+              <p>Deleting a Tunnel (Windows Example):</p>
+              <pre><code class="zsh" data-trim contenteditable>
+              curl https://saucelabs.com/rest/v1/YOUR_USERNAME/tunnels/
+YOUR_TUNNEL_ID -u YOUR_USERNAME:YOUR_ACCESS_KEY -X DELETE
+              </pre></code>
             </section>
              <!--  <section>
                 <h3>Creating Test Links</h3>
@@ -685,6 +954,7 @@ https://saucelabs.com/rest/v1/YOUR_USERNAME/jobs/YOUR_JOB_ID
                 <section data-state="lab">
                   <h3>Lab 3.1: Monitor Job Activity</h3>
                   <p>Set Job annotation using the REST API and run another test to output real time job activity</p>
+                  <p>Get the tunnel information for that job</p>
                 </section>
                 <section data-state="lab">
                   <h3>Lab 3.2: Sauce Storage</h3>
@@ -699,17 +969,175 @@ https://saucelabs.com/rest/v1/YOUR_USERNAME/jobs/YOUR_JOB_ID
                 <section>
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
-                  <ul><li>Run parallel test across multiple VMs</li>
+                  <ul><li>Review the Java Test Framework</li>
+                    <li>Explore using Sauce Runner with CI/CD</li>
                   <li>Understand the levels of parallelization</li>
-                  <li>Follow Parallel testing best practices</li>
-                  <li>Explore Sauce Runner</li>
                   </ul>
                   <aside class="notes">
-                    </p>
+                    <p></p>
+                  </aside>
+                </section>
+                  <section>
+                <section>
+              <h3>Test Automation Frameworks</h3>
+              <ul><p>Java Frameworks:</p>
+                <li>JUnit</li>
+                <li>TestNG</li>
+              </ul>
+              <ul><p>Other Frameworks:</p>
+                <li>Python: <a href="https://github.com/saucelabs-sample-test-frameworks/Python-Pytest-Selenium"target="_blank">Py.test</a></li>
+                <li>Ruby: <a href="https://github.com/saucelabs-sample-test-frameworks/Ruby-RSpec-Selenium"target="_blank">Rspec</a>, <a href="https://github.com/saucelabs-sample-test-frameworks/Ruby-RSpec-Capybara"target="_blank">Capybara</a>, <a href="https://github.com/saucelabs-sample-test-frameworks/Ruby-RSpec-WatirWebdriver"target="_blank">WatirWebdriver</a></li>
+                <li>Javascript: <a href="https://github.com/saucelabs-sample-test-frameworks/JS-Protractor-Selenium"target="_blank">Protractor</a></li>
+              </ul>
+              <aside class="notes">
+                   <p>Running tests in parallel can accelerate your team's development process and facilitate a continuous integration/continuous delivery pipeline. Sauce Labs provides many test frameworks with several scripts to demonstarte how to run tests in parallel. These scripts are set in an "AS-IS" state, meaning they're primarily function is to demonstrate the testing process and to provide a proof of concept within that framework.</p>
+                  </aside>
+            </section>
+            <section>
+              <h3>Maven Test Runner</h3>
+              <pre><code class="zsh" data-trim contenteditable>
+              $ export SAUCE_USERNAME=<your Sauce Labs username>
+$ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
+                </pre></code>
+                <pre><code class="zsh" data-trim contenteditable>
+              $ mvn test-compile
+$ mvn versions:display-dependency-updates
+$ mvn test
+                </pre></code>
+              <aside class="notes">
+                   <p>After downloading the sample scripts in the Sauce Labs repo, ensure that Maven is installed, export your Sauce Credentials, and compile the project dependicies. Then run the test and check your Sauce Dashboard to see multiple tests running in parallel.</p>
+                  </aside>
+            </section>
+          </section>
+            <section data-state="lab">
+          <h3>Lab 4.1: Run Maven Parallel Test</h3>
+          <p>Download the sample files/pom.xml from <a href="https://saucelabs.com/rest/v1/"target="_blank">this repo link.</a> Run a Maven Test in your ReadyTech environments.</p>
+          <aside class="notes">
+                    <p>Lab Topics</p>
+                    <li>Test Parallelization</li>
+                    <li>TestNG</li>
+                  </aside>
+        </section>
+            <section>
+                  <section>
+                  <h3>Sauce Runner</h3>
+                  <!-- left column-->
+                    <div style="float:left;width:50%;" class="centered">
+                  <p>Facilitates Selenium test parallelization</p>
+                  <ol>
+                    <li>Point to repo link where test is located</li>
+                    <li>Select platform combinations</li>
+                    <li>Run test</li>
+                    <li>(Optional) Use REST API to run test from within CI/CD environment</li>
+                  </ol>
+                </div>
+                  <!-- right column-->
+                    <div style="float:right;width:35%;padding-right:0px;">
+                      <img src="assets/images/RUNNER.png" style="border:0;background:none; left:0; top:0;">
+                    </div>
+                  <aside class="notes">
+                   <p>Sauce Runner facilitates server-side execution of your Selenium scripts, reduces latency, and allows Sauce Labs to automatically handle things like test parallelization and platform selection.
+The way it works is you provide a link to the GitHub or Bitbucket repository where your tests are located and select which platform and browser combinations you want to test against. You can even kick off the test suite from within your continuous integration environment by means of an API command that Sauce provides.</p>
                   </aside>
                 </section>
                 <section>
-                  <h3>WebDrivers</h3>
+                  <h3>Configuring Your Repo</h3>
+                  <p>Repo must be configured so Sauce Runner can read it. See examples in repo for details.</p>
+                  <ul><p>Adjust the sauce.yml file to:</p>
+                    <li>Set environment variables</li>
+                    <li>Pass system variables (leveraging Surefire plugin)</li>
+                  </ul>
+                  <pre><code class="zsh" data-trim contenteditable>
+                  language: "java"
+maven-version: "3.1.1"
+define:
+invocationCount: 2
+var2: "one two"
+              </pre></code>
+
+                  <aside class="notes">
+                   <p>In order for Sauce Runner to run your tests, you must ensure that your repo is configured in such a way that Sauce Runner can read the repo. Sauce Labs have built examples for each of the supported languages and frameworks, which you can check out on Github. Edit the .yml files to set environment variables or pass sytem variables if you're running maven. The way that works is Sauce Runner leverages the Maven Surefire plugin and then you can define parameters in your .yaml file.</p>
+                  </aside>
+                </section>
+                <section>
+                  <h3>Creating a New Test Suite</h3>
+                  <!-- left column-->
+                    <div style="float:left;width:50%;" class="centered">
+                      <ol>
+                    <li>Enter a Suite Name</li>
+                    <li>Enter repo URL and branch</li>
+                    <li>Enter Language</li>
+                    <li>Select Browsers</li>
+                    <li>Select OS</li>
+                  </ol>
+                    </div>
+<!-- right column-->
+                    <div style="float:right;width:50%;padding-right:0px;">
+                      <img src="assets/images/TestSuite.png" style="border:0;background:none; left:0; top:0;">
+                    </div>
+                  
+                  <aside class="notes">
+                   <ol>
+                    <li>When entering your Repo URL and branch name that you have a deployment key if it's a private repository</li>
+                    <li>Select the Language along with it's dependencies managers or any frameworks required</li>
+                    <li>Select the types of browsers you want to test on. This will trigger a separate window that will display version numbers, screen resolutions, device types etc.</li>
+                    <li>Next, select the platform OS then select add to selected browsers</li>
+                    <li>If you're using Sauce Connect Proxy make sure to select the tunnel you want to use.</li>
+                    <li>After you select Save, Sauce Runner will generate a YAML configuration file.</li>
+                   </ol>
+                  </aside>
+                </section>
+                <section>
+                  <h3>Running Your Test Suite</h3>
+                  <!-- left column-->
+                    <div style="float:left;width:50%;padding-right:0px;" class="centered">
+                     <ol>
+                    <li>Download YAML</li>
+                    <li>Add YAML to repo root</li>
+                    <li>Run Test Suite</li>
+                    <li>Review your Test Details</li>
+                  </ol>
+                    </div>
+<!-- right column-->
+                    <div style="float:right;width:50%;padding-right:0px;">
+                      <img src="assets/images/YAML.png" style="border:0;background:none; left:0; top:0;">
+                    </div>
+                  <aside class="notes">
+                   <p>Download and add the YAML config to the root directory of your repository, and run the test within Sauce Labs to ensure it's desired capabilities. You can review the test status at the Sauce Labs Dashboard. Also if you're using a private repo you will need to add and commit your deployment key to your repo.</p>
+                  </aside>
+                </section>
+                </section>
+                <section data-state="lab">
+          <h3>Lab 4.2: Run Test Suite</h3>
+          <p>Clone the existing git repo provided by sauce labs into a local directory. Create a test suite, add the deployment key, and run the test.</p>
+          <aside class="notes">
+                    <p>Lab Topics</p>
+                    <li>Test Suites</li>
+                    <li>Parallelization</li>
+                  </aside>
+        </section>
+                <section>
+                  <h3>Using Sauce Runner with CI Platforms</h3>
+                  <p>Run your test suites from within your CI platform. Depending on the platform, steps may be different</p>
+                   <div align="middle"><img src="assets/images/BUILDSTEP.png" style="border:none; background:none; width:50%">
+                  </div>
+                  <aside class="notes">
+                   <p></p>
+                  </aside>
+                </section>
+            <section>
+              <h3>REST Command</h3>
+              <p>Copy the REST CURL Command from your Suite Details</p>
+
+                    <div style="align:middle;width:100%;padding-right:0px;">
+                      <img src="assets/images/RESTCURL.png" style="border:0;background:none; left:0; top:0;">
+                    </div>
+              <aside class="notes">
+                  </aside>
+            </section>
+          </section>
+                <section>
+                  <h3>Autonomous, Atomic Testing</h3>
                 </section>
                 <section>
                   <h3>Levels of Parallelization</h3>
@@ -725,23 +1153,9 @@ https://saucelabs.com/rest/v1/YOUR_USERNAME/jobs/YOUR_JOB_ID
                   <h3>Test Case Parallelization</h3>
                 </section>
                 </section>
-                <section>
-                  <section>
-                  <h3>Sauce Runner</h3>
-                </section>
-                <section>
-                  <h3>Configuring Your Repo</h3>
-                </section>
-                <section>
-                  <h3>Creating a new Test Suite</h3>
-                </section>
-                <section>
-                  <h3>Using Sauce Runner with CI Platforms</h3>
-                </section>
-              </section>
               <section data-state="lab">
-                  <h3>Lab 4.0: Configure Sauce Runner</h3>
-                  <p>Configure Sauce Runner to point to the repo where "test.html" is located, and run parallel test across multiple VMs</p>
+                  <h3>Lab 4.3:Configure Sauce Runner with Jenkins</h3>
+                  
                 </section>
 
                 <!-- CI & CI Plugins Module-->
@@ -782,18 +1196,25 @@ https://saucelabs.com/rest/v1/YOUR_USERNAME/jobs/YOUR_JOB_ID
                 </section>
                 <section>
                   <section>
-                    <h3>Sauce OnDemand</h3>
-                    <p>Jenkins and Bamboo plugin</p>
+                    <h3>Installing Sauce OnDemand</h3>
+                    <ul><p>Install Sauce OnDemand plugin through the Jenkins Admin page<p> 
+<li>Click "Manage Jenkins"</li>
+<li>Click "Manage Plugins"</li> 
+<li>Click the "Available" tab</li>
+<li>Search and select Sauce OnDemand Plugin</li> 
+<li>Download and install after restart</li>
+</ul>
+<aside class="notes">enkins plugin allows user to populate environment variables on the Jenkins server that can be used in tests (e.g. Sauce USER and ACCESS_KEY) The plugin file is fairly large, so download may take several minutes.  
+In the plugin installation dialog, select Restart Jenkins when installation is complete and no jobs are running.</aside>
                   </section>
                   <section>
                     <h3>Configuring OnDemand</h3>
                   </section>
                 </section>
-                <section>
                   <section>
                   <h3>Passing Environment Variables</h3>
                   <p>These are some of the variables used for the OnDemand Jenkins plugin</p>
-<code class="zsh" data-trim contenteditable><pre>
+<pre><code class="zsh" data-trim contenteditable>
                         SAUCE_USERNAME # user used for OnDemand
 SAUCE_ACCESS_KEY # key used for OnDemand user
 SAUCE_ONDEMAND_BROWSERS # JSON string representing Desired Browsers
@@ -802,18 +1223,34 @@ SELENIUM_PORT # Port address of Selenium server
                     </code></pre>
                   </section>
                   <section>
-                    <h3>Setting DesiredCapabilities</h3>
-                    <p>configure variables</p>
-                    <code class="zsh" data-trim contenteditable><pre>
-                        desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+                    <h3>Setting Authentication</h3>
+                    <p>Example:</p>
+                    <pre><code class="zsh" data-trim contenteditable> 
+                    WebDriver driver = new RemoteWebDriver(
+new URL("http://"+System.getenv("SAUCE_USERNAME")+":"
++System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub",
+            desiredCapabilities);
+          </pre></code>
+        </section>
+                  <section>
+                    <section>
+                      <h3>Set Desired Capabilities in Test Script</h3>
+                      <p>Configure Variables in Test Scripts:</p>
+                    <pre><code class="zsh" data-trim contenteditable>                        desiredCapabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
 desiredCapabilities.setVersion(System.getenv("SELENIUM_VERSION"));
 desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENIUM_PLATFORM"));
                     </code></pre>
                   </section>
                   <section>
+                    <h3>Setting Capabilities for Jenkins</h3>
+                    <p>Configure a SAUCE_ON_DEMAND env variable if you plan on selecting multiple OS/browser combinations for your parrallel tests</p>
+                    <p>Configure SELENIUM_PLATFORM, SELENIUM_VERSION, and SELENIUM_BROWSER for a single operating test.</p> 
+                  
+                  </section>
+                  <section>
                     <h3>Example</h3>
-                    <code class="zsh" data-trim contenteditable><pre>
-                        [
+                    <pre><code class="zsh" data-trim contenteditable> 
+                    [
     {
         "platform":"LINUX",
         "os":"Linux",
@@ -829,7 +1266,7 @@ desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENI
         "browserVersion":"9"
     }
 ]
-                    </code></pre>
+                    </pre></code>
                   </section>
                 </section>
                   <section>
@@ -902,35 +1339,33 @@ desiredCapabilities.setCapability(CapabilityType.PLATFORM, System.getenv("SELENI
                    <section>
                    <h3>Checking Network Connectivity</h3>
                   <ul>
-                    <p> Before testing and configuring a Sauce Connect Tunnel, use the following commands to check if the machine running the Sauce Connect client can access saucelabs.com</p>
-                    <li><p>Using ping command</p><pre><code class="java" data-trim contenteditable>
+                    <p> Use the following commands to confirm if Sauce Connect can access saucelabs.com</p>
+                    <li><p>ping command</p><pre><code class="java" data-trim contenteditable>
                         $ ping saucelabs.com
                     </code></pre></li>
-                    <li><p>Using telnet command</p><pre><code class="java" data-trim contenteditable>
+                    <li><p>telnet command</p><pre><code class="java" data-trim contenteditable>
                         $ telnet saucelabs.com 443 
                     </code></pre></li>
-                    <li><p>Using curl command</p><pre><code class="java" data-trim contenteditable>
+                    <li><p>curl command</p><pre><code class="java" data-trim contenteditable>
                         $ curl -v https://saucelabs.com/
                     </code></pre></li>
                   </ul>
                   <aside class="notes">If you know of the existence of a proxy but you aren't sure about the security configurations, you need to make sure that saucelabs.com is accessible from the machine running Sauce Connect. This can be tested by issuing a ping, telnet, or cURL command to saucelabs.com from the machine's CLI. If any of the commands fail, work with the internal network team to troubleshoot and resolve the issue.</aside>
                 </section>
 
-                   <section>
+                    <section>
                      <h3>Small, Atomic, and Autonomous Testing</h3>
-                     <p>Small</p>
-                     <ul><li>Tests should be short and succinct.</li></ul>
-                     <p>Atomic</p>
-                     <ul><li>Tests should focus on testing a single feature.</li></ul>
-                     <p>Autonomous</p>
-                     <ul><li>Tests should be able to run completely independently of other tests.</li></ul>
+                     <p>Small: Tests should be short and succinct</p>
+                     <p>Atomic: Tests should focus on testing a single feature.</p>
+                     <p>Autonomous: Tests should be independent of other tests.</p>
+
                      <aside class="notes">
 
                        <p>Short - If you have a test suite of 100 tests running concurrently on 100 VMs, then the time it will take to run the entire suite will be determined by the longest/slowest test case. Keeping your tests small ensures that your suite will run efficiently and provide you with results faster. </p>
                        <p>Atomic - The test makes clear exactly what it is that you're testing. If the test fails, then you should also have a very clear idea of what needs to be fixed. </p>
                        <p>Autonomous - Tests should not be dependent on the results of one test to run successfully. In addition, an autonomous test should use its own data to test against, and not create potential conflicts with other tests over the same data.  </p>
                      </aside>
-                   </section>
+                </section>
 
                    <section>
                      <h3>Parallelization</h3>
@@ -973,6 +1408,9 @@ caps.setCapability("name","Java Remote Sample Test");
                        <aside class="notes">There's also a way to set your own build number as well</aside>
                      </section>
                    </section>
+                   <section>
+                    <h3>The Doctor flag</h3>
+                  </section>
 
                  <section data-background="rgb(226, 35, 26)">
                    <h2>Additional Resources</h2>
@@ -980,11 +1418,12 @@ caps.setCapability("name","Java Remote Sample Test");
 
                  <section>
                   <h3>Further Information</h3>
-                  <li><a href="http://www.seleniumhq.org/docs" target="_blank">SeleniumHQ: Documentation</a></li>
-                  <li><a href="http://elementalselenium.com/" target="_blank">Dave Haeffner's Selenium Newsletter</a></li>
+                  <li><a href="https://wiki.saucelabs.com/display/DOCS/Sauce+Connect+Proxy" target="_blank">Sauce Connect Documentation</a></li>
+                  <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+REST+API" target="_blank">REST API documentation</a></li>
                   <li><a href="https://wiki.saucelabs.com/display/DOCS/The+Sauce+Labs+Cookbook+Home" target="_blank">Sauce Labs Documentation</a></li>
                   <li><a href="https://github.com/saucelabs-sample-scripts" target="_blank">Sauce Labs Sample Test Scripts</a></li>
                   <li><a href="https://github.com/saucelabs-sample-test-frameworks" target="_blank">Sauce Labs Sample Test Frameworks</a></li>
+                  <li><a href="https://wiki.saucelabs.com/display/DOCS/Using+Sauce+Labs+with+Continuous+Integration+Platforms" target="_blank">CI/CD Platform Documentation</a></li>
                   <aside class="notes"></aside>
                  </section>
 
