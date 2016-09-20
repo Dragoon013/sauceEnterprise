@@ -1257,7 +1257,7 @@ var2: "one two"
 
                 <!-- CI & CI Plugins Module-->
                 <section data-background="rgb(226, 35, 26)">
-                  <h2>CI and CI Plugins</h2>
+                  <h2>CI/CD Plugins</h2>
                   <aside class="notes">We'll discuss how to enable CI plugins. </aside>
                 </section>
 
@@ -1404,36 +1404,26 @@ Do not worry if your Jenkins server is behind a firewall because the Jenkins plu
                   </section>
                   <section>
                     <h3>Changing the Binary Locations</h3>
-                    <p>Change Global Binary location</p>
-                    <ol>
-                      <li>Click "Manage Jenkins" in Jenkins admin page.</li>
-                      <li>Click "Configure System"</li>
-                      <li>Navigate to the "Sauce Support" section</li>
-                      <li>Edit location in "Sauce Connect Working Directory"</li>
-                    </ol>
-                    <p>Per-project Binary location</p>
-                    <ol>
-                      <li>Click "Configure"</li>
-                      <li>Click "Advanced" in "Sauce Connect Advanced Options"</li>
-                      <li>Editlocation in "Sauce Connect Working Directory"</li>
-                    </ol>
+                    <h4>Change Global Binary location</h4>
+                    <ul>
+                    <li><p>Manage Jenkins > Configure System > Sauce Support > Sauce Connect Working Directory > Edit Working Directory</p></li>
+                  </ul>
+                    <h4>Per-project Binary location</h4>
+                    <ul>
+                    <li><p>Configure > Sauce Connect Advanced Options > Advanced > Sauce Connect Working Directory > Edit Working Directory</p></li>
+                  </ul>
                     <aside class="notes">When you run a Jenkins build with Sauce Connect enabled, the default behaviour of the plugin is to extract the Sauce Connect binary that is appropriate for your OS to your home directory. You can change the location where the plugin extracts Sauce Connect for specific projects, or at the global level for all projects. Note that Sauce Connect should always run on the same network as the site or application under test, but does not have to be on the same machine.</aside>
                   </section>
                   <section>
                     <h3>Set Sauce Connect CLI Options</h3>
-                    <p>Global</p>
-                    <ol>
-                      <li>Click "Manage Jenkins" in Jenkins admin page.</li>
-                      <li>Click "Configure System"</li>
-                      <li>Navigate to the "Sauce Support" section</li>
-                      <li>Edit CLI options in "Sauce Connect Options"</li>
-                    </ol>
-                    <p>Per-Project</p>
-                    <ol>
-                      <li>Click "Configure" in Jenkins project page</li>
-                      <li>Click "Advanced" in "Sauce Connect Advanced Options"</li>
-                      <li>Edit CLI options in "Sauce Connect Options"</li>
-                    </ol>
+                    <h4>Global</h4>
+                    <ul>
+                      <li><p>Manage Jenkins > Configure System > Sauce Support > Sauce Connect Options > Edit CLI Options</p></li>
+                    </ul>
+                    <h4>Per-Project</h4>
+                    <ul>
+                      <li><p>Configure > Sauce Connect Advanced Options > Advanced > Sauce Connect Options > Edit CLI options </p></li>
+                    </ul>
                     <aside class="notes">There are also options to run Sauce Connect on a salve Jenkins node rather than a master node, as well as running a unique tunnel per Jenkins build. To achieve the later you just need to include the Tunnel identifer environment variable in addition to the Selenium HOST PORT variable</aside>
                   </section>
                 </section>
@@ -1573,6 +1563,9 @@ To make sure that your test results and Sauce jobs are associated properly, you 
                       <li>Setup Jenkins to run as a <a href="https://wiki.saucelabs.com/display/DOCS/Configuring+Jenkins+Matrix+Projects+with+Sauce"target="_blank">Matrix project</a></li>
                       <li>Configure Jenkins build as a Parameterized Build</li>
                     </ul>
+                    <aside class="notes"><ul>
+                      <li>Matrix Projects are also called: multi-configuration projects, and they allow you to run the same build with different input parameters.</li>
+                      <li>If you're running regression testing and you want to test which browser and OS combo will be effective, you can setup a parameterized build to toggle these test elements at runtime.</li></ul></aside>
                   </section>
                    <section>
                      <section>
@@ -1589,16 +1582,9 @@ caps.setCapability("build","cool_builds1");
 caps.setCapability("name","Java Remote Sample Test");
                        </code></pre>
                        <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
-                       <aside class="notes"></aside>
+                       <aside class="notes">When you set the desired capabilities for your test, you can also add identifying information such as a name, tags, and build numbers that you can then use to filter results or to identify builds within your CI pipeline. </aside>
                      </section>
-
-                     <section data-state="lab">
-                       <h3>Lab: Labelling and Naming our Tests</h3>
-                       <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
-                       <aside class="notes">There's also a way to set your own build number as well</aside>
-                     </section>
-                   </section>
-                   <section>
+                     <section>
                     <h3>The Doctor flag</h3>
                     <p>The --doctor flag, helps debug problems with Sauce Connect Proxy</p>
                     <ul>
@@ -1610,6 +1596,13 @@ caps.setCapability("name","Java Remote Sample Test");
 
                     <aside class="notes">--doctor is a command line utility that you can use to diagnose issues with Sauce Connect Proxy. The doctor flag can detect errors such as failing to download the PAC file, there are invalid REST endpoints, any firwewall or DNS setting errors.</aside>
                   </section>
+
+                     <section data-state="lab">
+                       <h3>Lab: Labelling and Naming our Tests</h3>
+                       <p>This is the lab where we apply labels to our test, run it again, and see the label appear in sauce labs</p>
+                       <aside class="notes">There's also a way to set your own build number as well</aside>
+                     </section>
+                   </section>
 
                  <section data-background="rgb(226, 35, 26)">
                    <h2>Additional Resources</h2>
