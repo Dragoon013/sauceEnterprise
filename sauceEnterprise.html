@@ -187,6 +187,22 @@
                   </aside>
               </section>
               <section>
+                       <h3>Label Your Tests</h3>
+                       <p>
+                         <li>ID tests</li>
+                         <li>Name tests</li>
+                         <li>Apply build names to tests</li>
+                       </p>
+
+                       <pre><code class="java" data-trim contenteditable>
+                           caps.setCapability("tags","tag_awesome");
+caps.setCapability("build","cool_builds1");
+caps.setCapability("name","Java Remote Sample Test");
+                       </code></pre>
+                       <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
+                       <aside class="notes">When you set the desired capabilities for your test, you can also add identifying information such as a name, tags, and build numbers that you can then use to filter results or to identify builds within your CI pipeline. </aside>
+                     </section>
+              <section>
                   <h3>Monitoring Tunnels</h3>
                   <ul>
                     <li>Choose the "Tunnels" tab to view "Active Tunnels"</li><li>Display is list format with <i>Session ID</i> and <i>Host</i></li>
@@ -1291,10 +1307,6 @@ var2: "one two"
                   <h3>Test Case Parallelization</h3>
                 </section>
                 </section> -->
-              <section data-state="lab">
-                  <h3>Lab 4.3:Configure Sauce Runner with Jenkins</h3>
-                  
-                </section>
 
                 <!-- CI & CI Plugins Module-->
                 <section data-background="rgb(226, 35, 26)">
@@ -1367,6 +1379,12 @@ In the plugin installation dialog, select Restart Jenkins when installation is c
                       <li>(Optional) Enable Sauce Connect CLI options</li>
                     <aside class="notes">The Jenkins plugin provides an interface for storing your Sauce Labs authentication credentials as environment variables on the Jenkins server, which is one of our best practices for testing with Sauce. This allows you to reference your credentials without having to hardcode them into your tests, and because the plugin manages authentication at the global level, you can have multiple jobs running at the same time that use these credentials. </aside>
                   </section>
+<!-- Sauce onDemand Lab -->
+                <section data-state="lab">
+                  <h3>Lab 5.0: Jenkins</h3>
+                  <p>Configure Sauce Connect on Jenkins</p>
+                  <p>Run a test using the Jenkins Pipeline</p>
+                </section>
                 </section>
                   <section>
                   <h3>Passing Environment Variables</h3>
@@ -1379,13 +1397,24 @@ SELENIUM_PORT # Port address of Selenium server
                     </code></pre>
                     <aside class="notes">These are some of the variables used for the OnDemand Jenkins plugin, We can specify the details of the actual Selenium grid by using SELENIUM_HOST and PORT. As well as the Sauce Access_key and Username to allow us to send REST calls during the build process.</aside>
                   </section>
+<!-- Grab Env Variables Lab -->      
+                  <section data-state="lab">
+                  <h3>Lab 5.1: Grabbing Environment variables</h3>
+                  <ol>
+                    <li>Translate env variables using GET request (with Sauce credentials)</li>
+                    <li>Iterate through and print variables</li>
+                    <li>Parse values into JSON format</li>
+                    <li>Extract variables as needed</li>
+                    <li>Map said variables into DesiredCapabilities</li>
+                  </ol>
+                </section>
                   <section>
                     <h3>Setting Authentication</h3>
                     <p>Example:</p>
                     <pre><code class="zsh" data-trim contenteditable> 
                     WebDriver driver = new RemoteWebDriver(
-new URL("http://"+System.getenv("SAUCE_USERNAME")+":"
-+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub",
+new URL("https://"+System.getenv("SAUCE_USERNAME")+":"
++System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:443/wd/hub",
             desiredCapabilities);
           </code></pre>
           <aside class="notes">In this example we're setting the authentication via our selenium script and referencing the environment variables we stored in Jenkins the using the Sauce OnDemand plugin.</aside>
@@ -1468,6 +1497,10 @@ Do not worry if your Jenkins server is behind a firewall because the Jenkins plu
                     <aside class="notes">There are also options to run Sauce Connect on a salve Jenkins node rather than a master node, as well as running a unique tunnel per Jenkins build. To achieve the later you just need to include the Tunnel identifer environment variable in addition to the Selenium HOST PORT variable</aside>
                   </section>
                 </section>
+<!-- Sauce onDemand CLI Options Lab -->
+                <section data-state="lab">
+                  <h3>Lab 5.2: Set Sauce OnDemand CLI Options</h3>
+                </section>
                   <section>
                     <section>
                     <h3>Setup Build Reporting</h3>
@@ -1519,10 +1552,10 @@ job-name=%2$s",(((RemoteWebDriver) driver).getSessionId()).toString(),\
 To make sure that your test results and Sauce jobs are associated properly, you need to output the session id to stdout. For example, this is the code you would use to output the session id to the Java stdout. </aside>
                   </section>
                 </section>
+ <!-- Sauce Test Publisher Lab -->
                 <section data-state="lab">
-                  <h3>Lab 5.0: Sauce OnDemand</h3>
-                  <p>Configure Sauce Connect on Jenkins</p>
-                  <p>Run a test using the Jenkins Pipeline</p>
+                  <h3>Lab 5.3: Post-Build Action: Test Publisher</h3>
+                  <p>Create a post-build action in Jenkins for SauceOnDemand to parse test results from Sauce Jobs</p>
                 </section>
 
                 
@@ -1608,23 +1641,7 @@ To make sure that your test results and Sauce jobs are associated properly, you 
                       <li>Matrix Projects are also called: multi-configuration projects, and they allow you to run the same build with different input parameters.</li>
                       <li>If you're running regression testing and you want to test which browser and OS combo will be effective, you can setup a parameterized build to toggle these test elements at runtime.</li></ul></aside>
                   </section>
-                   <section>
-                     <section>
-                       <h3>Label Your Tests</h3>
-                       <p>
-                         <li>ID tests</li>
-                         <li>Name tests</li>
-                         <li>Apply build names to tests</li>
-                       </p>
-
-                       <pre><code class="java" data-trim contenteditable>
-                           caps.setCapability("tags","tag_awesome");
-caps.setCapability("build","cool_builds1");
-caps.setCapability("name","Java Remote Sample Test");
-                       </code></pre>
-                       <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
-                       <aside class="notes">When you set the desired capabilities for your test, you can also add identifying information such as a name, tags, and build numbers that you can then use to filter results or to identify builds within your CI pipeline. </aside>
-                     </section>
+                     
                      <section>
                     <h3>The Doctor flag</h3>
                     <p>The --doctor flag, helps debug problems with Sauce Connect Proxy</p>
@@ -1644,7 +1661,6 @@ caps.setCapability("name","Java Remote Sample Test");
                        <aside class="notes">There's also a way to set your own build number as well</aside>
                      </section>
                    </section> -->
-                 </section>
 
                  <section data-background="rgb(226, 35, 26)">
                    <h2>Additional Resources</h2>
