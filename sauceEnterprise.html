@@ -393,6 +393,17 @@ ALL_PROXY # http://host.name.port || host.name.port   </code></pre></div>
 
                   <aside class="notes">If you're implementing a tunnel pool as part of your existing setup or as part of your continuous integration platform, make sure you set tunnel identifiers to manage those instances and also to provide visibility. This way you can set multiple concurrent jobs with similar or the exact same names reflected in your local or CI builds</aside>
               </section>
+              <section>
+                  <h3>Multiple Tunnels on One Machine</h3>
+                  <p>Requires additional flags that assign:
+                  <ul>
+                    <li>ports</li>
+                    <li>logfiles</li>
+                    <li>process IDs (PID)</li>
+                  </ul>
+
+                  <aside class="notes">If you want to run different tunnels on the same machine, you need to use additional flags to start them, because multiple tunnels on the same machine require different ports, logfiles and PID files. The required flags are --pidfile, --logfile, --scproxy-port, --se-port, and -i, as shown in this example: </aside>
+              </section>
             <section>
                 <h3>Sauce Connect Pool Setup</h3>
                 <p>A "pool" of tunnels is a grouping of multiple SC tunnels acting as one tunnel</p>
