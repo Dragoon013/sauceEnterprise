@@ -144,12 +144,16 @@
                   <ul>
                     <li>Alternative to whitelisting IPs</li>
                     <li>Stablizes network connection</li>
-                    <li><a href="https://wiki.saucelabs.com/display/DOCS/Sauce+Connect"target="_blank">Sauce Connect Documentation</a></li>
                   </ul>
                 </div>
                 <div style="position:center;float:right;width:50%;"class="centered">
                   <img src="assets/images/SC_logo.png" style="float:right;border:none; background:none; width:60%">
+                  <p style="text-align:center;">
+                    <small>Documentation: <a href="https://wiki.saucelabs.com/display/DOCS/Sauce+Connect" target="_blank">Sauce Connect Proxy</a>
+                    </small>
+                  </p>
                 </div>
+
                 <aside class="notes">Sauce Connect Proxy™ is a tunneling VM service (proxy server) that allows you and your teams to securely test applications behind your firewall. Sauce Connect is technically not required to run tests with Sauce Labs unless the website or application is not publicly accessible.  Sauce Labs recommend to enlist the aid of a network engineer to install Sauce Connect due to the complications of network architectures.</aside>
                 </section>
               <section>
@@ -202,7 +206,11 @@
 caps.setCapability("build","cool_builds1");
 caps.setCapability("name","Java Remote Sample Test");
                        </code></pre>
-                       <p style="text-align:center;">Docs: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a></p>
+                       <p style="text-align:center;">
+                    <small>Documentation: <a href="https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options" target="_blank">Test Configuration Options</a>
+                    </small>
+                  </p>
+                       
                        <aside class="notes">When you set the desired capabilities for your test, you can also add identifying information such as a name, tags, and build numbers that you can then use to filter results or to identify builds within your CI pipeline. </aside>
                      </section>
               <section>
@@ -254,7 +262,7 @@ caps.setCapability("name","Java Remote Sample Test");
               </section>
               <section>
                 <section>
-                <h3>Sauce Connect Proxy</h3>
+                <h3>Proxy Configuration</h3>
                 <p> There are two proxying scenarios where additional configuration is needed for Sauce Connect to work:</p>
                 <div align="middle"><h4>SUT Behind a Proxy</h4>
                   <img src= "assets/images/SUTBehindProxy.png" style="border:none; background:none; width:60%">
@@ -364,13 +372,13 @@ httpsProtocol # protocol</code></pre></div>
             </section> -->
             <section>
               <section>
-                <h3>Securing Sauce Connect</h3>
+                <h3>Security Considerations</h3>
                 <p>Whitelist these sites:</p>
                   <ul>
                     <li>http://gp.symcb.com/gp.crl</li>
                     <li>http://gp.symcd.com/</li>
                   </ul>
-                  <p>so that Sauce Connect SSL certificates are verified.</p> <p>Also consult the list of domains <a href="https://knowledge.rapidssl.com/support/ssl-certificate-support/index?page=content&id=ALERT603&actp=RSS&viewlocale=en_US"target="_blank">here</a> to make sure Sauce Connect can connect to all trusted certificate authorities.</p>
+                  <p>so that Sauce Connect Proxy SSL certificates are verified.</p> <p>Also consult the list of domains <a href="https://knowledge.rapidssl.com/support/ssl-certificate-support/index?page=content&id=ALERT603&actp=RSS&viewlocale=en_US"target="_blank">here</a> to make sure Sauce Connect Proxy can connect to all trusted certificate authorities.</p>
                   <aside class="notes">To ensure the data being sent back and forth between the Sauce Client, and the Site Under test via the tunnel vm is secure, it's recommended to whitelist the following domains that SauceLabs utilizes in order to verify it's certificates while they're en route. There is also a list of domains you may want to forward to your network administrator as well as consult yourself to ensure the client uses established TLS connections to dedicated SauceLabs endpoints. </aside>
               </section>
                 <section>
@@ -423,7 +431,7 @@ httpsProtocol # protocol</code></pre></div>
                 </section>
               </section>
               <section>
-                <h3>Sauce Connect Best Practices</h3>
+                <h3>SC Proxy Best Practices</h3>
                 <p>Security/Networking</p>
                 <ul>
                 <li>Designated Server</li>
@@ -1128,7 +1136,7 @@ System.out.println(myJob);
                   <h3>Module Objectives</h3>
                   <p>This module enables you to:</p>
                   <ul><li>Review the Java Test Framework</li>
-                    <li>Explore using Sauce Runner with CI/CD</li>
+                    <li>Explore using High Availability Configurations</li>
                   <li>Understand the levels of parallelization</li>
                   </ul>
                   <aside class="notes">
@@ -1287,134 +1295,6 @@ sc –u %SAUCE_USERNAME% -k %SAUCE_KEY%  --pidfile /tmp/sc3.pid --logfile /tmp/s
                   </ol>
                   </aside>
         </section>
-            <section>
-                  <section>
-                  <h3>Sauce Runner</h3>
-                  <!-- left column-->
-                    <div style="float:left;width:50%;" class="centered">
-                  <p>Facilitates Selenium test parallelization</p>
-                  <ol>
-                    <li>Point to repo link where test is located</li>
-                    <li>Select platform combinations</li>
-                    <li>Run test</li>
-                    <li>(Optional) Use REST API to run test from within CI/CD environment</li>
-                  </ol>
-                </div>
-                  <!-- right column-->
-                    <div style="float:right;width:35%;padding-right:0px;">
-                      <img src="assets/images/RUNNER.png" style="border:0;background:none; left:0; top:0;">
-                    </div>
-                  <aside class="notes">
-                   <p>Sauce Runner facilitates server-side execution of your Selenium scripts, reduces latency, and allows Sauce Labs to automatically handle things like test parallelization and platform selection.
-The way it works is you provide a link to the GitHub or Bitbucket repository where your tests are located, and select which platform and browser combinations you want to test against. You can even kick off the test suite from within your continuous integration environment by means of a REST API command that Sauce provides.</p>
-                  </aside>
-                </section>
-                <section>
-                  <h3>Configuring Your Repo</h3>
-                  <p>Repo must be configured so Sauce Runner can read it. See examples in repo for details.</p>
-                  <ul><p>Adjust the sauce.yml file to:</p>
-                    <li>Set environment variables</li>
-                    <li>Pass system variables (leveraging Surefire plugin)</li>
-                  </ul>
-                  <pre><code class="zsh" data-trim contenteditable>
-                  language: "java"
-maven-version: "3.1.1"
-define:
-invocationCount: 2
-var2: "one two"
-              </code></pre>
-                  <aside class="notes">
-                   <p>In order for Sauce Runner to run your tests, you must ensure that your repo is configured in such a way that Sauce Runner can read the repo. Sauce Labs have built examples for each of the supported languages and frameworks, which you can check out on Github. Edit the .yml files to set environment variables or pass sytem variables if you're running maven. The way that works is Sauce Runner leverages the Maven Surefire plugin and then you can define parameters in your .yaml file.</p>
-                  </aside>
-                </section>
-                <section>
-                  <h3>Creating a New Test Suite</h3>
-<!-- left column-->
-                    <div style="float:left;width:50%;" class="centered">
-                      <ol>
-                    <li>Enter a Suite Name</li>
-                    <li>Enter repo URL and branch</li>
-                    <li>Enter Language</li>
-                    <li>Select Browsers</li>
-                    <li>Select OS</li>
-                  </ol>
-                    </div>
-<!-- right column-->
-                    <div style="float:right;width:50%;padding-right:0px;">
-                      <img src="assets/images/TestSuite.png" style="border:0;background:none; left:0; top:0;">
-                    </div>
-                  
-                  <aside class="notes">
-                   <ol>
-                    <li>When entering your Repo URL and branch name that you have a deployment key if it's a private repository</li>
-                    <li>Select the Language along with it's dependencies managers or any frameworks required</li>
-                    <li>Select the types of browsers you want to test on. This will trigger a separate window that will display version numbers, screen resolutions, device types etc.</li>
-                    <li>Next, select the platform OS then select add to selected browsers</li>
-                    <li>If you're using Sauce Connect Proxy make sure to select the tunnel you want to use.</li>
-                    <li>After you select Save, Sauce Runner will generate a YAML configuration file.</li>
-                   </ol>
-                  </aside>
-                </section>
-                <section>
-                  <h3>Running Your Test Suite</h3>
-                  <!-- left column-->
-                    <div style="float:left;width:50%;padding-right:0px;" class="centered">
-                     <ol>
-                    <li>Download YAML</li>
-                    <li>Add YAML to repo root</li>
-                    <li>Run Test Suite</li>
-                    <li>Review your Test Details</li>
-                  </ol>
-                    </div>
-<!-- right column-->
-                    <div style="float:right;width:50%;padding-right:0px;">
-                      <img src="assets/images/YAML.png" style="border:0;background:none; left:0; top:0;">
-                    </div>
-                  <aside class="notes">
-                   <p>Download and add the YAML config to the root directory of your repository, and run the test within Sauce Labs to ensure it's desired capabilities. You can review the test status at the Sauce Labs Dashboard. Also if you're using a private repo you will need to add and commit your deployment key to your repo.</p>
-                  </aside>
-                </section>
-                </section>
-             
-                <section>
-                  <h3>Using Sauce Runner with CI Platforms</h3>
-                  <p>Run your Test Suites from within your CI platform</p>
-                  <h4>Step one: Create a Build Step</h4>
-                  <p>(Depending on the platform, steps may be different)</p>
-                   <div align="middle"><img src="assets/images/BUILDSTEP.png" style="border:none; background:none; width:40%">
-                  </div>
-                  <aside class="notes">
-                   <p>Depending on which CI plugin your using, the steps will be different, in this screenshot here, we're using the Jenkins plugin. And we're using the build step action in the project configuration screen, and we're going to execute this command through a shell.</p>
-                  </aside>
-                </section>
-            <section>
-              <h3>REST Command</h3>
-              <h4>Step Two: Copy + Paste REST CURL Command</h4>
-
-                    <div style="align:middle;width:100%;padding-right:0px;">
-                      <img src="assets/images/RESTCURL.png" style="border:0;background:none; left:0; top:0;">
-                    </div>
-              <aside class="notes">
-                  <p>Once we've added the build step here, we can copy the curl command that is located in our test suite details page in SauceLabs.com and paste it into the build step shell action.</p></aside>
-            </section>
-            <section>
-              <h3>Example</h3>
-              <!-- left column-->
-                    <div style="float:left;width:70%;padding-right:0px;">
-                      <img src="assets/images/RanFromJenkins.png" style="border:0;background:none; left:0; top:0;">
-                    </div>
-                    <div style="float:right;width:30%;padding-right:0px;">
-                      <p>Build Running from Jenkins via REST CURL command</p>
-                    </div>
-<!-- right column-->
-                    <div style="float:left;width:70%;padding-right:0px;">
-                      <img src="assets/images/RunnerResults.png" style="border:0;background:none; left:0; top:0;">
-                    </div>
-                    <div style="float:right;width:30%;padding-right:0px;">
-                      <p>Results of Build</p>
-                    </div>
-                  <aside class="notes">Finally, we can build the project from within Jenkins and switch back to SauceLabs.com and choose the SauceRunner tab. There we will see the active build running along with the concurrent connections. When the test completes, we will also see the results of the build, whether it was a success for failure and in the right hand side we can view the history of builds as well as their theri success or failure indicated by a check mark.</aside>
-          </section>
 
                  <section>
                      <h3>Small, Atomic, and Autonomous Testing</h3>
@@ -1712,13 +1592,13 @@ Maven version 3.3.9, Goals = clean, test;</li>
                 </section>
                 <!-- Grab Env Variables Lab -->      
                   <section data-state="lab">
-                  <h3>Lab 7: Pass Environment Variables</h3>
+                  <h3>Lab 7: Sauce OnDemand Browsers</h3>
                   <ol>
-                    <li>Translate env variables using GET request (with Sauce credentials)</li>
-                    <li>Iterate through and print variables</li>
+                    <li>Open project: java-testng-ondemand</li>
+                    <li>Construct a String variable to represent your JSONArray. Have the variable pull the system variable for “SAUCE_ONDEMAND_BROWSERS”</li>
                     <li>Parse values into JSON format</li>
-                    <li>Extract variables as needed</li>
-                    <li>Map said variables into DesiredCapabilities</li>
+                    <li>Run Test within Jenkins</li>
+                    <li>View Test Publisher details</li>
                   </ol>
                 </section>
                 <aside class="notes">Notes on lab coming soon!</aside>
