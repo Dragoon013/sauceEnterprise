@@ -1776,6 +1776,12 @@ Maven version 3.3.9, Goals = clean, test;</li>
                     </code></pre></li>
                     <li>Ensure tunnel launches with -i or --tunnel-identifier flag</li>
                   </ul>
+                  <aside class="notes">If you have high availability turned on, you will get improved reliability and performance from Sauce Connect because running multiple tunnels in a tunnel pool will balance the tests between tunnels automatically. Because pooled tunnels count toward your concurrency, you may want to bypass the pool and access a tunnel directly for security reasons. In that case follow this format when defining your tunnel identifieres in desired capabilities. 
+                    <ul>
+                      <li>PooledTunnel identifier name,</li> 
+                      <li>value pair</li>
+                      <li> and the actual tunnel ID number</li>
+                    </ul></aside>
                 </section>
 
                     <!--  <section data-state="lab">
