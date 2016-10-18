@@ -1781,7 +1781,9 @@ Maven version 3.3.9, Goals = clean, test;</li>
                       <li>PooledTunnel identifier name,</li> 
                       <li>value pair</li>
                       <li> and the actual tunnel ID number</li>
-                    </ul></aside>
+                    </ul>
+                    <p>Another reason for monitoring tunnels individually is because if a tunnel is shut down (for example, because of user shutdown, crash, maintenance, or network partition), it will be taken out of the pool of active Sauce Connect instances and Sauce Labs will not restart a tunnel automatically because again, it counts toward concurrency. So you can configure desired caps to monitor each tunnel and you can test each tunnel individually by sending specific tests their way.</p>
+
                 </section>
 
                     <!--  <section data-state="lab">
